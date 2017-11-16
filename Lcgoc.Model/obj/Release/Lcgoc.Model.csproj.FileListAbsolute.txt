@@ -1,0 +1,4 @@
+G:\weixinSDK-master\Lcgoc.Model\bin\Release\Lcgoc.Model.dll
+G:\weixinSDK-master\Lcgoc.Model\bin\Release\Lcgoc.Model.pdb
+G:\weixinSDK-master\Lcgoc.Model\obj\Release\Lcgoc.Model.dll
+G:\weixinSDK-master\Lcgoc.Model\obj\Release\Lcgoc.Model.pdb

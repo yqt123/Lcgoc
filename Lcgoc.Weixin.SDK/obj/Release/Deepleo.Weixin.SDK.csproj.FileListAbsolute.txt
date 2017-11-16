@@ -1,0 +1,7 @@
+G:\weixinSDK-master\Deepleo.Weixin.SDK\bin\Release\Lcgoc.Weixin.SDK.dll
+G:\weixinSDK-master\Deepleo.Weixin.SDK\bin\Release\Lcgoc.Weixin.SDK.pdb
+G:\weixinSDK-master\Deepleo.Weixin.SDK\bin\Release\System.Net.Http.dll
+G:\weixinSDK-master\Deepleo.Weixin.SDK\bin\Release\System.Net.Http.xml
+G:\weixinSDK-master\Deepleo.Weixin.SDK\bin\Release\zh-Hans\System.Net.Http.resources.dll
+G:\weixinSDK-master\Deepleo.Weixin.SDK\obj\Release\Lcgoc.Weixin.SDK.dll
+G:\weixinSDK-master\Deepleo.Weixin.SDK\obj\Release\Lcgoc.Weixin.SDK.pdb

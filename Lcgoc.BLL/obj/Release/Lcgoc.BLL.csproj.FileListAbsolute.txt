@@ -1,0 +1,14 @@
+G:\weixinSDK-master\Lcgoc.BLL\bin\Release\Lcgoc.BLL.dll
+G:\weixinSDK-master\Lcgoc.BLL\bin\Release\Lcgoc.BLL.pdb
+G:\weixinSDK-master\Lcgoc.BLL\obj\Release\Lcgoc.BLL.dll
+G:\weixinSDK-master\Lcgoc.BLL\obj\Release\Lcgoc.BLL.pdb
+G:\weixinSDK-master\Lcgoc.BLL\bin\Release\Lcgoc.DAL.dll
+G:\weixinSDK-master\Lcgoc.BLL\bin\Release\Lcgoc.DAL.pdb
+G:\weixinSDK-master\Lcgoc.BLL\obj\Release\Lcgoc.BLL.csprojResolveAssemblyReference.cache
+G:\weixinSDK-master\Lcgoc.BLL\bin\Release\Lcgoc.Model.dll
+G:\weixinSDK-master\Lcgoc.BLL\bin\Release\Lcgoc.Model.pdb
+G:\weixinSDK-master\Lcgoc.BLL\bin\Release\Lcgoc.Common.dll
+G:\weixinSDK-master\Lcgoc.BLL\bin\Release\Dapper.dll
+G:\weixinSDK-master\Lcgoc.BLL\bin\Release\Lcgoc.Common.pdb
+G:\weixinSDK-master\Lcgoc.BLL\bin\Release\Dapper.xml
+G:\weixinSDK-master\Lcgoc.BLL\bin\Release\MySql.Data.dll

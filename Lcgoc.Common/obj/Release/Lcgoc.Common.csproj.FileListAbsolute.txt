@@ -1,0 +1,5 @@
+G:\weixinSDK-master\Lcgoc.Common\bin\Release\Lcgoc.Common.dll
+G:\weixinSDK-master\Lcgoc.Common\bin\Release\Lcgoc.Common.pdb
+G:\weixinSDK-master\Lcgoc.Common\obj\Release\Lcgoc.Common.dll
+G:\weixinSDK-master\Lcgoc.Common\obj\Release\Lcgoc.Common.pdb
+G:\weixinSDK-master\Lcgoc.Common\bin\Release\MySql.Data.dll
