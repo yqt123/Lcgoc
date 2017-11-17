@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace Lcgoc.Web.Areas.Admin.Controllers
 {
-    public class homeController : Controller
+    public class HomeController : Controller
     {
         //
         // GET: /home/
