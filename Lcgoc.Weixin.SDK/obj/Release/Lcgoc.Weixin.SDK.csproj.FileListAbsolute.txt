@@ -12,3 +12,11 @@ G:\weixinSDK-master\Lcgoc.Weixin.SDK\bin\Release\System.Net.Http.xml
 G:\weixinSDK-master\Lcgoc.Weixin.SDK\bin\Release\zh-Hans\System.Net.Http.resources.dll
 G:\weixinSDK-master\Lcgoc.Weixin.SDK\obj\Release\Lcgoc.Weixin.SDK.dll
 G:\weixinSDK-master\Lcgoc.Weixin.SDK\obj\Release\Lcgoc.Weixin.SDK.pdb
+E:\Lcgoc\Lcgoc.Weixin.SDK\bin\Release\Lcgoc.Weixin.SDK.dll
+E:\Lcgoc\Lcgoc.Weixin.SDK\bin\Release\Lcgoc.Weixin.SDK.pdb
+E:\Lcgoc\Lcgoc.Weixin.SDK\bin\Release\System.Net.Http.dll
+E:\Lcgoc\Lcgoc.Weixin.SDK\bin\Release\System.Net.Http.xml
+E:\Lcgoc\Lcgoc.Weixin.SDK\bin\Release\zh-Hans\System.Net.Http.resources.dll
+E:\Lcgoc\Lcgoc.Weixin.SDK\obj\Release\Lcgoc.Weixin.SDK.csprojResolveAssemblyReference.cache
+E:\Lcgoc\Lcgoc.Weixin.SDK\obj\Release\Lcgoc.Weixin.SDK.dll
+E:\Lcgoc\Lcgoc.Weixin.SDK\obj\Release\Lcgoc.Weixin.SDK.pdb

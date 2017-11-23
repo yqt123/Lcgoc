@@ -124,10 +124,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\WebConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="App_Start\WeixinConfig.cs" />
     <Compile Include="Areas\Admin\Controllers\ReportController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ErrorController.cs" />
+    <Compile Include="Areas\Admin\Filters\RightControlAllowAnonymousAttribute.cs" />
+    <Compile Include="Areas\Admin\Filters\RightControlAttribute.cs" />
+    <Compile Include="Areas\Admin\Models\LoginModel.cs" />
     <Compile Include="Attributes\WeixinOAuthAuthorizeAttribute.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeApiController.cs" />
@@ -6047,6 +6053,8 @@
     <Content Include="Areas\Admin\Content\plugins\timepicker\bootstrap-timepicker.js" />
     <Content Include="Areas\Admin\Content\plugins\timepicker\bootstrap-timepicker.min.css" />
     <Content Include="Areas\Admin\Content\plugins\timepicker\bootstrap-timepicker.min.js" />
+    <Content Include="Areas\Admin\Img\devoops_getdata.gif" />
+    <Content Include="Areas\Admin\Scripts\sidebar-menu.js" />
     <Content Include="Content\css\jssdk\style.css" />
     <Content Include="Global.asax" />
     <Content Include="Images\ad.jpg" />
@@ -6054,6 +6062,7 @@
     <Content Include="Images\WePayLogo.png" />
     <Content Include="LogWriterConfig.xml" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
+    <Content Include="Scripts\jquery-1.9.1.min.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jssdk\demo.js" />
     <Content Include="Web.config">
@@ -6068,7 +6077,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -7465,6 +7473,9 @@
     <Content Include="Areas\Admin\Content\build\less\users-list.less" />
     <Content Include="Areas\Admin\Content\build\less\variables.less" />
     <Content Include="Areas\Admin\Views\Report\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Error\In404.cshtml" />
+    <Content Include="Areas\Admin\Views\Error\In500.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\Login.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <Content Include="Views\WXPay\Failed.cshtml" />
     <Content Include="Views\WXPay\Index.cshtml" />

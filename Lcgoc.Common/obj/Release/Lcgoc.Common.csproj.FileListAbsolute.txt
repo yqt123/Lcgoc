@@ -3,3 +3,9 @@ G:\weixinSDK-master\Lcgoc.Common\bin\Release\Lcgoc.Common.pdb
 G:\weixinSDK-master\Lcgoc.Common\obj\Release\Lcgoc.Common.dll
 G:\weixinSDK-master\Lcgoc.Common\obj\Release\Lcgoc.Common.pdb
 G:\weixinSDK-master\Lcgoc.Common\bin\Release\MySql.Data.dll
+E:\Lcgoc\Lcgoc.Common\bin\Release\Lcgoc.Common.dll
+E:\Lcgoc\Lcgoc.Common\bin\Release\Lcgoc.Common.pdb
+E:\Lcgoc\Lcgoc.Common\bin\Release\MySql.Data.dll
+E:\Lcgoc\Lcgoc.Common\obj\Release\Lcgoc.Common.csprojResolveAssemblyReference.cache
+E:\Lcgoc\Lcgoc.Common\obj\Release\Lcgoc.Common.dll
+E:\Lcgoc\Lcgoc.Common\obj\Release\Lcgoc.Common.pdb

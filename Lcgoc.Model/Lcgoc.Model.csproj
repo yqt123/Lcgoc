@@ -47,6 +47,8 @@
     <Compile Include="Model\api_controller_log.cs" />
     <Compile Include="Model\crm_weixin_log.cs" />
     <Compile Include="Model\crm_weixin_controller_log.cs" />
+    <Compile Include="Model\admin_menu.cs" />
+    <Compile Include="Model\admin_menu_detail.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

@@ -8,13 +8,37 @@ namespace Lcgoc.Web
 {
     public class WeixinConfig
     {
+        /// <summary>
+        /// 微信Token
+        /// </summary>
         public static string Token { private set; get; }
+        /// <summary>
+        /// 微信消息体加密对应的EncodingAESKey
+        /// </summary>
         public static string EncodingAESKey { private set; get; }
+        /// <summary>
+        /// 微信AppId
+        /// </summary>
         public static string AppID { private set; get; }
+        /// <summary>
+        /// 微信AppSecret
+        /// </summary>
         public static string AppSecret { private set; get; }
+        /// <summary>
+        /// 用于微信支付的PartnerKey
+        /// </summary>
         public static string PartnerKey { private set; get; }
+        /// <summary>
+        /// 用于微信支付的商户号
+        /// </summary>
         public static string mch_id { private set; get; }
+        /// <summary>
+        /// 用于微信支付的设备号
+        /// </summary>
         public static string device_info { private set; get; }
+        /// <summary>
+        /// 用于微信支付的服务端
+        /// </summary>
         public static string spbill_create_ip { private set; get; }
 
         public static TokenHelper TokenHelper { private set; get; }

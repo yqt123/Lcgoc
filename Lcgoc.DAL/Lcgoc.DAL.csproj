@@ -50,6 +50,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestDAL.cs" />
     <Compile Include="WeixinLogDAL.cs" />
+    <Compile Include="AdminMenuDAL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Lcgoc.Common\Lcgoc.Common.csproj">

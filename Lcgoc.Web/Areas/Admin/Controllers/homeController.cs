@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace Lcgoc.Web.Areas.Admin.Controllers
 {
+    [Filters.RightControl]
     public class HomeController : Controller
     {
         //
@@ -14,6 +15,6 @@ namespace Lcgoc.Web.Areas.Admin.Controllers
         {
             return View();
         }
-
     }
+
 }

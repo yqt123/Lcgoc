@@ -10,3 +10,15 @@ G:\weixinSDK-master\Lcgoc.DAL\bin\Release\Lcgoc.Common.dll
 G:\weixinSDK-master\Lcgoc.DAL\bin\Release\Lcgoc.Common.pdb
 G:\weixinSDK-master\Lcgoc.DAL\bin\Release\Dapper.xml
 G:\weixinSDK-master\Lcgoc.DAL\bin\Release\MySql.Data.dll
+E:\Lcgoc\Lcgoc.DAL\bin\Release\Lcgoc.DAL.dll
+E:\Lcgoc\Lcgoc.DAL\bin\Release\Lcgoc.DAL.pdb
+E:\Lcgoc\Lcgoc.DAL\bin\Release\Dapper.dll
+E:\Lcgoc\Lcgoc.DAL\bin\Release\Lcgoc.Common.dll
+E:\Lcgoc\Lcgoc.DAL\bin\Release\Lcgoc.Model.dll
+E:\Lcgoc\Lcgoc.DAL\bin\Release\MySql.Data.dll
+E:\Lcgoc\Lcgoc.DAL\bin\Release\Lcgoc.Common.pdb
+E:\Lcgoc\Lcgoc.DAL\bin\Release\Lcgoc.Model.pdb
+E:\Lcgoc\Lcgoc.DAL\bin\Release\Dapper.xml
+E:\Lcgoc\Lcgoc.DAL\obj\Release\Lcgoc.DAL.csprojResolveAssemblyReference.cache
+E:\Lcgoc\Lcgoc.DAL\obj\Release\Lcgoc.DAL.dll
+E:\Lcgoc\Lcgoc.DAL\obj\Release\Lcgoc.DAL.pdb

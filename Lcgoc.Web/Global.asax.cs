@@ -25,6 +25,7 @@ namespace Lcgoc.Web
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             WeixinConfig.Register();
+            WebConfig.Register();
             log4net.Config.XmlConfigurator.Configure(new FileInfo("LogWriterConfig.xml"));
             LogWriter.Default.WriteWarning("app started.");
         }
