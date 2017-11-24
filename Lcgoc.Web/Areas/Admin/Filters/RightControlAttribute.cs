@@ -18,7 +18,7 @@ namespace Lcgoc.Web.Areas.Admin.Filters
             {
                 if (filterContext.HttpContext.Session["User"] == null)
                 {
-                    filterContext.Result = new RedirectResult("~/Admin/Account/Login");
+                    filterContext.Result = new RedirectResult("~/Admin/Account/Login?returnUrl=" + filterContext.Result);
                 }
                 var actionName= filterContext.ActionDescriptor.ActionName;
                 var controllerName = filterContext.ActionDescriptor.ControllerDescriptor.ControllerName;

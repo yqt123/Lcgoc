@@ -1,5 +1,4 @@
-﻿
-<header class="main-header">
+﻿<header class="main-header">
     <!-- Logo -->
     <a href="index2.html" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
@@ -108,28 +107,28 @@
                                 <li>
                                     <a href="#">
                                         <i class="fa fa-users text-aqua"></i>5 new members joined today
-                    </a>
+                                    </a>
                                 </li>
                                 <li>
                                     <a href="#">
                                         <i class="fa fa-warning text-yellow"></i>Very long description here that may not fit into the
                       page and may cause design problems
-                    </a>
+                                    </a>
                                 </li>
                                 <li>
                                     <a href="#">
                                         <i class="fa fa-users text-red"></i>5 new members joined
-                    </a>
+                                    </a>
                                 </li>
                                 <li>
                                     <a href="#">
                                         <i class="fa fa-shopping-cart text-green"></i>25 sales made
-                    </a>
+                                    </a>
                                 </li>
                                 <li>
                                     <a href="#">
                                         <i class="fa fa-user text-red"></i>You changed your username
-                    </a>
+                                    </a>
                                 </li>
                             </ul>
                         </li>
@@ -225,6 +224,14 @@
                         <span class="hidden-xs">Alexander Pierce</span>
                     </a>
                     <ul class="dropdown-menu">
+                        @if (Request.IsAuthenticated)
+                        {
+                            @Html.ActionLink(User.Identity.Name, "Index", "Account", routeValues: null, htmlAttributes: new { data_icon = "gear" })
+                        }
+                        else
+                        {
+                            @Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { data_icon = "gear" })
+                        }
                         <!-- User image -->
                         <li class="user-header">
                             <img src="@Url.Content("~/Areas/Admin/Content/dist/img/user2-160x160.jpg")" class="img-circle" alt="User Image">
@@ -262,7 +269,7 @@
                     </ul>
                 </li>
                 <!-- 设置 -->
-@*                <li>
+                @*                <li>
                     <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
                 </li>*@
             </ul>

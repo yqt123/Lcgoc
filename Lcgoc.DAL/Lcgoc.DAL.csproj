@@ -51,6 +51,7 @@
     <Compile Include="TestDAL.cs" />
     <Compile Include="WeixinLogDAL.cs" />
     <Compile Include="AdminMenuDAL.cs" />
+    <Compile Include="UserDAL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Lcgoc.Common\Lcgoc.Common.csproj">
