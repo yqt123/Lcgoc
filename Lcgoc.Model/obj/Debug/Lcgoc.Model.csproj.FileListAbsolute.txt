@@ -1,0 +1,5 @@
+D:\Lcgoc\Lcgoc.Model\bin\Debug\Lcgoc.Model.dll
+D:\Lcgoc\Lcgoc.Model\bin\Debug\Lcgoc.Model.pdb
+D:\Lcgoc\Lcgoc.Model\obj\Debug\Lcgoc.Model.csprojResolveAssemblyReference.cache
+D:\Lcgoc\Lcgoc.Model\obj\Debug\Lcgoc.Model.dll
+D:\Lcgoc\Lcgoc.Model\obj\Debug\Lcgoc.Model.pdb

@@ -1,0 +1,5 @@
+D:\Lcgoc\Lcgoc.Weixin.SDK\obj\Debug\Lcgoc.Weixin.SDK.csprojResolveAssemblyReference.cache
+D:\Lcgoc\Lcgoc.Weixin.SDK\bin\Debug\Lcgoc.Weixin.SDK.dll
+D:\Lcgoc\Lcgoc.Weixin.SDK\bin\Debug\Lcgoc.Weixin.SDK.pdb
+D:\Lcgoc\Lcgoc.Weixin.SDK\obj\Debug\Lcgoc.Weixin.SDK.dll
+D:\Lcgoc\Lcgoc.Weixin.SDK\obj\Debug\Lcgoc.Weixin.SDK.pdb

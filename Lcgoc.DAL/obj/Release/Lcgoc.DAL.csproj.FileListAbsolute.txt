@@ -22,3 +22,15 @@ E:\Lcgoc\Lcgoc.DAL\bin\Release\Dapper.xml
 E:\Lcgoc\Lcgoc.DAL\obj\Release\Lcgoc.DAL.csprojResolveAssemblyReference.cache
 E:\Lcgoc\Lcgoc.DAL\obj\Release\Lcgoc.DAL.dll
 E:\Lcgoc\Lcgoc.DAL\obj\Release\Lcgoc.DAL.pdb
+D:\Lcgoc\Lcgoc.DAL\obj\Release\Lcgoc.DAL.csprojResolveAssemblyReference.cache
+D:\Lcgoc\Lcgoc.DAL\obj\Release\Lcgoc.DAL.dll
+D:\Lcgoc\Lcgoc.DAL\obj\Release\Lcgoc.DAL.pdb
+D:\Lcgoc\Lcgoc.DAL\bin\Release\Lcgoc.DAL.dll
+D:\Lcgoc\Lcgoc.DAL\bin\Release\Lcgoc.DAL.pdb
+D:\Lcgoc\Lcgoc.DAL\bin\Release\Dapper.dll
+D:\Lcgoc\Lcgoc.DAL\bin\Release\Lcgoc.Common.dll
+D:\Lcgoc\Lcgoc.DAL\bin\Release\Lcgoc.Model.dll
+D:\Lcgoc\Lcgoc.DAL\bin\Release\MySql.Data.dll
+D:\Lcgoc\Lcgoc.DAL\bin\Release\Lcgoc.Common.pdb
+D:\Lcgoc\Lcgoc.DAL\bin\Release\Lcgoc.Model.pdb
+D:\Lcgoc\Lcgoc.DAL\bin\Release\Dapper.xml

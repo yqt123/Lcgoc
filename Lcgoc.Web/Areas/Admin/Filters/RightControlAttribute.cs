@@ -16,7 +16,7 @@ namespace Lcgoc.Web.Areas.Admin.Filters
             //判断是否设置有方法控制权限
             if (!filterContext.ActionDescriptor.IsDefined(typeof(RightControlAllowAnonymous), true))
             {
-                if (filterContext.HttpContext.Session["User"] == null)
+                if (filterContext.HttpContext.Session["admin_cookies"] == null)
                 {
                     filterContext.Result = new RedirectResult("~/Admin/Account/Login?returnUrl=" + filterContext.Result);
                 }

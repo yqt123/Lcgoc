@@ -26,3 +26,17 @@ E:\Lcgoc\Lcgoc.BLL\bin\Release\Lcgoc.Common.pdb
 E:\Lcgoc\Lcgoc.BLL\bin\Release\Lcgoc.DAL.pdb
 E:\Lcgoc\Lcgoc.BLL\bin\Release\Lcgoc.Model.pdb
 E:\Lcgoc\Lcgoc.BLL\bin\Release\Dapper.xml
+D:\Lcgoc\Lcgoc.BLL\bin\Release\Lcgoc.BLL.dll
+D:\Lcgoc\Lcgoc.BLL\bin\Release\Lcgoc.BLL.pdb
+D:\Lcgoc\Lcgoc.BLL\bin\Release\Lcgoc.Common.dll
+D:\Lcgoc\Lcgoc.BLL\bin\Release\Lcgoc.DAL.dll
+D:\Lcgoc\Lcgoc.BLL\bin\Release\Lcgoc.Model.dll
+D:\Lcgoc\Lcgoc.BLL\bin\Release\MySql.Data.dll
+D:\Lcgoc\Lcgoc.BLL\bin\Release\Dapper.dll
+D:\Lcgoc\Lcgoc.BLL\bin\Release\Lcgoc.Common.pdb
+D:\Lcgoc\Lcgoc.BLL\bin\Release\Lcgoc.DAL.pdb
+D:\Lcgoc\Lcgoc.BLL\bin\Release\Lcgoc.Model.pdb
+D:\Lcgoc\Lcgoc.BLL\bin\Release\Dapper.xml
+D:\Lcgoc\Lcgoc.BLL\obj\Release\Lcgoc.BLL.csprojResolveAssemblyReference.cache
+D:\Lcgoc\Lcgoc.BLL\obj\Release\Lcgoc.BLL.dll
+D:\Lcgoc\Lcgoc.BLL\obj\Release\Lcgoc.BLL.pdb

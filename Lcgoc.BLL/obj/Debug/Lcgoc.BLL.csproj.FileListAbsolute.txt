@@ -1,0 +1,14 @@
+D:\Lcgoc\Lcgoc.BLL\bin\Debug\Lcgoc.BLL.dll
+D:\Lcgoc\Lcgoc.BLL\bin\Debug\Lcgoc.BLL.pdb
+D:\Lcgoc\Lcgoc.BLL\bin\Debug\Lcgoc.Common.dll
+D:\Lcgoc\Lcgoc.BLL\bin\Debug\Lcgoc.DAL.dll
+D:\Lcgoc\Lcgoc.BLL\bin\Debug\Lcgoc.Model.dll
+D:\Lcgoc\Lcgoc.BLL\bin\Debug\MySql.Data.dll
+D:\Lcgoc\Lcgoc.BLL\bin\Debug\Dapper.dll
+D:\Lcgoc\Lcgoc.BLL\bin\Debug\Lcgoc.Common.pdb
+D:\Lcgoc\Lcgoc.BLL\bin\Debug\Lcgoc.DAL.pdb
+D:\Lcgoc\Lcgoc.BLL\bin\Debug\Lcgoc.Model.pdb
+D:\Lcgoc\Lcgoc.BLL\bin\Debug\Dapper.xml
+D:\Lcgoc\Lcgoc.BLL\obj\Debug\Lcgoc.BLL.csprojResolveAssemblyReference.cache
+D:\Lcgoc\Lcgoc.BLL\obj\Debug\Lcgoc.BLL.dll
+D:\Lcgoc\Lcgoc.BLL\obj\Debug\Lcgoc.BLL.pdb

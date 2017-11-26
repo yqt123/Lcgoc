@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Lcgoc.Model
 {
-    public class user
+    public class User
     {
         public string userId { get; set; }
         public string userName { get; set; }

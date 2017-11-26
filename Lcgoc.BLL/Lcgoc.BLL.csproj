@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="UserBLL.cs" />
     <Compile Include="ApiControllerBLL.cs" />
     <Compile Include="HomeApiBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

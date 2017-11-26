@@ -7,3 +7,7 @@ E:\Lcgoc\Lcgoc.Model\bin\Release\Lcgoc.Model.pdb
 E:\Lcgoc\Lcgoc.Model\obj\Release\Lcgoc.Model.dll
 E:\Lcgoc\Lcgoc.Model\obj\Release\Lcgoc.Model.pdb
 E:\Lcgoc\Lcgoc.Model\obj\Release\Lcgoc.Model.csprojResolveAssemblyReference.cache
+D:\Lcgoc\Lcgoc.Model\bin\Release\Lcgoc.Model.dll
+D:\Lcgoc\Lcgoc.Model\bin\Release\Lcgoc.Model.pdb
+D:\Lcgoc\Lcgoc.Model\obj\Release\Lcgoc.Model.dll
+D:\Lcgoc\Lcgoc.Model\obj\Release\Lcgoc.Model.pdb

@@ -1,0 +1,6 @@
+D:\Lcgoc\Lcgoc.Common\bin\Debug\Lcgoc.Common.dll
+D:\Lcgoc\Lcgoc.Common\bin\Debug\Lcgoc.Common.pdb
+D:\Lcgoc\Lcgoc.Common\bin\Debug\MySql.Data.dll
+D:\Lcgoc\Lcgoc.Common\obj\Debug\Lcgoc.Common.csprojResolveAssemblyReference.cache
+D:\Lcgoc\Lcgoc.Common\obj\Debug\Lcgoc.Common.dll
+D:\Lcgoc\Lcgoc.Common\obj\Debug\Lcgoc.Common.pdb

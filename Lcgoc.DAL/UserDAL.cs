@@ -18,22 +18,38 @@ namespace Lcgoc.DAL
         /// <param name="userName"></param>
         /// <param name="password">加密后的密码</param>
         /// <returns></returns>
-        public bool IsAuthorized(string userName, string password)
+        public bool IsAuthorized(string userName, string password,ref string userId)
         {
             using (IDbConnection connection = new MyConnectionHelper().connectionGetAndOpen())
             {
-                string spsql = string.Empty;
+                string spsql = "SELECT userId from `user` where (`userName`=@userName or `mobile`=@userName or `email`=@userName) and `password`=@password and allowUsed=1;";
                 var myparams = new DynamicParameters(new { userName = userName, password = password });
+                var res = connection.ExecuteScalar(spsql, myparams);
+                if (res != null && !string.IsNullOrEmpty(res.ToString()))
+                {
+                    userId = res.ToString();
+                    return true;
+                }
+            }
+            return false;
+        }
 
-                spsql = "SELECT 1 from `user` where (`userName`=@userName or `mobile`=@userName or `email`=@userName) and `password`=@password and allowUsed=1;";
-
+        /// <summary>
+        /// 用户信息
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        public User GetUser(string userId)
+        {
+            using (IDbConnection connection = new MyConnectionHelper().connectionGetAndOpen())
+            {
+                string spsql = "SELECT * from `user` where `userId`=@userId and allowUsed=1;";
+                var myparams = new DynamicParameters(new { userId = userId });
                 using (var grids = connection.QueryMultiple(spsql, myparams))
                 {
-                    //return grids.Read<admin_menu>();
+                    return grids.Read<User>().FirstOrDefault();
                 }
-
             }
         }
-        
     }
 }

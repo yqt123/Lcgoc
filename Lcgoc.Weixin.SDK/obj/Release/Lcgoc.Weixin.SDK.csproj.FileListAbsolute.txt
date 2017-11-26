@@ -20,3 +20,8 @@ E:\Lcgoc\Lcgoc.Weixin.SDK\bin\Release\zh-Hans\System.Net.Http.resources.dll
 E:\Lcgoc\Lcgoc.Weixin.SDK\obj\Release\Lcgoc.Weixin.SDK.csprojResolveAssemblyReference.cache
 E:\Lcgoc\Lcgoc.Weixin.SDK\obj\Release\Lcgoc.Weixin.SDK.dll
 E:\Lcgoc\Lcgoc.Weixin.SDK\obj\Release\Lcgoc.Weixin.SDK.pdb
+D:\Lcgoc\Lcgoc.Weixin.SDK\bin\Release\Lcgoc.Weixin.SDK.dll
+D:\Lcgoc\Lcgoc.Weixin.SDK\bin\Release\Lcgoc.Weixin.SDK.pdb
+D:\Lcgoc\Lcgoc.Weixin.SDK\obj\Release\Lcgoc.Weixin.SDK.dll
+D:\Lcgoc\Lcgoc.Weixin.SDK\obj\Release\Lcgoc.Weixin.SDK.pdb
+D:\Lcgoc\Lcgoc.Weixin.SDK\obj\Release\Lcgoc.Weixin.SDK.csprojResolveAssemblyReference.cache

@@ -1,4 +1,5 @@
-﻿using Lcgoc.Web.Areas.Admin.Filters;
+﻿using Lcgoc.BLL;
+using Lcgoc.Web.Areas.Admin.Filters;
 using Lcgoc.Web.Areas.Admin.Models;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,7 @@ namespace Lcgoc.Web.Areas.Admin.Controllers
     [RightControl]
     public class AccountController : Controller
     {
+        UserBLL bll = new UserBLL();
         //
         // GET: /Admin/Account/
         [HttpGet]
@@ -30,15 +32,21 @@ namespace Lcgoc.Web.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                System.Web.HttpContext.Current.Session["User"] = model.UserName;
-                FormsAuthentication.SetAuthCookie(model.UserName, model.RememberMe);
-                if (Url.IsLocalUrl(returnUrl))
+                string userId = string.Empty;
+                if (bll.IsAuthorized(model.UserName, model.Password,ref userId))
                 {
-                    return Redirect(returnUrl);
-                }
-                else
-                {
-                    return RedirectToAction("Index", "Home");
+                    var user = bll.GetUser(userId);
+                    System.Web.HttpContext.Current.Session["admin_cookies"] = user;
+                    //创建身份验证票
+                    FormsAuthentication.SetAuthCookie(model.UserName, model.RememberMe);
+                    if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
+                    {
+                        return Redirect(returnUrl);
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
                 }
                 ModelState.AddModelError("", "提供的账号或密码不正确。");
             }
