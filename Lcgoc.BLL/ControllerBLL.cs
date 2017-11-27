@@ -17,9 +17,9 @@ namespace Lcgoc.BLL
         /// <param name="controller"></param>
         /// <param name="action"></param>
         /// <returns></returns>
-        public bool IsAuthorized(string userId, string controller, string action)
+        public bool IsAuthorized(string userId, string controller, string action,int rightTypes)
         {
-            return dal.IsAuthorized(userId, controller, action);
+            return dal.IsAuthorized(userId, controller, action, rightTypes);
         }
     }
 }

@@ -129,7 +129,7 @@
     <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="App_Start\WeixinConfig.cs" />
-    <Compile Include="Areas\Admin\Controllers\ReportController.cs" />
+    <Compile Include="Areas\Admin\Controllers\MenuController.cs" />
     <Compile Include="Areas\Admin\Controllers\ErrorController.cs" />
     <Compile Include="Areas\Admin\Filters\RightControlAllowAnonymousAttribute.cs" />
     <Compile Include="Areas\Admin\Filters\RightControlAttribute.cs" />
@@ -7472,7 +7472,7 @@
     <Content Include="Areas\Admin\Content\build\less\treeview.less" />
     <Content Include="Areas\Admin\Content\build\less\users-list.less" />
     <Content Include="Areas\Admin\Content\build\less\variables.less" />
-    <Content Include="Areas\Admin\Views\Report\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Menu\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Error\In404.cshtml" />
     <Content Include="Areas\Admin\Views\Error\In500.cshtml" />
     <Content Include="Areas\Admin\Views\Account\Login.cshtml" />

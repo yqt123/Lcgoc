@@ -43,6 +43,7 @@
     <Compile Include="AbsResponse.cs" />
     <Compile Include="API\AbsApi.cs" />
     <Compile Include="BaseResponse.cs" />
+    <Compile Include="Enum\RightType.cs" />
     <Compile Include="Model\api_Controller.cs" />
     <Compile Include="Model\api_controller_log.cs" />
     <Compile Include="Model\crm_weixin_log.cs" />

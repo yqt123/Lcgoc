@@ -6,8 +6,11 @@ using System.Web.Mvc;
 
 namespace Lcgoc.Web.Areas.Admin.Controllers
 {
+    /// <summary>
+    /// 菜单管理
+    /// </summary>
     [Filters.RightControl]
-    public class ReportController : Controller
+    public class MenuController : Controller
     {
         //
         // GET: /Admin/Report/
