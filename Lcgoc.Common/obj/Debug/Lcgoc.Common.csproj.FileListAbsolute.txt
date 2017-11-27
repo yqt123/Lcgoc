@@ -4,3 +4,9 @@ D:\Lcgoc\Lcgoc.Common\bin\Debug\MySql.Data.dll
 D:\Lcgoc\Lcgoc.Common\obj\Debug\Lcgoc.Common.csprojResolveAssemblyReference.cache
 D:\Lcgoc\Lcgoc.Common\obj\Debug\Lcgoc.Common.dll
 D:\Lcgoc\Lcgoc.Common\obj\Debug\Lcgoc.Common.pdb
+E:\Lcgoc\Lcgoc.Common\bin\Debug\Lcgoc.Common.dll
+E:\Lcgoc\Lcgoc.Common\bin\Debug\Lcgoc.Common.pdb
+E:\Lcgoc\Lcgoc.Common\bin\Debug\MySql.Data.dll
+E:\Lcgoc\Lcgoc.Common\obj\Debug\Lcgoc.Common.csprojResolveAssemblyReference.cache
+E:\Lcgoc\Lcgoc.Common\obj\Debug\Lcgoc.Common.dll
+E:\Lcgoc\Lcgoc.Common\obj\Debug\Lcgoc.Common.pdb

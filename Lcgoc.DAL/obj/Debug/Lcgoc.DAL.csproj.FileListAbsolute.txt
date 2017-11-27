@@ -10,3 +10,15 @@ D:\Lcgoc\Lcgoc.DAL\bin\Debug\Dapper.xml
 D:\Lcgoc\Lcgoc.DAL\obj\Debug\Lcgoc.DAL.csprojResolveAssemblyReference.cache
 D:\Lcgoc\Lcgoc.DAL\obj\Debug\Lcgoc.DAL.dll
 D:\Lcgoc\Lcgoc.DAL\obj\Debug\Lcgoc.DAL.pdb
+E:\Lcgoc\Lcgoc.DAL\bin\Debug\Lcgoc.DAL.dll
+E:\Lcgoc\Lcgoc.DAL\bin\Debug\Lcgoc.DAL.pdb
+E:\Lcgoc\Lcgoc.DAL\bin\Debug\Dapper.dll
+E:\Lcgoc\Lcgoc.DAL\bin\Debug\Lcgoc.Common.dll
+E:\Lcgoc\Lcgoc.DAL\bin\Debug\Lcgoc.Model.dll
+E:\Lcgoc\Lcgoc.DAL\bin\Debug\MySql.Data.dll
+E:\Lcgoc\Lcgoc.DAL\bin\Debug\Lcgoc.Common.pdb
+E:\Lcgoc\Lcgoc.DAL\bin\Debug\Lcgoc.Model.pdb
+E:\Lcgoc\Lcgoc.DAL\bin\Debug\Dapper.xml
+E:\Lcgoc\Lcgoc.DAL\obj\Debug\Lcgoc.DAL.csprojResolveAssemblyReference.cache
+E:\Lcgoc\Lcgoc.DAL\obj\Debug\Lcgoc.DAL.dll
+E:\Lcgoc\Lcgoc.DAL\obj\Debug\Lcgoc.DAL.pdb

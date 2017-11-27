@@ -33,15 +33,16 @@ namespace Lcgoc.Web.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 string userId = string.Empty;
-                if (bll.IsAuthorized(model.UserName, model.Password,ref userId))
+                if (bll.IsAuthorized(model.UserName, model.Password, ref userId))
                 {
                     var user = bll.GetUser(userId);
                     System.Web.HttpContext.Current.Session["admin_cookies"] = user;
-                    //创建身份验证票
-                    FormsAuthentication.SetAuthCookie(model.UserName, model.RememberMe);
-                    if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
+                    //创建身份验证票据 User.Identity.Name=model.UserName
+                    FormsAuthentication.SetAuthCookie(model.UserName, model.RememberMe);                    
+                    if (!string.IsNullOrEmpty(returnUrl) && HttpUtility.UrlDecode(returnUrl).Split('/').Length == 2)
                     {
-                        return Redirect(returnUrl);
+                        var controllerAction = HttpUtility.UrlDecode(returnUrl).Split('/');
+                        return RedirectToAction(controllerAction[1], controllerAction[0]);
                     }
                     else
                     {
@@ -52,5 +53,6 @@ namespace Lcgoc.Web.Areas.Admin.Controllers
             }
             return View(model);
         }
+        
     }
 }

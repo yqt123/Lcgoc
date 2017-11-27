@@ -7476,6 +7476,8 @@
     <Content Include="Areas\Admin\Views\Error\In404.cshtml" />
     <Content Include="Areas\Admin\Views\Error\In500.cshtml" />
     <Content Include="Areas\Admin\Views\Account\Login.cshtml" />
+    <Content Include="Areas\Admin\Views\Error\NotRight.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_LayoutSimple.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <Content Include="Views\WXPay\Failed.cshtml" />
     <Content Include="Views\WXPay\Index.cshtml" />

@@ -12,3 +12,17 @@ D:\Lcgoc\Lcgoc.BLL\bin\Debug\Dapper.xml
 D:\Lcgoc\Lcgoc.BLL\obj\Debug\Lcgoc.BLL.csprojResolveAssemblyReference.cache
 D:\Lcgoc\Lcgoc.BLL\obj\Debug\Lcgoc.BLL.dll
 D:\Lcgoc\Lcgoc.BLL\obj\Debug\Lcgoc.BLL.pdb
+E:\Lcgoc\Lcgoc.BLL\bin\Debug\Lcgoc.BLL.dll
+E:\Lcgoc\Lcgoc.BLL\bin\Debug\Lcgoc.BLL.pdb
+E:\Lcgoc\Lcgoc.BLL\bin\Debug\Lcgoc.Common.dll
+E:\Lcgoc\Lcgoc.BLL\bin\Debug\Lcgoc.DAL.dll
+E:\Lcgoc\Lcgoc.BLL\bin\Debug\Lcgoc.Model.dll
+E:\Lcgoc\Lcgoc.BLL\bin\Debug\MySql.Data.dll
+E:\Lcgoc\Lcgoc.BLL\bin\Debug\Dapper.dll
+E:\Lcgoc\Lcgoc.BLL\bin\Debug\Lcgoc.Common.pdb
+E:\Lcgoc\Lcgoc.BLL\bin\Debug\Lcgoc.DAL.pdb
+E:\Lcgoc\Lcgoc.BLL\bin\Debug\Lcgoc.Model.pdb
+E:\Lcgoc\Lcgoc.BLL\bin\Debug\Dapper.xml
+E:\Lcgoc\Lcgoc.BLL\obj\Debug\Lcgoc.BLL.csprojResolveAssemblyReference.cache
+E:\Lcgoc\Lcgoc.BLL\obj\Debug\Lcgoc.BLL.dll
+E:\Lcgoc\Lcgoc.BLL\obj\Debug\Lcgoc.BLL.pdb
