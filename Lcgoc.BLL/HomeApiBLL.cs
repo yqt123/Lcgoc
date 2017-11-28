@@ -38,7 +38,7 @@ namespace Lcgoc.BLL
             {
                 log.state = false;
                 log.response = ex.Message;
-                return new BaseResponse<string> { State = false, Code = "-1", Error = ex.Message };
+                return new BaseResponse<string> { State = false, Code = ResponseCodeEnum.Fail, Error = ex.Message };
             }
             finally
             {

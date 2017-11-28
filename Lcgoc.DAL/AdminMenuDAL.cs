@@ -40,7 +40,7 @@ namespace Lcgoc.DAL
         }
 
         /// <summary>
-        /// 
+        /// 获取菜单明细
         /// </summary>
         /// <param name="code"></param>
         /// <param name="sequence"></param>
@@ -70,5 +70,24 @@ namespace Lcgoc.DAL
             }
         }
 
+        /// <summary>
+        /// 创建菜单信息
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public bool CreateMenu(admin_menu model)
+        {
+            return true;
+        }
+
+        /// <summary>
+        /// 创建菜单明细信息
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public bool CreateMenuDetail(admin_menu_detail model)
+        {
+            return true;
+        }
     }
 }

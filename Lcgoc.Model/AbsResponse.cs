@@ -19,7 +19,7 @@ namespace Lcgoc.Model
         /// <summary>
         /// 代码
         /// </summary>
-        public string Code { get; set; }
+        public ResponseCodeEnum Code { get; set; }
 
         /// <summary>
         /// 错误信息

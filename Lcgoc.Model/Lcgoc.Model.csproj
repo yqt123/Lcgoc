@@ -43,6 +43,7 @@
     <Compile Include="AbsResponse.cs" />
     <Compile Include="API\AbsApi.cs" />
     <Compile Include="BaseResponse.cs" />
+    <Compile Include="Enum\ResponseCodeEnum.cs" />
     <Compile Include="Enum\RightTypesEnum.cs" />
     <Compile Include="Enum\RightResultTypesEnum.cs" />
     <Compile Include="Model\api_Controller.cs" />

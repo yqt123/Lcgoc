@@ -1,4 +1,5 @@
-﻿using Lcgoc.Model;
+﻿using Lcgoc.BLL;
+using Lcgoc.Model;
 using Lcgoc.Web.Areas.Admin.Filters;
 using System;
 using System.Collections.Generic;
@@ -31,14 +32,19 @@ namespace Lcgoc.Web.Areas.Admin.Controllers
         [HttpPost]
         //防止了跨站攻击
         [ValidateAntiForgeryToken]
-        public JsonResult Add(admin_menu model, string rightMessage)
+        public JsonResult Create(admin_menu model, string rightMessage)
         {
-            if (ModelState.IsValid)
+            BaseResponse<string> res = new BaseResponse<string>();
+            if (ModelState.IsValid && new AdminMenuBLL().CreateMenu(model))
             {
-
+                res.Code = ResponseCodeEnum.Success;
             }
-            ModelState.AddModelError("", "保存失败！");
-            return new JsonResult() { Data = model, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            else
+            {
+                res.Code = ResponseCodeEnum.Fail;
+                res.Error = "保存失败！";
+            }
+            return new JsonResult() { Data = res, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
 
         [HttpPost]

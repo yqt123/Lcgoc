@@ -20,5 +20,24 @@ namespace Lcgoc.BLL
             return dal.GetAdminMenuDetail(code, sequence, userId);
         }
 
+        /// <summary>
+        /// 创建菜单信息
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public bool CreateMenu(admin_menu model)
+        {
+            return dal.CreateMenu(model);
+        }
+
+        /// <summary>
+        /// 创建菜单明细信息
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public bool CreateMenuDetail(admin_menu_detail model)
+        {
+            return dal.CreateMenuDetail(model);
+        }
     }
 }

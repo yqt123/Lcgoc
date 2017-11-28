@@ -127,12 +127,10 @@
     <Compile Include="App_Start\WebConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
-    <Compile Include="Areas\Admin\Controllers\Base\AbsRightController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="App_Start\WeixinConfig.cs" />
     <Compile Include="Areas\Admin\Controllers\MenuController.cs" />
     <Compile Include="Areas\Admin\Controllers\ErrorController.cs" />
-    <Compile Include="Areas\Admin\Controllers\Base\IRightController.cs" />
     <Compile Include="Areas\Admin\Filters\RightControlAllowAnonymousAttribute.cs" />
     <Compile Include="Areas\Admin\Filters\ControlRightAttribute.cs" />
     <Compile Include="Areas\Admin\Models\LoginModel.cs" />
