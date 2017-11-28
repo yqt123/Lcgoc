@@ -10,14 +10,14 @@ using System.Web.Security;
 
 namespace Lcgoc.Web.Areas.Admin.Controllers
 {
-    [RightControl]
+    [ControlRight]
     public class AccountController : Controller
     {
         UserBLL bll = new UserBLL();
         //
         // GET: /Admin/Account/
         [HttpGet]
-        [RightControlAllowAnonymous]
+        [ControlRightAllowAnonymousAttribute]
         public ActionResult Login(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
@@ -25,7 +25,7 @@ namespace Lcgoc.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        [RightControlAllowAnonymous]
+        [ControlRightAllowAnonymousAttribute]
         //防止了跨站攻击
         [ValidateAntiForgeryToken]
         public ActionResult Login(LoginModel model, string returnUrl)
@@ -38,7 +38,7 @@ namespace Lcgoc.Web.Areas.Admin.Controllers
                     var user = bll.GetUser(userId);
                     System.Web.HttpContext.Current.Session["admin_cookies"] = user;
                     //创建身份验证票据 User.Identity.Name=model.UserName
-                    FormsAuthentication.SetAuthCookie(model.UserName, model.RememberMe);                    
+                    FormsAuthentication.SetAuthCookie(model.UserName, model.RememberMe);
                     if (!string.IsNullOrEmpty(returnUrl) && HttpUtility.UrlDecode(returnUrl).Split('/').Length == 2)
                     {
                         var controllerAction = HttpUtility.UrlDecode(returnUrl).Split('/');
@@ -49,8 +49,8 @@ namespace Lcgoc.Web.Areas.Admin.Controllers
                         return RedirectToAction("Index", "Home");
                     }
                 }
-                ModelState.AddModelError("", "提供的账号或密码不正确。");
             }
+            ModelState.AddModelError("", "提供的账号或密码不正确。");
             return View(model);
         }
         

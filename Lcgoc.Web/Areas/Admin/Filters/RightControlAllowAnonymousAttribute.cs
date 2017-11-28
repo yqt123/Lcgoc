@@ -9,7 +9,7 @@ namespace Lcgoc.Web.Areas.Admin.Filters
     /// <summary>
     /// 匿名访问
     /// </summary>
-    public class RightControlAllowAnonymous : ActionFilterAttribute
+    public class ControlRightAllowAnonymousAttribute : ActionFilterAttribute
     {
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {

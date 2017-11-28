@@ -6,11 +6,11 @@ using System.Web.Mvc;
 
 namespace Lcgoc.Web.Areas.Admin.Controllers
 {
-    [Filters.RightControl]
+    [Filters.ControlRight]
     public class HomeController : Controller
     {
         //
-        // GET: /home/
+        // GET: /home/        
         public ActionResult Index()
         {
             return View();

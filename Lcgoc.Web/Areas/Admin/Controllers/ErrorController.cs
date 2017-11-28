@@ -7,7 +7,7 @@ using Lcgoc.Web.Areas.Admin.Filters;
 
 namespace Lcgoc.Web.Areas.Admin.Controllers
 {
-    [RightControl]
+    [ControlRight]
     public class ErrorController : Controller
     {
         //
@@ -26,16 +26,15 @@ namespace Lcgoc.Web.Areas.Admin.Controllers
         /// 没有权限
         /// </summary>
         /// <returns></returns>
-        [RightControlAllowAnonymous]
+        [ControlRightAllowAnonymousAttribute]
         public ViewResult NotRight(string returnUrl)
         {
             ViewBag.Controller = "";
             ViewBag.Action = "";
-            if (!string.IsNullOrEmpty(returnUrl) && HttpUtility.UrlDecode(returnUrl).Split('/').Length == 2)
+            if (!string.IsNullOrEmpty(returnUrl) && HttpUtility.UrlDecode(returnUrl).Split('/').Length == 3)
             {
                 var controllerAction = HttpUtility.UrlDecode(returnUrl).Split('/');
-                ViewBag.Controller = controllerAction[0];
-                ViewBag.Action = controllerAction[1];
+                ViewBag.Message = controllerAction[0] + "/" + controllerAction[1] + "/" + controllerAction[2];
             }
             return View();
         }
