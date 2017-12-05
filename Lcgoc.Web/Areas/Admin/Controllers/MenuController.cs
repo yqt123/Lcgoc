@@ -24,13 +24,28 @@ namespace Lcgoc.Web.Areas.Admin.Controllers
         }
 
         /// <summary>
-        /// 
+        /// 获取菜单数据
+        /// </summary>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public JsonResult GetData(string code)
+        {
+            var user = HttpContext.Session[WebConfig.LoginCookieName];
+
+            new AdminMenuBLL().GetAdminMenu("", "");
+
+            return new JsonResult() { Data = model, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+        }
+
+        /// <summary>
+        /// 创建菜单
         /// </summary>
         /// <param name="model"></param>
         /// <param name="rightMessage">权限控制时返回的提示</param>
         /// <returns></returns>
         [HttpPost]
-        //防止了跨站攻击
+        //防止跨站攻击
         [ValidateAntiForgeryToken]
         public JsonResult Create(admin_menu model, string rightMessage)
         {
@@ -48,7 +63,7 @@ namespace Lcgoc.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        //防止了跨站攻击
+        //防止跨站攻击
         [ValidateAntiForgeryToken]
         public JsonResult Delete(admin_menu model, string rightMessage)
         {

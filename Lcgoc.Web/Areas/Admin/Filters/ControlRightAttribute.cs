@@ -26,7 +26,7 @@ namespace Lcgoc.Web.Areas.Admin.Filters
             {
                 var actionName = filterContext.ActionDescriptor.ActionName;
                 var controllerName = filterContext.ActionDescriptor.ControllerDescriptor.ControllerName;
-                var user = filterContext.HttpContext.Session["admin_cookies"];
+                var user = filterContext.HttpContext.Session[WebConfig.LoginCookieName];
                 if (user == null)
                 {
                     //var result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "Account", action = "Login" }));
