@@ -35,7 +35,7 @@ namespace Lcgoc.Web.Areas.Admin.Controllers
 
             new AdminMenuBLL().GetAdminMenu("", "");
 
-            return new JsonResult() { Data = model, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            return new JsonResult() { Data = "", JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
 
         /// <summary>
