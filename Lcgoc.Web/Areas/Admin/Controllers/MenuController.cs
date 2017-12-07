@@ -31,7 +31,7 @@ namespace Lcgoc.Web.Areas.Admin.Controllers
         [HttpGet]
         public JsonResult GetData(string code)
         {
-            var user = HttpContext.Session[WebConfig.LoginCookieName];
+            var user = HttpContext.Session[WebConfig.LoginSessionName];
 
             new AdminMenuBLL().GetAdminMenu("", "");
 

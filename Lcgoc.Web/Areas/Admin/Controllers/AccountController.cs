@@ -37,7 +37,8 @@ namespace Lcgoc.Web.Areas.Admin.Controllers
                 {
                     var user = bll.GetUser(userId);
                     //
-                    System.Web.HttpContext.Current.Session[WebConfig.LoginCookieName] = user;
+                    System.Web.HttpContext.Current.Session[WebConfig.LoginSessionName] = user;
+                    System.Web.HttpContext.Current.Session.Timeout = 30;
                     
                     if (!string.IsNullOrEmpty(returnUrl) && HttpUtility.UrlDecode(returnUrl).Split('/').Length == 2)
                     {

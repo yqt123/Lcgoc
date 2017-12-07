@@ -34,7 +34,9 @@ namespace Lcgoc.Web.Services
         /// <param name="identity"></param>
         public static void SetAdminTicket(bool remeberMe, string identity)
         {
-            System.Web.HttpContext.Current.Session[WebConfig.LoginCookieName] = identity;
+            System.Web.HttpContext.Current.Session[WebConfig.LoginSessionName] = identity;
+            System.Web.HttpContext.Current.Session.Timeout = 30;
+            //如果记住密码，用
             if (remeberMe)
             {
 

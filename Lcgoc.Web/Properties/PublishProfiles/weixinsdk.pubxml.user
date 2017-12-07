@@ -14,6 +14,384 @@
     <File Include="app.config">
       <publishTime>10/09/2017 18:17:16</publishTime>
     </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/bootstrap-table-locale-all.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/bootstrap-table-locale-all.min.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/bootstrap-table.css">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/bootstrap-table.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/bootstrap-table.min.css">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/bootstrap-table.min.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/extensions/accent-neutralise/bootstrap-table-accent-neutralise.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/extensions/accent-neutralise/bootstrap-table-accent-neutralise.min.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/extensions/angular/bootstrap-table-angular.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/extensions/angular/bootstrap-table-angular.min.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/extensions/cookie/bootstrap-table-cookie.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/extensions/cookie/bootstrap-table-cookie.min.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/extensions/editable/bootstrap-table-editable.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/extensions/editable/bootstrap-table-editable.min.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/extensions/export/bootstrap-table-export.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/extensions/export/bootstrap-table-export.min.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/extensions/filter-control/bootstrap-table-filter-control.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/extensions/filter-control/bootstrap-table-filter-control.min.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/extensions/filter/bootstrap-table-filter.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/extensions/filter/bootstrap-table-filter.min.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/extensions/flat-json/bootstrap-table-flat-json.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/extensions/flat-json/bootstrap-table-flat-json.min.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/extensions/group-by/bootstrap-table-group-by.css">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/extensions/group-by/bootstrap-table-group-by.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/extensions/group-by/bootstrap-table-group-by.min.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/extensions/key-events/bootstrap-table-key-events.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/extensions/key-events/bootstrap-table-key-events.min.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/extensions/mobile/bootstrap-table-mobile.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/extensions/mobile/bootstrap-table-mobile.min.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/extensions/multiple-search/bootstrap-table-multiple-search.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/extensions/multiple-search/bootstrap-table-multiple-search.min.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/extensions/multiple-sort/bootstrap-table-multiple-sort.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/extensions/multiple-sort/bootstrap-table-multiple-sort.min.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/extensions/natural-sorting/bootstrap-table-natural-sorting.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/extensions/natural-sorting/bootstrap-table-natural-sorting.min.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/extensions/reorder-columns/bootstrap-table-reorder-columns.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/extensions/reorder-columns/bootstrap-table-reorder-columns.min.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/extensions/reorder-rows/bootstrap-table-reorder-rows.css">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/extensions/reorder-rows/bootstrap-table-reorder-rows.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/extensions/reorder-rows/bootstrap-table-reorder-rows.min.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/extensions/resizable/bootstrap-table-resizable.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/extensions/resizable/bootstrap-table-resizable.min.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/extensions/toolbar/bootstrap-table-toolbar.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/extensions/toolbar/bootstrap-table-toolbar.min.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-af-ZA.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-af-ZA.min.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-ar-SA.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-ar-SA.min.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-ca-ES.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-ca-ES.min.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-cs-CZ.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-cs-CZ.min.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-da-DK.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-da-DK.min.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-de-DE.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-de-DE.min.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-el-GR.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-el-GR.min.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-en-US.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-en-US.min.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-es-AR.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-es-AR.min.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-es-CR.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-es-CR.min.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-es-ES.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-es-ES.min.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-es-MX.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-es-MX.min.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-es-NI.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-es-NI.min.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-es-SP.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-es-SP.min.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-et-EE.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-et-EE.min.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-fa-IR.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-fa-IR.min.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-fr-BE.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-fr-BE.min.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-fr-FR.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-fr-FR.min.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-hr-HR.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-hr-HR.min.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-hu-HU.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-hu-HU.min.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-it-IT.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-it-IT.min.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-ja-JP.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-ja-JP.min.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-ka-GE.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-ka-GE.min.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-ko-KR.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-ko-KR.min.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-ms-MY.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-ms-MY.min.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-nb-NO.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-nb-NO.min.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-nl-NL.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-nl-NL.min.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-pl-PL.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-pl-PL.min.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-pt-BR.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-pt-BR.min.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-pt-PT.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-pt-PT.min.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-ro-RO.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-ro-RO.min.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-ru-RU.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-ru-RU.min.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-sk-SK.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-sk-SK.min.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-sv-SE.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-sv-SE.min.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-th-TH.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-th-TH.min.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-tr-TR.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-tr-TR.min.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-uk-UA.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-uk-UA.min.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-ur-PK.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-ur-PK.min.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-vi-VN.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-vi-VN.min.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-zh-CN.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-zh-CN.min.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-zh-TW.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
+    <File Include="Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-zh-TW.min.js">
+      <publishTime>12/05/2017 15:37:58</publishTime>
+    </File>
     <File Include="Areas/Admin/Content/bower_components/bootstrap-colorpicker/.bower.json">
       <publishTime>11/17/2017 10:58:28</publishTime>
     </File>
@@ -21228,7 +21606,7 @@
       <publishTime>11/17/2017 11:08:24</publishTime>
     </File>
     <File Include="Areas/Admin/Content/pages/examples/login.html">
-      <publishTime>11/17/2017 11:08:24</publishTime>
+      <publishTime>11/23/2017 15:52:25</publishTime>
     </File>
     <File Include="Areas/Admin/Content/pages/examples/pace.html">
       <publishTime>11/17/2017 11:08:24</publishTime>
@@ -21728,8 +22106,32 @@
     <File Include="Areas/Admin/Content/plugins/timepicker/bootstrap-timepicker.min.js">
       <publishTime>11/17/2017 11:00:20</publishTime>
     </File>
+    <File Include="Areas/Admin/Img/devoops_getdata.gif">
+      <publishTime>11/21/2017 15:59:45</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/Menu/Index.js">
+      <publishTime>12/05/2017 15:48:10</publishTime>
+    </File>
+    <File Include="Areas/Admin/Scripts/sidebar-menu.js">
+      <publishTime>11/21/2017 17:17:17</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/Account/Login.cshtml">
+      <publishTime>11/24/2017 16:03:53</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/Error/In404.cshtml">
+      <publishTime>11/27/2017 14:38:44</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/Error/In500.cshtml">
+      <publishTime>11/27/2017 14:38:50</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/Error/NotRight.cshtml">
+      <publishTime>11/28/2017 09:15:40</publishTime>
+    </File>
     <File Include="Areas/Admin/Views/home/Index.cshtml">
-      <publishTime>11/17/2017 16:59:22</publishTime>
+      <publishTime>11/21/2017 15:44:56</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/Menu/Index.cshtml">
+      <publishTime>12/05/2017 16:01:52</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Report/Index.cshtml">
       <publishTime>11/17/2017 15:02:27</publishTime>
@@ -21738,19 +22140,22 @@
       <publishTime>11/17/2017 15:42:32</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Shared/_Header.cshtml">
-      <publishTime>11/17/2017 16:56:19</publishTime>
+      <publishTime>11/24/2017 11:53:40</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Shared/_Layout.cshtml">
-      <publishTime>11/17/2017 15:45:10</publishTime>
+      <publishTime>11/21/2017 17:23:22</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/Shared/_LayoutSimple.cshtml">
+      <publishTime>11/27/2017 14:34:27</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Shared/_Left.cshtml">
-      <publishTime>11/17/2017 15:53:06</publishTime>
+      <publishTime>11/22/2017 15:46:17</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Shared/_right.cshtml">
-      <publishTime>11/17/2017 14:48:40</publishTime>
+      <publishTime>11/21/2017 15:31:34</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Web.config">
-      <publishTime>11/17/2017 15:31:32</publishTime>
+      <publishTime>11/27/2017 09:37:30</publishTime>
     </File>
     <File Include="bin/Antlr3.Runtime.dll">
       <publishTime>11/17/2017 11:23:21</publishTime>
@@ -21765,22 +22170,22 @@
       <publishTime>09/29/2017 17:26:31</publishTime>
     </File>
     <File Include="bin/Lcgoc.BLL.dll">
-      <publishTime>11/16/2017 15:44:12</publishTime>
+      <publishTime>12/06/2017 09:59:24</publishTime>
     </File>
     <File Include="bin/Lcgoc.Common.dll">
-      <publishTime>11/16/2017 15:44:11</publishTime>
+      <publishTime>12/06/2017 09:59:23</publishTime>
     </File>
     <File Include="bin/Lcgoc.DAL.dll">
-      <publishTime>11/16/2017 15:44:12</publishTime>
+      <publishTime>12/06/2017 09:59:24</publishTime>
     </File>
     <File Include="bin/Lcgoc.Model.dll">
-      <publishTime>11/16/2017 15:44:11</publishTime>
+      <publishTime>12/06/2017 09:59:23</publishTime>
     </File>
     <File Include="bin/Lcgoc.Web.dll">
-      <publishTime>11/17/2017 15:55:16</publishTime>
+      <publishTime>12/06/2017 09:59:25</publishTime>
     </File>
     <File Include="bin/Lcgoc.Weixin.SDK.dll">
-      <publishTime>11/16/2017 15:44:12</publishTime>
+      <publishTime>12/06/2017 09:59:24</publishTime>
     </File>
     <File Include="bin/log4net.dll">
       <publishTime>09/29/2017 00:27:16</publishTime>
@@ -21857,6 +22262,9 @@
     <File Include="Scripts/jquery-1.7.1.min.js">
       <publishTime>11/17/2017 15:38:34</publishTime>
     </File>
+    <File Include="Scripts/jquery-1.9.1.min.js">
+      <publishTime>11/21/2017 11:21:51</publishTime>
+    </File>
     <File Include="Scripts/jquery.unobtrusive-ajax.min.js">
       <publishTime>11/17/2017 14:42:41</publishTime>
     </File>
@@ -21897,7 +22305,7 @@
       <publishTime>09/29/2017 00:27:16</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>11/17/2017 17:01:47</publishTime>
+      <publishTime>12/06/2017 09:59:30</publishTime>
     </File>
   </ItemGroup>
 </Project>

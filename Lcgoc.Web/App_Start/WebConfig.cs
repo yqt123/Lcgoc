@@ -23,15 +23,21 @@ namespace Lcgoc.Web
         public static bool OpenRightControl { private set; get; }
 
         /// <summary>
-        /// 登录系统的Cookie名称
+        /// 登录系统的Session名称
         /// </summary>
-        public static string LoginCookieName { private set; get; }
+        public static string LoginSessionName { private set; get; }
+
+        /// <summary>
+        /// 登录系统的Session名称
+        /// </summary>
+        public static string LoginTokenName { private set; get; }
 
         public static void Register()
         {
             AdminName = System.Configuration.ConfigurationManager.AppSettings["AdminName"];
-            LoginCookieName = System.Configuration.ConfigurationManager.AppSettings["LoginCookieName"];
-            
+            LoginSessionName = System.Configuration.ConfigurationManager.AppSettings["LoginSessionName"];
+            LoginTokenName = System.Configuration.ConfigurationManager.AppSettings["LoginTokenName"];
+
             bool _OpenRightControl = false;
             bool.TryParse(System.Configuration.ConfigurationManager.AppSettings["OpenRightControl"], out _OpenRightControl);
             OpenRightControl = _OpenRightControl;
