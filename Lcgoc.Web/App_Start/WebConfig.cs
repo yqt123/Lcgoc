@@ -32,15 +32,25 @@ namespace Lcgoc.Web
         /// </summary>
         public static string LoginTokenName { private set; get; }
 
+        /// <summary>
+        /// 登录系统，记住密码时有效天数
+        /// </summary>
+        public static int ExpiresDays { private set; get; }
+
         public static void Register()
         {
             AdminName = System.Configuration.ConfigurationManager.AppSettings["AdminName"];
             LoginSessionName = System.Configuration.ConfigurationManager.AppSettings["LoginSessionName"];
-            LoginTokenName = System.Configuration.ConfigurationManager.AppSettings["LoginTokenName"];
 
-            bool _OpenRightControl = false;
+            bool _OpenRightControl = false;            
             bool.TryParse(System.Configuration.ConfigurationManager.AppSettings["OpenRightControl"], out _OpenRightControl);
             OpenRightControl = _OpenRightControl;
+
+            LoginTokenName = System.Configuration.ConfigurationManager.AppSettings["LoginTokenName"];
+            
+            int _ExpiresDays = 0;
+            int.TryParse(System.Configuration.ConfigurationManager.AppSettings["OpenRightControl"], out _ExpiresDays);
+            ExpiresDays = _ExpiresDays;
         }
     }
 }

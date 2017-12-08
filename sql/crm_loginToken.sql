@@ -1,10 +1,13 @@
+
 /*
 登录凭证
 */
 CREATE TABLE IF NOT EXISTS `crm_loginToken` (
   `identity` varchar(40) COMMENT '用户身份',
   `token` varchar(100) COMMENT '身份凭证',
-  `modifyDTM` Datetime COMMENT '修改时间',
+  `createDate` Datetime DEFAULT NOW() COMMENT '创建时间',
+  `ExpiresDays` INT COMMENT '有效天数',
+  `modifyDTM` Datetime DEFAULT NOW() COMMENT '修改时间',
   PRIMARY KEY(`identity`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

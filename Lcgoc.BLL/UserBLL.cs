@@ -24,5 +24,34 @@ namespace Lcgoc.BLL
         {
             return dal.GetUser(userId);
         }
+
+        /// <summary>
+        /// 获取登录Token
+        /// </summary>
+        /// <param name="identity"></param>
+        /// <returns></returns>
+        public crm_loginToken GetLoginToken(string identity)
+        {
+            return dal.GetLoginToken(identity);
+        }
+
+        /// <summary>
+        /// 更新登录认证
+        /// </summary>
+        /// <param name="data"></param>
+        public void RefreshLoginToken(crm_loginToken_log data, int ExpiresDays)
+        {
+            dal.RefreshLoginToken(data, ExpiresDays);
+        }
+
+        /// <summary>
+        /// 获取登录Token日志
+        /// </summary>
+        /// <param name="identity"></param>
+        /// <returns></returns>
+        public IEnumerable<crm_loginToken_log> GetLoginTokenLog(string identity)
+        {
+            return dal.GetLoginTokenLog(identity);
+        }
     }
 }

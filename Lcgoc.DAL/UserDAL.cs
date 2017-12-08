@@ -61,7 +61,7 @@ namespace Lcgoc.DAL
         {
             using (IDbConnection connection = new MyConnectionHelper().connectionGetAndOpen())
             {
-                string spsql = "SELECT * from `crm_loginToken` where `identity`=@identity;";
+                string spsql = "SELECT * from `crm_loginToken` where `identity`=@identity and date_add(createDate, interval ExpiresDays day)>NOW();";
                 var myparams = new DynamicParameters(new { identity = identity });
                 using (var grids = connection.QueryMultiple(spsql, myparams))
                 {
@@ -74,11 +74,11 @@ namespace Lcgoc.DAL
         /// 更新登录认证
         /// </summary>
         /// <param name="data"></param>
-        public void RefreshLoginToken(crm_loginToken_log data)
+        public void RefreshLoginToken(crm_loginToken_log data, int ExpiresDays)
         {
             using (var connection = new MyConnectionHelper().connectionGetAndOpen())
             {
-                var myparams = new DynamicParameters(new { identity = data.identity, token = data.token, ip = data.ip, userAgent = data.userAgent });
+                var myparams = new DynamicParameters(new { inidentity = data.identity, intoken = data.token, inip = data.ip, inuserAgent = data.userAgent, inExpiresDays = ExpiresDays });
                 connection.Execute("sp_crm_RefreshLoginToken", myparams, commandType: CommandType.StoredProcedure);
             }
         }

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Security;
+using Lcgoc.BLL;
+using Lcgoc.Model;
 
 namespace Lcgoc.Web.Services
 {
@@ -36,10 +38,14 @@ namespace Lcgoc.Web.Services
         {
             System.Web.HttpContext.Current.Session[WebConfig.LoginSessionName] = identity;
             System.Web.HttpContext.Current.Session.Timeout = 30;
-            //如果记住密码，用
+            //如果记住密码，用cookie记住token
             if (remeberMe)
             {
+                HttpCookie cookie = new HttpCookie(WebConfig.LoginTokenName);//初使化并设置Cookie的名称
+                cookie.Expires = DateTime.Now.AddDays(WebConfig.ExpiresDays);
+                cookie.Values.Add(WebConfig.LoginTokenName, "userid_value");
 
+                HttpContext.Current.Response.Cookies.Add(cookie);
             }
         }
 
