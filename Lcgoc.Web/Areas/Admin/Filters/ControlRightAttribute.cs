@@ -12,6 +12,7 @@ namespace Lcgoc.Web.Areas.Admin.Filters
     /// <summary>
     /// 控制器权限
     /// </summary>
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = false)]
     public class ControlRightAttribute : ActionFilterAttribute
     {
         /// <summary>
@@ -26,22 +27,42 @@ namespace Lcgoc.Web.Areas.Admin.Filters
             {
                 var actionName = filterContext.ActionDescriptor.ActionName;
                 var controllerName = filterContext.ActionDescriptor.ControllerDescriptor.ControllerName;
-                var user = filterContext.HttpContext.Session[WebConfig.LoginSessionName];
-                if (user == null)
+                var identity = filterContext.HttpContext.Session[WebConfig.LoginSessionName];
+                if (identity == null)
                 {
-                    //var result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "Account", action = "Login" }));
-                    filterContext.Result = new RedirectResult("~/Admin/Account/Login?returnUrl=" + HttpUtility.UrlEncode(controllerName + "/" + actionName));
+                    var token = filterContext.HttpContext.Response.Cookies[WebConfig.LoginTokenName];
+                    if (token != null)
+                    {
+                        var identityData = new UserBLL().GetIdentityToken(token.Value);
+                        if (identityData != null)
+                        {
+                            identity = identityData.identity;
+                            filterContext.HttpContext.Session[WebConfig.LoginSessionName] = identityData.identity;
+                        }
+                    }
+                    if (identity == null)
+                    {
+                        var result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "Account", action = "Login" }));
+                        //filterContext.Result = new RedirectResult("~/Admin/Account/Login?returnUrl=" + HttpUtility.UrlEncode(controllerName + "/" + actionName));
+                        filterContext.Controller.ViewData["returnUrl"] = HttpUtility.UrlEncode(controllerName + "/" + actionName);
+                    }
                 }
+
                 //判断webconfig是否开启数据库权限判断
-                else if (WebConfig.OpenRightControl && !new ControllerBLL().IsAuthorized(((User)user).userId, controllerName, actionName, (int)RightTypes))
+                if (identity != null && WebConfig.OpenRightControl && !new ControllerBLL().IsAuthorized(identity.ToString(), controllerName, actionName, (int)RightTypes))
                 {
-                    if (filterContext.ActionParameters.ContainsKey("rightMessage"))
-                        filterContext.ActionParameters["rightMessage"] = "您没有此权限：" + controllerName + "/" + actionName + "/" + RightTypes.ToString();
-                    else
-                        filterContext.Result = new RedirectResult("~/Admin/Error/NotRight?returnUrl=" + HttpUtility.UrlEncode(controllerName + "/" + actionName + "/" + RightTypes.ToString()));
+                    filterContext.HttpContext.Response.Write(" <script type='text/javascript'> alert('您没有此操作的权限！');</script>");
+                    filterContext.RequestContext.HttpContext.Response.End();
+                    filterContext.Result = new EmptyResult();
+                    return;
+                    //if (filterContext.ActionParameters.ContainsKey("rightMessage"))
+                    //    filterContext.ActionParameters["rightMessage"] = "您没有此权限：" + controllerName + "/" + actionName + "/" + RightTypes.ToString();
+                    //else
+                    //    filterContext.Result = new RedirectResult("~/Admin/Error/NotRight?returnUrl=" + HttpUtility.UrlEncode(controllerName + "/" + actionName + "/" + RightTypes.ToString()));
+
                 }
             }
-            base.OnActionExecuting(filterContext);
+            //base.OnAuthorization(filterContext);
         }
     }
 }

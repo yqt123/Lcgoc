@@ -49,7 +49,7 @@ namespace Lcgoc.Web
             LoginTokenName = System.Configuration.ConfigurationManager.AppSettings["LoginTokenName"];
             
             int _ExpiresDays = 0;
-            int.TryParse(System.Configuration.ConfigurationManager.AppSettings["OpenRightControl"], out _ExpiresDays);
+            int.TryParse(System.Configuration.ConfigurationManager.AppSettings["ExpiresDays"], out _ExpiresDays);
             ExpiresDays = _ExpiresDays;
         }
     }

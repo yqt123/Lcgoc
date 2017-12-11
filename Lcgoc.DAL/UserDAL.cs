@@ -53,16 +53,16 @@ namespace Lcgoc.DAL
         }
 
         /// <summary>
-        /// 获取登录Token
+        /// 通过Token获取身份
         /// </summary>
-        /// <param name="identity"></param>
+        /// <param name="token"></param>
         /// <returns></returns>
-        public crm_loginToken GetLoginToken(string identity)
+        public crm_loginToken GetIdentityToken(string token)
         {
             using (IDbConnection connection = new MyConnectionHelper().connectionGetAndOpen())
             {
-                string spsql = "SELECT * from `crm_loginToken` where `identity`=@identity and date_add(createDate, interval ExpiresDays day)>NOW();";
-                var myparams = new DynamicParameters(new { identity = identity });
+                string spsql = "SELECT * from `crm_loginToken` where `token`=@token and date_add(createDate, interval ExpiresDays day)>NOW();";
+                var myparams = new DynamicParameters(new { token = token });
                 using (var grids = connection.QueryMultiple(spsql, myparams))
                 {
                     return grids.Read<crm_loginToken>().FirstOrDefault();

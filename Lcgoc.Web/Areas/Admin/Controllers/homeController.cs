@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace Lcgoc.Web.Areas.Admin.Controllers
 {
-    [Filters.ControlRight]
+    [AuthorizeDiy]
     public class HomeController : Controller
     {
         //

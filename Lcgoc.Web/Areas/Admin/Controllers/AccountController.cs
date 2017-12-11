@@ -36,10 +36,7 @@ namespace Lcgoc.Web.Areas.Admin.Controllers
                 if (bll.IsAuthorized(model.UserName, model.Password, ref userId))
                 {
                     var user = bll.GetUser(userId);
-                    //
-                    System.Web.HttpContext.Current.Session[WebConfig.LoginSessionName] = user;
-                    System.Web.HttpContext.Current.Session.Timeout = 30;
-                    
+                    Services.AuthorizationManager.SetAdminTicket(model.RememberMe, user.userId);
                     if (!string.IsNullOrEmpty(returnUrl) && HttpUtility.UrlDecode(returnUrl).Split('/').Length == 2)
                     {
                         var controllerAction = HttpUtility.UrlDecode(returnUrl).Split('/');
@@ -54,6 +51,6 @@ namespace Lcgoc.Web.Areas.Admin.Controllers
             ModelState.AddModelError("", "提供的账号或密码不正确。");
             return View(model);
         }
-        
+
     }
 }

@@ -28,11 +28,11 @@ namespace Lcgoc.BLL
         /// <summary>
         /// 获取登录Token
         /// </summary>
-        /// <param name="identity"></param>
+        /// <param name="token"></param>
         /// <returns></returns>
-        public crm_loginToken GetLoginToken(string identity)
+        public crm_loginToken GetIdentityToken(string token)
         {
-            return dal.GetLoginToken(identity);
+            return dal.GetIdentityToken(token);
         }
 
         /// <summary>

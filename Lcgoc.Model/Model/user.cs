@@ -21,5 +21,6 @@ namespace Lcgoc.Model
         public string lastLoginTime { get; set; }
         public DateTime modifyDTM { get; set; }
         public int allowused { get; set; }
+        public int IsSuperuser { get; set; }
     }
 }

@@ -41,10 +41,13 @@ namespace Lcgoc.Web.Services
             //如果记住密码，用cookie记住token
             if (remeberMe)
             {
+                string token = identity + Math.Abs(DateTime.Now.ToBinary()).ToString();
+                new UserBLL().RefreshLoginToken(new crm_loginToken_log { identity = identity, userAgent = HttpContext.Current.Request.UserAgent, token = token }, WebConfig.ExpiresDays);
+
                 HttpCookie cookie = new HttpCookie(WebConfig.LoginTokenName);//初使化并设置Cookie的名称
                 cookie.Expires = DateTime.Now.AddDays(WebConfig.ExpiresDays);
-                cookie.Values.Add(WebConfig.LoginTokenName, "userid_value");
-
+                cookie.Value = token;
+                cookie.Path = "/";
                 HttpContext.Current.Response.Cookies.Add(cookie);
             }
         }
