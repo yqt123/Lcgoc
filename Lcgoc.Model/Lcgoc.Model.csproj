@@ -58,6 +58,8 @@
     <Compile Include="Model\sys_controller_action.cs" />
     <Compile Include="Model\crm_loginToken.cs" />
     <Compile Include="Model\crm_loginToken_log.cs" />
+    <Compile Include="Model\sys_controller_action_role.cs" />
+    <Compile Include="Model\userAuthorizedRes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

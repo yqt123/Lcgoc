@@ -34,15 +34,15 @@ namespace Lcgoc.Web.Services
         /// </summary>
         /// <param name="remeberMe"></param>
         /// <param name="identity"></param>
-        public static void SetAdminTicket(bool remeberMe, string identity)
+        public static void SetAdminTicket(bool remeberMe, userAuthorized identity)
         {
             System.Web.HttpContext.Current.Session[WebConfig.LoginSessionName] = identity;
             System.Web.HttpContext.Current.Session.Timeout = 30;
             //如果记住密码，用cookie记住token
             if (remeberMe)
             {
-                string token = identity + Math.Abs(DateTime.Now.ToBinary()).ToString();
-                new UserBLL().RefreshLoginToken(new crm_loginToken_log { identity = identity, userAgent = HttpContext.Current.Request.UserAgent, token = token }, WebConfig.ExpiresDays);
+                string token = identity.userId + Math.Abs(DateTime.Now.ToBinary()).ToString();
+                new UserBLL().RefreshLoginToken(new crm_loginToken_log { identity = identity.userId, userAgent = HttpContext.Current.Request.UserAgent, token = token }, WebConfig.ExpiresDays);
 
                 HttpCookie cookie = new HttpCookie(WebConfig.LoginTokenName);//初使化并设置Cookie的名称
                 cookie.Expires = DateTime.Now.AddDays(WebConfig.ExpiresDays);

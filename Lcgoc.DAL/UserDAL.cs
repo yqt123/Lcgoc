@@ -18,20 +18,21 @@ namespace Lcgoc.DAL
         /// <param name="userName"></param>
         /// <param name="password">加密后的密码</param>
         /// <returns></returns>
-        public bool IsAuthorized(string userName, string password, ref string userId)
+        public userAuthorized LoginAuthorized(string userName, string password)
         {
             using (IDbConnection connection = new MyConnectionHelper().connectionGetAndOpen())
             {
-                string spsql = "SELECT userId from `user` where (`userName`=@userName or `mobile`=@userName or `email`=@userName) and `password`=@password and allowUsed=1;";
+                string spsql = @"
+SELECT a.userId,a.userName,b.roleIds
+from `user` a
+LEFT JOIN (
+SELECT userId,GROUP_CONCAT(roleId) roleIds from user_role where allowused=1 group by userId
+)b ON a.userId=b.userId
+where (a.`userName`=@userName or a.`mobile`=@userName or a.`email`=@userName) and a.`password`=@password and a.allowUsed=1;";
                 var myparams = new DynamicParameters(new { userName = userName, password = password });
-                var res = connection.ExecuteScalar(spsql, myparams);
-                if (res != null && !string.IsNullOrEmpty(res.ToString()))
-                {
-                    userId = res.ToString();
-                    return true;
-                }
+                var res = connection.Query<userAuthorized>(spsql, myparams);
+                return res.FirstOrDefault();
             }
-            return false;
         }
 
         /// <summary>

@@ -41,16 +41,30 @@ namespace Lcgoc.Web
             return false;
         }
 
+        /// <summary>
+        /// 在AuthorizeCore前执行，读取控制器对应角色
+        /// </summary>
+        /// <param name="filterContext"></param>
         public override void OnAuthorization(System.Web.Mvc.AuthorizationContext filterContext)
         {
             string controllerName = filterContext.ActionDescriptor.ControllerDescriptor.ControllerName;
             string actionName = filterContext.ActionDescriptor.ActionName;
-            string roles = GetRoles.GetActionRoles(actionName, controllerName);
-            if (!string.IsNullOrWhiteSpace(roles))
-            {
-                this.Roles = roles.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
-            }
+            this.Roles = new ControllerBLL().GetActionRoles(actionName, controllerName);
             base.OnAuthorization(filterContext);
+        }
+
+        /// <summary>
+        /// 在AuthorizeCore返回false时执行，处理未能授权的Http请求
+        /// </summary>
+        /// <param name="filterContext"></param>
+        protected override void HandleUnauthorizedRequest(AuthorizationContext filterContext)
+        {
+            base.HandleUnauthorizedRequest(filterContext);
+            if (filterContext.HttpContext.Response.StatusCode == 401)
+            {
+                //跳转到登录界面
+                filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "Account", action = "Login" }));
+            }
         }
     }
 }

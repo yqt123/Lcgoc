@@ -33,10 +33,10 @@ namespace Lcgoc.Web.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 string userId = string.Empty;
-                if (bll.IsAuthorized(model.UserName, model.Password, ref userId))
+                var res = bll.IsAuthorized(model.UserName, model.Password);
+                if (res != null && !string.IsNullOrEmpty(res.userId))
                 {
-                    var user = bll.GetUser(userId);
-                    Services.AuthorizationManager.SetAdminTicket(model.RememberMe, user.userId);
+                    Services.AuthorizationManager.SetAdminTicket(model.RememberMe, res);
                     if (!string.IsNullOrEmpty(returnUrl) && HttpUtility.UrlDecode(returnUrl).Split('/').Length == 2)
                     {
                         var controllerAction = HttpUtility.UrlDecode(returnUrl).Split('/');

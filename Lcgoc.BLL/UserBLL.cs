@@ -10,9 +10,9 @@ namespace Lcgoc.BLL
     public class UserBLL
     {
         UserDAL dal = new UserDAL();
-        public bool IsAuthorized(string userName, string password, ref string userId)
+        public userAuthorized IsAuthorized(string userName, string password)
         {
-            return dal.IsAuthorized(userName, password, ref userId);
+            return dal.LoginAuthorized(userName, password);
         }
 
         /// <summary>

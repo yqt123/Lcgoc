@@ -46,5 +46,24 @@ where a.userId=@userId AND a.controller=@controller AND a.action=@action and {0}
             }
             return false;
         }
+
+        /// <summary>
+        /// 获取方法对应角色
+        /// </summary>
+        /// <param name="controller"></param>
+        /// <param name="action"></param>
+        /// <returns></returns>
+        public string[] GetActionRoles(string controller, string action)
+        {
+            using (IDbConnection connection = new MyConnectionHelper().connectionGetAndOpen())
+            {
+                string spsql = @"SELECT GROUP_CONCAT(roleId) roleIds from sys_controller_action_role where controller=@controller and action=@action and allowused=1 group by controller,action";
+                var myparams = new DynamicParameters(new { controller = controller, action = action });
+                var res = connection.ExecuteScalar<string>(spsql, myparams);
+                if (!string.IsNullOrEmpty(res))
+                    return res.Split(',');
+                return null;
+            }
+        }
     }
 }
