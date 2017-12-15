@@ -22,10 +22,13 @@ namespace Lcgoc.Web
             {
                 throw new ArgumentNullException("HttpContext");
             }
-            if (!httpContext.User.Identity.IsAuthenticated)
-            {
+            var identity = System.Web.HttpContext.Current.Session[WebConfig.LoginSessionName];
+            if (identity==null)
+            {//没有登录则判断是否有记住密码的cookie
+                HttpCookie cookie = HttpContext.Current.Request.Cookies[WebConfig.LoginTokenName];
                 return false;
             }
+            //没有设置权限，则都可以访问
             if (Roles == null)
             {
                 return true;
