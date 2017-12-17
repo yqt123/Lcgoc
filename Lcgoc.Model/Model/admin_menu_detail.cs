@@ -10,6 +10,7 @@ namespace Lcgoc.Model
         public string code { get; set; }
         public string sequence { get; set; }        
         public string name { get; set; }
+        public string area { get; set; }
         public string controller { get; set; }
         public string action { get; set; }
         public int ajaxlink { get; set; }

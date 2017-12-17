@@ -6,11 +6,10 @@ using System.Web.Mvc;
 
 namespace Lcgoc.Web.Areas.Admin.Controllers
 {
-    [AuthorizeDiy]
     public class HomeController : Controller
     {
-        //
-        // GET: /home/        
+
+        [CustomAllowAnonymous]
         public ActionResult Index()
         {
             return View();

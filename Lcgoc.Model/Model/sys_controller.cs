@@ -7,6 +7,7 @@ namespace Lcgoc.Model
 {
     public class sys_controller
     {
+        public string area { get; set; }
         public string controller { get; set; }
         public string name { get; set; }
         public int allowused { get; set; }

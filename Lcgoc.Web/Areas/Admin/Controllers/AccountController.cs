@@ -10,14 +10,13 @@ using System.Web.Security;
 
 namespace Lcgoc.Web.Areas.Admin.Controllers
 {
-    [ControlRight]
     public class AccountController : Controller
     {
         UserBLL bll = new UserBLL();
         //
         // GET: /Admin/Account/
         [HttpGet]
-        [ControlRightAllowAnonymousAttribute]
+        [CustomAllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
@@ -25,7 +24,7 @@ namespace Lcgoc.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        [ControlRightAllowAnonymousAttribute]
+        [CustomAllowAnonymous]
         //防止跨站攻击
         [ValidateAntiForgeryToken]
         public ActionResult Login(LoginModel model, string returnUrl)

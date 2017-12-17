@@ -12,7 +12,6 @@ namespace Lcgoc.Web.Areas.Admin.Controllers
     /// <summary>
     /// 菜单管理
     /// </summary>
-    [ControlRight]
     public class MenuController : Controller
     {
         //

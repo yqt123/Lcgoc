@@ -49,7 +49,7 @@ namespace Lcgoc.Web.Areas.Admin.Filters
                 }
 
                 //判断webconfig是否开启数据库权限判断
-                if (identity != null && WebConfig.OpenRightControl && !new ControllerBLL().IsAuthorized(identity.ToString(), controllerName, actionName, (int)RightTypes))
+                if (identity != null && WebConfig.OpenRightControl)
                 {
                     filterContext.HttpContext.Response.Write(" <script type='text/javascript'> alert('您没有此操作的权限！');</script>");
                     filterContext.RequestContext.HttpContext.Response.End();

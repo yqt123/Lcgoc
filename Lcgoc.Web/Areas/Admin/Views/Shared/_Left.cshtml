@@ -39,28 +39,28 @@
                 var details = menuDetails.Where(m => m.code == item.code);
                 if (details.Count() > 0)
                 {
-                <li class="treeview @(n == 0 ? "active" : "")">
-                    <a href="#">
-                        <i class="fa @item.icon"></i>
-                        <span>@item.name</span>
-                        <span class="pull-right-container">
-                            @if (string.IsNullOrEmpty(item.pullRightContainer)) 
+                    <li class="treeview @(n == 0 ? "active" : "")">
+                        <a href="#">
+                            <i class="fa @item.icon"></i>
+                            <span>@item.name</span>
+                            <span class="pull-right-container">
+                                @if (string.IsNullOrEmpty(item.pullRightContainer))
+                                {
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                }
+                                else
+                                {
+                                    <span class="label label-primary pull-right">@item.pullRightContainer</span>
+                                }
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            @foreach (var ditem in details)
                             {
-                                <i class="fa fa-angle-left pull-right"></i>
+                                <li><a href="@Url.Action(@ditem.action, @ditem.controller, new { area = ditem.area })" class="ajax-link"><i class="fa fa-circle-o"></i>@ditem.name</a></li>
                             }
-                            else
-                            {
-                                <span class="label label-primary pull-right">@item.pullRightContainer</span>
-                            }                            
-                        </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        @foreach (var ditem in details)
-                        { 
-                            <li><a href="@Url.Action(@ditem.action, @ditem.controller)" class="ajax-link"><i class="fa fa-circle-o"></i>@ditem.name</a></li>
-                        }
-                    </ul>
-                </li>
+                        </ul>
+                    </li>
                 }
                 n++;
             }

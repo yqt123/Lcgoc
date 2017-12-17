@@ -9,7 +9,7 @@ namespace Lcgoc.Web
         {
             filters.Add(new HandleErrorAttribute());
             ////登录验证
-            //filters.Add(new AuthorizeDiy());
+            filters.Add(new CustomAuthorizeAttribute());
             ////异常处理
             //filters.Add(new ExceptionLogAttribute());
 

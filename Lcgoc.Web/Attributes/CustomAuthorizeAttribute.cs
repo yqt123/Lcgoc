@@ -16,19 +16,20 @@ namespace Lcgoc.Web
     public class CustomAuthorizeAttribute : AuthorizeAttribute
     {
         public new string[] Roles { get; set; }
+        /// <summary>
+        /// 匿名访问
+        /// </summary>
+        public bool AllowAnonymous { get; set; }
         protected override bool AuthorizeCore(HttpContextBase httpContext)
         {
             if (httpContext == null)
             {
                 throw new ArgumentNullException("HttpContext");
             }
-            var identity = System.Web.HttpContext.Current.Session[WebConfig.LoginSessionName];
-            if (identity==null)
-            {//没有登录则判断是否有记住密码的cookie
-                HttpCookie cookie = HttpContext.Current.Request.Cookies[WebConfig.LoginTokenName];
-                return false;
+            if (AllowAnonymous)
+            {
+                return true;
             }
-            //没有设置权限，则都可以访问
             if (Roles == null)
             {
                 return true;
@@ -37,11 +38,52 @@ namespace Lcgoc.Web
             {
                 return true;
             }
-            if (Roles.Any(httpContext.User.IsInRole))
+
+            var identity = System.Web.HttpContext.Current.Session[WebConfig.LoginSessionName];
+            if (identity == null)
+            {//没有登录则判断是否有记住密码的cookie
+                HttpCookie cookie = HttpContext.Current.Request.Cookies[WebConfig.LoginTokenName];
+                if (cookie == null || cookie.Value == null)
+                {
+                    httpContext.Response.StatusCode = 401;
+                    return false;
+                }
+                else
+                {
+                    var identityData = new UserBLL().GetIdentityToken(cookie.Value);
+                    if (identityData != null)
+                    {
+                        identity = identityData.identity;
+                        System.Web.HttpContext.Current.Session[WebConfig.LoginSessionName] = identityData.identity;
+                        return true;
+                    }
+                }
+                httpContext.Response.StatusCode = 401;
+                return false;
+            }
+            var entity = identity as userAuthorized;
+            if (entity == null)
+            {
+                httpContext.Response.StatusCode = 401;
+                return false;
+            }
+            if (string.IsNullOrEmpty(entity.roleIds))
+            {
+                httpContext.Response.StatusCode = 401;
+                return false;
+            }
+
+            var userRoleIds = entity.roleIds.Split(',');
+            var roleRight = Roles.Any(n => { if (userRoleIds.Contains(n)) return true; else return false; });
+            if (roleRight)
             {
                 return true;
             }
-            return false;
+            else
+            {//没有权限
+                httpContext.Response.StatusCode = 402;
+                return false;
+            }
         }
 
         /// <summary>
@@ -50,9 +92,22 @@ namespace Lcgoc.Web
         /// <param name="filterContext"></param>
         public override void OnAuthorization(System.Web.Mvc.AuthorizationContext filterContext)
         {
-            string controllerName = filterContext.ActionDescriptor.ControllerDescriptor.ControllerName;
-            string actionName = filterContext.ActionDescriptor.ActionName;
-            this.Roles = new ControllerBLL().GetActionRoles(actionName, controllerName);
+            if (!filterContext.ActionDescriptor.IsDefined(typeof(CustomAllowAnonymousAttribute), true))
+            {
+                AllowAnonymous = false;
+                string area = string.Empty;
+                var _area = filterContext.RouteData.DataTokens["area"];
+                if (_area != null)
+                    area = filterContext.RouteData.DataTokens["area"].ToString();
+
+                string controllerName = filterContext.ActionDescriptor.ControllerDescriptor.ControllerName;
+                string actionName = filterContext.ActionDescriptor.ActionName;
+                this.Roles = new ControllerBLL().GetActionRoles(area, controllerName, actionName);
+            }
+            else
+            {
+                AllowAnonymous = true;
+            }
             base.OnAuthorization(filterContext);
         }
 
@@ -66,7 +121,13 @@ namespace Lcgoc.Web
             if (filterContext.HttpContext.Response.StatusCode == 401)
             {
                 //跳转到登录界面
-                filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "Account", action = "Login" }));
+                filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "Account", action = "Login", area = "Admin" }));
+            }
+            if (filterContext.HttpContext.Response.StatusCode == 402)
+            {
+                filterContext.HttpContext.Response.Write(" <script type='text/javascript'> alert('您没有此操作的权限！');</script>");
+                filterContext.RequestContext.HttpContext.Response.End();
+                filterContext.Result = new EmptyResult();
             }
         }
     }
