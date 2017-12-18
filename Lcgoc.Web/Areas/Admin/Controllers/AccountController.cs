@@ -1,5 +1,4 @@
 ﻿using Lcgoc.BLL;
-using Lcgoc.Web.Areas.Admin.Filters;
 using Lcgoc.Web.Areas.Admin.Models;
 using System;
 using System.Collections.Generic;
@@ -32,7 +31,7 @@ namespace Lcgoc.Web.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 string userId = string.Empty;
-                var res = bll.IsAuthorized(model.UserName, model.Password);
+                var res = bll.LoginAuthorized(model.UserName, model.Password);
                 if (res != null && !string.IsNullOrEmpty(res.userId))
                 {
                     Services.AuthorizationManager.SetAdminTicket(model.RememberMe, res);

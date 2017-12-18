@@ -10,9 +10,19 @@ namespace Lcgoc.BLL
     public class UserBLL
     {
         UserDAL dal = new UserDAL();
-        public userAuthorized IsAuthorized(string userName, string password)
+        public userAuthorized LoginAuthorized(string userName, string password)
         {
             return dal.LoginAuthorized(userName, password);
+        }
+
+        /// <summary>
+        /// 通过token获取验证
+        /// </summary>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        public userAuthorized GetLoginAuthorizedByToken(string token)
+        {
+            return dal.GetLoginAuthorizedByToken(token);
         }
 
         /// <summary>

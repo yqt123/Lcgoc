@@ -36,6 +36,29 @@ where (a.`userName`=@userName or a.`mobile`=@userName or a.`email`=@userName) an
         }
 
         /// <summary>
+        /// 通过token获取验证
+        /// </summary>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        public userAuthorized GetLoginAuthorizedByToken(string token)
+        {
+            using (IDbConnection connection = new MyConnectionHelper().connectionGetAndOpen())
+            {
+                string spsql = @"
+SELECT a.userId,a.userName,b.roleIds
+from crm_logintoken c
+INNER JOIN `user` a ON c.identity=a.userId and a.allowUsed=1
+LEFT JOIN (
+SELECT userId,GROUP_CONCAT(roleId) roleIds from user_role where allowused=1 group by userId
+)b ON a.userId=b.userId
+where c.token=@token;";
+                var myparams = new DynamicParameters(new { token = token });
+                var res = connection.Query<userAuthorized>(spsql, myparams);
+                return res.FirstOrDefault();
+            }
+        }
+
+        /// <summary>
         /// 用户信息
         /// </summary>
         /// <param name="userId"></param>
@@ -54,7 +77,7 @@ where (a.`userName`=@userName or a.`mobile`=@userName or a.`email`=@userName) an
         }
 
         /// <summary>
-        /// 通过Token获取身份
+        /// 获取登录Token
         /// </summary>
         /// <param name="token"></param>
         /// <returns></returns>

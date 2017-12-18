@@ -131,11 +131,9 @@
     <Compile Include="App_Start\WeixinConfig.cs" />
     <Compile Include="Areas\Admin\Controllers\MenuController.cs" />
     <Compile Include="Areas\Admin\Controllers\ErrorController.cs" />
-    <Compile Include="Areas\Admin\Filters\RightControlAllowAnonymousAttribute.cs" />
-    <Compile Include="Areas\Admin\Filters\ControlRightAttribute.cs" />
     <Compile Include="Areas\Admin\Models\LoginModel.cs" />
-    <Compile Include="Attributes\CustomAuthorizeAttribute.cs" />
-    <Compile Include="Attributes\CustomAllowAnonymousAttribute.cs" />
+    <Compile Include="Filters\CustomAuthorizeAttribute.cs" />
+    <Compile Include="Filters\CustomAllowAnonymousAttribute.cs" />
     <Compile Include="Attributes\WeixinOAuthAuthorizeAttribute.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeApiController.cs" />
@@ -144,8 +142,7 @@
     <Compile Include="Controllers\OAuthController.cs" />
     <Compile Include="Controllers\WXPayController.cs" />
     <Compile Include="Controllers\WeixinController.cs" />
-    <Compile Include="Attributes\LogonAuthorizeAttribute.cs" />
-    <Compile Include="Attributes\ExceptionLogAttribute.cs" />
+    <Compile Include="Filters\ExceptionLogAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -6208,6 +6205,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Filters\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

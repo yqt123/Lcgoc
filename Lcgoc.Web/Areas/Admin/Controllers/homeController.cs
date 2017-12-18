@@ -8,8 +8,6 @@ namespace Lcgoc.Web.Areas.Admin.Controllers
 {
     public class HomeController : Controller
     {
-
-        [CustomAllowAnonymous]
         public ActionResult Index()
         {
             return View();
