@@ -13,6 +13,7 @@ namespace Lcgoc.Web.Areas.Admin.Controllers
     /// </summary>
     public class MenuController : Controller
     {
+        Lcgoc.Model.userAuthorized user = WebConfig.GetUser();
         //
         // GET: /Admin/Report/
         [HttpGet]
@@ -27,13 +28,10 @@ namespace Lcgoc.Web.Areas.Admin.Controllers
         /// <param name="code"></param>
         /// <returns></returns>
         [HttpGet]
-        public JsonResult GetData(string code)
+        public JsonResult GetMenus(string code)
         {
-            var user = HttpContext.Session[WebConfig.LoginSessionName];
-
-            new AdminMenuBLL().GetAdminMenu("", "");
-
-            return new JsonResult() { Data = "", JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            var menus = new AdminMenuBLL().GetAdminMenu("", user.userId);
+            return new JsonResult() { Data = menus, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
 
         /// <summary>

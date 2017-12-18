@@ -96,7 +96,8 @@ namespace Lcgoc.Web
             }
             if (filterContext.HttpContext.Response.StatusCode == 402)
             {
-                filterContext.HttpContext.Response.Write(" <script type='text/javascript'> alert('您没有此操作的权限！');</script>");
+                //filterContext.HttpContext.Response.Write(" <script type='text/javascript'> alert('您没有此操作的权限！');</script>");
+                filterContext.HttpContext.Response.Write(" 您没有此操作的权限！");
                 filterContext.RequestContext.HttpContext.Response.End();
                 filterContext.Result = new EmptyResult();
             }

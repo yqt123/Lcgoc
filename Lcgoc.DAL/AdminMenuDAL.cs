@@ -25,13 +25,27 @@ namespace Lcgoc.DAL
                 var myparams = new DynamicParameters();
                 if (!string.IsNullOrEmpty(code))
                 {
-                    spsql = "SELECT * from admin_menu where `code`=@code and allowUsed=1 ORDER BY `level` ASC;";
+                    spsql = @"
+SELECT DISTINCT a.* from admin_menu a
+LEFT JOIN admin_menu_detail b On a.`code`=b.`code` and b.allowused=1
+LEFT JOIN sys_controller_action_role c on b.area=c.area and b.controller=c.controller and b.action=c.action and c.allowused=1
+LEFT JOIN user_role d On c.roleId=d.roleId and d.allowused=1
+where a.`code`=@code and a.allowUsed=1 and (ISNULL(d.userId)=1 OR d.userId=@userId) ORDER BY a.`level` ASC;
+";
                     myparams.Add("code", code);
                 }
                 else
                 {
-                    spsql = "SELECT * from admin_menu where allowUsed=1 ORDER BY `level` ASC;";
+                    spsql = @"
+SELECT DISTINCT a.* from admin_menu a
+LEFT JOIN admin_menu_detail b On a.`code`=b.`code` and b.allowused=1
+LEFT JOIN sys_controller_action_role c on b.area=c.area and b.controller=c.controller and b.action=c.action and c.allowused=1
+LEFT JOIN user_role d On c.roleId=d.roleId and d.allowused=1
+where a.allowUsed=1 and (ISNULL(d.userId)=1 OR d.userId=@userId) ORDER BY a.`level` ASC;
+";
                 }
+                myparams.Add("userId", userId);
+
                 using (var grids = connection.QueryMultiple(spsql, myparams))
                 {
                     return grids.Read<admin_menu>();
