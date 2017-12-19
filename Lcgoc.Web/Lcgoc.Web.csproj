@@ -6181,7 +6181,9 @@
     <Content Include="Areas\Admin\Content\plugins\timepicker\bootstrap-timepicker.min.css" />
     <Content Include="Areas\Admin\Content\plugins\timepicker\bootstrap-timepicker.min.js" />
     <Content Include="Areas\Admin\Img\devoops_getdata.gif" />
+    <Content Include="Areas\Admin\Scripts\home\Center.js" />
     <Content Include="Areas\Admin\Scripts\Menu\Index.js" />
+    <Content Include="Areas\Admin\Scripts\Route\RouteHelper.js" />
     <Content Include="Areas\Admin\Scripts\sidebar-menu.js" />
     <Content Include="Content\css\jssdk\style.css" />
     <Content Include="Global.asax" />
@@ -7607,6 +7609,7 @@
     <Content Include="Areas\Admin\Views\Account\Login.cshtml" />
     <Content Include="Areas\Admin\Views\Error\NotRight.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_LayoutSimple.cshtml" />
+    <Content Include="Areas\Admin\Views\home\Center.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <Content Include="Views\WXPay\Failed.cshtml" />
     <Content Include="Views\WXPay\Index.cshtml" />
