@@ -25,7 +25,8 @@
             e.preventDefault();
             var url = $(this).attr('href');
             //点击 切换显示内容
-            LoadAjaxContent(url);
+            //LoadAjaxContent(url);
+            new RouteHelper().Redirect(url);
         }
     });
 })();

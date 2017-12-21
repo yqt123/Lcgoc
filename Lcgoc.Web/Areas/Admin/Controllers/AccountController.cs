@@ -42,7 +42,7 @@ namespace Lcgoc.Web.Areas.Admin.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("Center", "Home");
                     }
                 }
             }

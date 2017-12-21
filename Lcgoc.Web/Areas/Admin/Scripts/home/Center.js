@@ -18,7 +18,7 @@ var CenterObj = function () {
             }
         }
         else { controller = "Home"; action = "Index"; area = "Admin"; }
-        new RouteHelper().Action(controller, action, area);
+        new RouteHelper().Action(action, controller, area);
     };
     return centerObj;
 };
