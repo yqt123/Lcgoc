@@ -125,7 +125,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebConfig.cs" />
-    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\App_Start\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="App_Start\WeixinConfig.cs" />
@@ -7609,7 +7609,8 @@
     <Content Include="Areas\Admin\Views\Account\Login.cshtml" />
     <Content Include="Areas\Admin\Views\Error\NotRight.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_LayoutSimple.cshtml" />
-    <Content Include="Areas\Admin\Views\home\Center.cshtml" />
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\_ViewStart.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <Content Include="Views\WXPay\Failed.cshtml" />
     <Content Include="Views\WXPay\Index.cshtml" />
