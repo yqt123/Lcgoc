@@ -17,9 +17,9 @@ namespace Lcgoc.Web.Areas.Admin.Controllers
         //
         // GET: /Admin/Report/
         [HttpGet]
-        public PartialViewResult Index()
+        public ActionResult Index()
         {
-            return PartialView();
+            return View();
         }
 
         /// <summary>
