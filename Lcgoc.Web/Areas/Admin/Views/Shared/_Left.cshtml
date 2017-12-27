@@ -5,6 +5,7 @@
     var menus = bll.GetAdminMenu(string.Empty, string.Empty);
     var menuDetails = bll.GetAdminMenuDetail(string.Empty, string.Empty, string.Empty);
     var n = 0;
+    var hash = Html.ViewContext.RouteData.Values["hash"]==null?0:int.Parse(Html.ViewContext.RouteData.Values["hash"].ToString());
 }
 <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
@@ -39,7 +40,7 @@
                 var details = menuDetails.Where(m => m.code == item.code);
                 if (details.Count() > 0)
                 {
-                    <li class="treeview @(n == 0 ? "active" : "")">
+                    <li class="treeview @(n == hash ? "active" : "")">
                         <a href="#">
                             <i class="fa @item.icon"></i>
                             <span>@item.name</span>
@@ -57,7 +58,7 @@
                         <ul class="treeview-menu">
                             @foreach (var ditem in details)
                             {
-                                <li><a href="@Url.Action(@ditem.action, @ditem.controller, new { area = ditem.area })" class="ajax-link"><i class="fa fa-circle-o"></i>@ditem.name</a></li>
+                                <li><a href="@Url.Action(@ditem.action, @ditem.controller, new { area = ditem.area, hash = n })" class="ajax-link"><i class="fa fa-circle-o"></i>@ditem.name</a></li>
                             }
                         </ul>
                     </li>
