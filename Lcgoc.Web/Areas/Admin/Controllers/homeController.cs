@@ -15,7 +15,6 @@ namespace Lcgoc.Web.Areas.Admin.Controllers
 
         public ActionResult Index()
         {
-            ViewData["hash"] = Request.Params["hash"];
             return View();
         }
     }

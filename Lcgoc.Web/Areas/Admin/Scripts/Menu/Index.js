@@ -37,25 +37,35 @@ var TableInit = function () {
             minimumCountColumns: 2,             //最少允许的列数
             clickToSelect: true,                //是否启用点击选中行
             height: 500,                        //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
-            uniqueId: "ID",                     //每一行的唯一标识，一般为主键列
+            uniqueId: "code",                   //每一行的唯一标识，一般为主键列
             showToggle:true,                    //是否显示详细视图和列表视图的切换按钮
             cardView: false,                    //是否显示详细视图
-            detailView: false,                   //是否显示父子表
+            detailView: false,                  //是否显示父子表
             columns: [{
                 checkbox: true
             }, {
-                field: 'Name',
-                title: '部门名称'
+                field: 'code',
+                title: '菜单编码'
             }, {
-                field: 'ParentName',
-                title: '上级部门'
+                field: 'icon',
+                title: '标题图标'
             }, {
-                field: 'Level',
-                title: '部门级别'
+                field: 'name',
+                title: '标题名称'
             }, {
-                field: 'Desc',
-                title: '描述'
-            }, ]
+                field: 'allowused',
+                title: '是否可用'
+            }, {
+                field: 'modifyDTM',
+                title: '创建时间'
+            }, {
+                field: 'level',
+                title: '排序'
+            }, {
+                field: 'pullRightContainer',
+                title: '标题栏数字'
+            },
+            ]
         });
     };
 
@@ -64,8 +74,8 @@ var TableInit = function () {
         var temp = {   //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
             limit: params.limit,   //页面大小
             offset: params.offset,  //页码
-            departmentname: $("#txt_search_departmentname").val(),
-            statu: $("#txt_search_statu").val()
+            code: $("#txt_search_departmentname").val(),
+            icon: $("#txt_search_statu").val()
         };
         return temp;
     };

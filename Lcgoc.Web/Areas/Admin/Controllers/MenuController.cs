@@ -31,7 +31,8 @@ namespace Lcgoc.Web.Areas.Admin.Controllers
         public JsonResult GetMenus(string code)
         {
             var menus = new AdminMenuBLL().GetAdminMenu("", user.userId);
-            return new JsonResult() { Data = menus, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            return Json(new { total = 20, rows = menus }, JsonRequestBehavior.AllowGet);
+            //return new JsonResult() { Data = menus, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
 
         /// <summary>

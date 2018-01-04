@@ -5,7 +5,8 @@
     var menus = bll.GetAdminMenu(string.Empty, string.Empty);
     var menuDetails = bll.GetAdminMenuDetail(string.Empty, string.Empty, string.Empty);
     var n = 0;
-    var hash = Html.ViewContext.RouteData.Values["hash"]==null?0:int.Parse(Html.ViewContext.RouteData.Values["hash"].ToString());
+    //var hash = Html.ViewContext.RouteData.Values["hash"]==null?0:int.Parse(Html.ViewContext.RouteData.Values["hash"].ToString());
+    var hash = Request.Params["hash"] == null ? 0 : int.Parse(Request.Params["hash"].ToString());
 }
 <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
