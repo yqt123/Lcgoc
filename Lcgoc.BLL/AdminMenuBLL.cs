@@ -10,9 +10,9 @@ namespace Lcgoc.BLL
     public class AdminMenuBLL
     {
         AdminMenuDAL dal = new AdminMenuDAL();
-        public IEnumerable<admin_menu> GetAdminMenu(string code, string userId)
+        public IEnumerable<admin_menu> GetAdminMenu(int pageSize, int pageIndex, string code, string name, string userId, ref int total)
         {
-            return dal.GetAdminMenu(code, userId);
+            return dal.GetAdminMenu(pageSize, pageIndex, code, name, userId, ref total);
         }
 
         public IEnumerable<admin_menu_detail> GetAdminMenuDetail(string code, string sequence, string userId)

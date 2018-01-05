@@ -72,10 +72,10 @@ var TableInit = function () {
     //得到查询的参数
     oTableInit.queryParams = function (params) {
         var temp = {   //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
-            limit: params.limit,   //页面大小
-            offset: params.offset,  //页码
-            code: $("#txt_search_departmentname").val(),
-            icon: $("#txt_search_statu").val()
+            pageSize: params.limit,   //页面大小
+            pageIndex: params.offset,  //页码
+            code: $("#txt_search_code").val(),
+            name: $("#txt_search_name").val()
         };
         return temp;
     };

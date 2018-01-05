@@ -25,14 +25,17 @@ namespace Lcgoc.Web.Areas.Admin.Controllers
         /// <summary>
         /// 获取菜单数据
         /// </summary>
-        /// <param name="code"></param>
+        /// <param name="pageSize">页面大小</param>
+        /// <param name="pageIndex">页码</param>
+        /// <param name="code">菜单编码</param>
         /// <returns></returns>
         [HttpGet]
-        public JsonResult GetMenus(string code)
+        public JsonResult GetMenus(int pageSize, int pageIndex, string code, string name)
         {
-            var menus = new AdminMenuBLL().GetAdminMenu("", user.userId);
-            return Json(new { total = 20, rows = menus }, JsonRequestBehavior.AllowGet);
-            //return new JsonResult() { Data = menus, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            var user = WebConfig.GetUser();
+            var total = 0;
+            var menus = new AdminMenuBLL().GetAdminMenu(pageSize, pageIndex, code, name, user.userId, ref total);
+            return new JsonResult() { Data = new { total = total, rows = menus }, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
 
         /// <summary>
