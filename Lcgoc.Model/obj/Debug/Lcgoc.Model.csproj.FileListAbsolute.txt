@@ -7,3 +7,4 @@ E:\Lcgoc\Lcgoc.Model\bin\Debug\Lcgoc.Model.dll
 E:\Lcgoc\Lcgoc.Model\bin\Debug\Lcgoc.Model.pdb
 E:\Lcgoc\Lcgoc.Model\obj\Debug\Lcgoc.Model.dll
 E:\Lcgoc\Lcgoc.Model\obj\Debug\Lcgoc.Model.pdb
+E:\Lcgoc\Lcgoc.Model\obj\Debug\Lcgoc.Model.csprojResolveAssemblyReference.cache

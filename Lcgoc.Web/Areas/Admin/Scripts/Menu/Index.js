@@ -9,8 +9,9 @@ $(function () {
     var oButtonInit = new ButtonInit();
     oButtonInit.Init();
 
+    var oToastrInit = new ToastrInit();
+    oToastrInit.Init();
 });
-
 
 var TableInit = function () {
     var oTableInit = new Object();
@@ -82,18 +83,21 @@ var TableInit = function () {
     return oTableInit;
 };
 
-
 var ButtonInit = function () {
     var oInit = new Object();
     var postdata = {};
+    var headers = {};
 
     oInit.Init = function () {
+        //防伪标记放入headers
+        //也可以将防伪标记放入data
+        headers["__RequestVerificationToken"] = $('input[name=__RequestVerificationToken]').val();
+
         $("#btn_add").click(function () {
             $("#myModalLabel").text("新增");
             $("#myModal").find(".form-control").val("");
             $('#myModal').modal()
-
-            postdata.DEPARTMENT_ID = "";
+            postdata.code = "";
         });
 
         $("#btn_edit").click(function () {
@@ -109,12 +113,13 @@ var ButtonInit = function () {
                 return;
             }
             $("#myModalLabel").text("编辑");
-            $("#txt_departmentname").val(arrselections[0].DEPARTMENT_NAME);
-            $("#txt_parentdepartment").val(arrselections[0].PARENT_ID);
-            $("#txt_departmentlevel").val(arrselections[0].DEPARTMENT_LEVEL);
-            $("#txt_statu").val(arrselections[0].STATUS);
-
-            postdata.DEPARTMENT_ID = arrselections[0].DEPARTMENT_ID;
+            $("#code").val(arrselections[0].code);
+            $("#icon").val(arrselections[0].icon);
+            $("#name").val(arrselections[0].name);
+            $("#allowused").val(arrselections[0].allowused);
+            $("#level").val(arrselections[0].level);
+            $("#pullRightContainer").val(arrselections[0].pullRightContainer);
+            postdata.code = arrselections[0].code;
             $('#myModal').modal();
         });
 
@@ -131,8 +136,9 @@ var ButtonInit = function () {
                 }
                 $.ajax({
                     type: "post",
-                    url: "/Home/Delete",
-                    data: { "": JSON.stringify(arrselections) },
+                    url: "/Admin/Menu/Delete",
+                    headers: headers,
+                    data: JSON.stringify(arrselections),
                     success: function (data, status) {
                         if (status == "success") {
                             toastr.success('提交数据成功');
@@ -145,20 +151,22 @@ var ButtonInit = function () {
                     complete: function () {
 
                     }
-
                 });
             });
         });
 
         $("#btn_submit").click(function () {
-            postdata.DEPARTMENT_NAME = $("#txt_departmentname").val();
-            postdata.PARENT_ID = $("#txt_parentdepartment").val();
-            postdata.DEPARTMENT_LEVEL = $("#txt_departmentlevel").val();
-            postdata.STATUS = $("#txt_statu").val();
+            postdata.icon = $("#icon").val();
+            postdata.name = $("#name").val();
+            postdata.allowused = $("#allowused").val();
+            postdata.level = $("#level").val();
+            postdata.pullRightContainer = $("#pullRightContainer").val();
+
             $.ajax({
                 type: "post",
-                url: "/Home/GetEdit",
-                data: { "": JSON.stringify(postdata) },
+                url: "/Admin/Menu/GetEdit",
+                headers: headers,
+                data: JSON.stringify(postdata),
                 success: function (data, status) {
                     if (status == "success") {
                         toastr.success('提交数据成功');
@@ -171,13 +179,49 @@ var ButtonInit = function () {
                 complete: function () {
 
                 }
-
             });
         });
 
         $("#btn_query").click(function () {
             $("#tb_departments").bootstrapTable('refresh');
         });
+    };
+
+    return oInit;
+};
+
+var ToastrInit = function () {
+
+    var oInit = new Object();
+    oInit.Init=function(){
+
+        //参数设置，若用默认值可以省略以下面代
+
+        toastr.options = {
+
+            "closeButton": false, //是否显示关闭按钮
+
+            "debug": false, //是否使用debug模式
+
+            "positionClass": "toast-center-center",//弹出窗的位置
+
+            "showDuration": "300",//显示的动画时间
+
+            "hideDuration": "1000",//消失的动画时间
+
+            "timeOut": "3000", //展现时间
+
+            "extendedTimeOut": "1000",//加长展示时间
+
+            "showEasing": "swing",//显示时的动画缓冲方式
+
+            "hideEasing": "linear",//消失时的动画缓冲方式
+
+            "showMethod": "fadeIn",//显示时的动画方式
+
+            "hideMethod": "fadeOut" //消失时的动画方式
+
+        };
     };
 
     return oInit;

@@ -42,12 +42,11 @@ namespace Lcgoc.Web.Areas.Admin.Controllers
         /// 创建菜单
         /// </summary>
         /// <param name="model"></param>
-        /// <param name="rightMessage">权限控制时返回的提示</param>
         /// <returns></returns>
         [HttpPost]
         //防止跨站攻击
         [ValidateAntiForgeryToken]
-        public JsonResult Create(admin_menu model, string rightMessage)
+        public JsonResult Create(admin_menu model)
         {
             BaseResponse<string> res = new BaseResponse<string>();
             if (ModelState.IsValid && new AdminMenuBLL().CreateMenu(model))
@@ -59,21 +58,24 @@ namespace Lcgoc.Web.Areas.Admin.Controllers
                 res.Code = ResponseCodeEnum.Fail;
                 res.Error = "保存失败！";
             }
+            ModelState.AddModelError("", "保存失败！");
             return new JsonResult() { Data = res, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
 
         [HttpPost]
         //防止跨站攻击
         [ValidateAntiForgeryToken]
-        public JsonResult Delete(admin_menu model, string rightMessage)
+        public JsonResult Delete(admin_menu model)
         {
-            if (ModelState.IsValid)
-            {
-
-            }
-            ModelState.AddModelError("", "保存失败！");
             return new JsonResult() { Data = model, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
 
+        [HttpPost]
+        //新增或修改
+        [ValidateAntiForgeryToken]
+        public JsonResult GetEdit(admin_menu model)
+        {
+            return new JsonResult() { Data = model, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+        }
     }
 }
