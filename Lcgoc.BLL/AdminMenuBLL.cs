@@ -25,9 +25,19 @@ namespace Lcgoc.BLL
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public bool CreateMenu(admin_menu model)
+        public bool CreateEditMenu(admin_menu model)
         {
-            return dal.CreateMenu(model);
+            return dal.CreateEditMenu(model);
+        }
+
+        /// <summary>
+        /// 删除菜单
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public bool DeleteMenu(admin_menu model)
+        {
+            return dal.DeleteMenu(model);
         }
 
         /// <summary>

@@ -15,7 +15,7 @@ namespace Lcgoc.DAL
         public override AbsResponse Execute()
         {
             var request = this.requestModel;
-            return new BaseResponse<dynamic> { State = true, Result = request };
+            return new BaseResponse { Status = true, Result = request };
         }
     }
 }

@@ -14,7 +14,7 @@ namespace Lcgoc.Model
         /// <summary>
         /// 返回状态
         /// </summary>
-        public bool State { get; set; }
+        public bool Status { get; set; }
 
         /// <summary>
         /// 代码
@@ -24,7 +24,7 @@ namespace Lcgoc.Model
         /// <summary>
         /// 错误信息
         /// </summary>
-        public string Error { get; set; }
+        public string Message { get; set; }
 
         /// <summary>
         /// 序列号

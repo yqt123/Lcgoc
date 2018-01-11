@@ -25,7 +25,7 @@ top:Begin
 		from admin_menu a
 		where (ifnull(incode,'')='' OR a.`code`=incode)
 		and (ifnull(inname,'')='' OR a.`name`=inname)
-		and a.allowUsed=1
+		-- and a.allowUsed=1
 		ORDER BY a.`level` ASC
 		LIMIT dstartRow,inpageSize;
 	ELSE

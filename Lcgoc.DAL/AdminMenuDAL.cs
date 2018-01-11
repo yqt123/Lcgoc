@@ -21,7 +21,7 @@ namespace Lcgoc.DAL
         {
             using (IDbConnection connection = new MyConnectionHelper().connectionGetAndOpen())
             {
-                var myparams = new DynamicParameters(new { inpageSize = pageSize, inpageIndex = pageIndex, incode = code, inname = name, inuserId = userId});
+                var myparams = new DynamicParameters(new { inpageSize = pageSize, inpageIndex = pageIndex, incode = code, inname = name, inuserId = userId });
                 myparams.Add("outtotal", total, DbType.Int16, ParameterDirection.Output);
                 var res = connection.Query<admin_menu>("sp_GetAdminMenu", myparams, commandType: CommandType.StoredProcedure);
                 return res;
@@ -64,9 +64,29 @@ namespace Lcgoc.DAL
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public bool CreateMenu(admin_menu model)
+        public bool CreateEditMenu(admin_menu model)
         {
-            return true;
+            using (IDbConnection connection = new MyConnectionHelper().connectionGetAndOpen())
+            {
+                var myparams = new DynamicParameters(new { incode = model.code, inicon = model.icon, inname = model.name, inallowused = model.allowused, inlevel = model.level, inpullRightContainer = model.pullRightContainer });
+                var res = connection.Execute("sp_CreateEditMenu", myparams, commandType: CommandType.StoredProcedure);
+                return res > 0;
+            }
+        }
+
+        /// <summary>
+        /// 删除菜单
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public bool DeleteMenu(admin_menu model)
+        {
+            using (IDbConnection connection = new MyConnectionHelper().connectionGetAndOpen())
+            {
+                var myparams = new DynamicParameters(new { code = model.code });
+                var res = connection.Execute("DELETE FROM admin_menu where `code`=@code;", myparams);
+                return res > 0;
+            }
         }
 
         /// <summary>

@@ -6183,6 +6183,7 @@
     <Content Include="Areas\Admin\Content\toastr\Ewin.js" />
     <Content Include="Areas\Admin\Content\toastr\toastr.css" />
     <Content Include="Areas\Admin\Content\toastr\toastr.min.js" />
+    <Content Include="Areas\Admin\Content\toastr\toastr.init.js" />
     <Content Include="Areas\Admin\Img\devoops_getdata.gif" />
     <Content Include="Areas\Admin\Scripts\home\Center.js" />
     <Content Include="Areas\Admin\Scripts\Menu\Index.js" />

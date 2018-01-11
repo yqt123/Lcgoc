@@ -8,9 +8,6 @@ $(function () {
     //2.初始化Button的点击事件
     var oButtonInit = new ButtonInit();
     oButtonInit.Init();
-
-    var oToastrInit = new ToastrInit();
-    oToastrInit.Init();
 });
 
 var TableInit = function () {
@@ -28,7 +25,7 @@ var TableInit = function () {
             sortOrder: "asc",                   //排序方式
             queryParams: oTableInit.queryParams,//传递参数（*）
             sidePagination: "server",           //分页方式：client客户端分页，server服务端分页（*）
-            pageNumber:1,                       //初始化加载第一页，默认第一页
+            pageNumber: 1,                       //初始化加载第一页，默认第一页
             pageSize: 10,                       //每页的记录行数（*）
             pageList: [10, 25, 50, 100],        //可供选择的每页的行数（*）
             search: true,                       //是否显示表格搜索，此搜索是客户端搜索，不会进服务端，所以，个人感觉意义不大
@@ -39,7 +36,7 @@ var TableInit = function () {
             clickToSelect: true,                //是否启用点击选中行
             height: 500,                        //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
             uniqueId: "code",                   //每一行的唯一标识，一般为主键列
-            showToggle:true,                    //是否显示详细视图和列表视图的切换按钮
+            showToggle: true,                    //是否显示详细视图和列表视图的切换按钮
             cardView: false,                    //是否显示详细视图
             detailView: false,                  //是否显示父子表
             columns: [{
@@ -86,13 +83,8 @@ var TableInit = function () {
 var ButtonInit = function () {
     var oInit = new Object();
     var postdata = {};
-    var headers = {};
 
     oInit.Init = function () {
-        //防伪标记放入headers
-        //也可以将防伪标记放入data
-        headers["__RequestVerificationToken"] = $('input[name=__RequestVerificationToken]').val();
-
         $("#btn_add").click(function () {
             $("#myModalLabel").text("新增");
             $("#myModal").find(".form-control").val("");
@@ -137,7 +129,6 @@ var ButtonInit = function () {
                 $.ajax({
                     type: "post",
                     url: "/Admin/Menu/Delete",
-                    headers: headers,
                     data: JSON.stringify(arrselections),
                     success: function (data, status) {
                         if (status == "success") {
@@ -156,6 +147,7 @@ var ButtonInit = function () {
         });
 
         $("#btn_submit").click(function () {
+            postdata.code = $("#code").val();
             postdata.icon = $("#icon").val();
             postdata.name = $("#name").val();
             postdata.allowused = $("#allowused").val();
@@ -164,11 +156,11 @@ var ButtonInit = function () {
 
             $.ajax({
                 type: "post",
-                url: "/Admin/Menu/GetEdit",
-                headers: headers,
-                data: JSON.stringify(postdata),
+                //dataType: "json",
+                url: "/Admin/Menu/CreateEdit",
+                data: postdata,//JSON.stringify(postdata),
                 success: function (data, status) {
-                    if (status == "success") {
+                    if (data.Status) {
                         toastr.success('提交数据成功');
                         $("#tb_departments").bootstrapTable('refresh');
                     }
@@ -185,43 +177,6 @@ var ButtonInit = function () {
         $("#btn_query").click(function () {
             $("#tb_departments").bootstrapTable('refresh');
         });
-    };
-
-    return oInit;
-};
-
-var ToastrInit = function () {
-
-    var oInit = new Object();
-    oInit.Init=function(){
-
-        //参数设置，若用默认值可以省略以下面代
-
-        toastr.options = {
-
-            "closeButton": false, //是否显示关闭按钮
-
-            "debug": false, //是否使用debug模式
-
-            "positionClass": "toast-center-center",//弹出窗的位置
-
-            "showDuration": "300",//显示的动画时间
-
-            "hideDuration": "1000",//消失的动画时间
-
-            "timeOut": "3000", //展现时间
-
-            "extendedTimeOut": "1000",//加长展示时间
-
-            "showEasing": "swing",//显示时的动画缓冲方式
-
-            "hideEasing": "linear",//消失时的动画缓冲方式
-
-            "showMethod": "fadeIn",//显示时的动画方式
-
-            "hideMethod": "fadeOut" //消失时的动画方式
-
-        };
     };
 
     return oInit;
