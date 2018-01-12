@@ -42,9 +42,11 @@ namespace Lcgoc.Web.Areas.Admin.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPost]
-        public JsonResult Delete(admin_menu model)
+        public JsonResult Delete(string ids)
         {
-            return new JsonResult() { Data = model, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            BaseResponse response = new BaseResponse();
+            response.SetStatus(new AdminMenuBLL().DeleteMenu(ids));
+            return new JsonResult() { Data = response, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
 
         /// <summary>

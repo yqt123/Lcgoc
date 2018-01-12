@@ -1,4 +1,5 @@
-﻿
+﻿/// <reference path="../../../../Scripts/jquery-1.9.1.min.js" />
+
 $(function () {
 
     //1.初始化Table
@@ -121,7 +122,17 @@ var ButtonInit = function () {
                 toastr.warning('请选择有效数据');
                 return;
             }
-
+            postdata.ids = "";
+            var n = 0;
+            $(arrselections).each(function (item) {
+                if (n == 0) {
+                    postdata.ids += "'" + item.code + "'";
+                }
+                else {
+                    postdata.ids += ",'" + item.code + "'";
+                }
+                n++;
+            });
             Ewin.confirm({ message: "确认要删除选择的数据吗？" }).on(function (e) {
                 if (!e) {
                     return;
@@ -129,7 +140,7 @@ var ButtonInit = function () {
                 $.ajax({
                     type: "post",
                     url: "/Admin/Menu/Delete",
-                    data: JSON.stringify(arrselections),
+                    data: postdata,
                     success: function (data, status) {
                         if (status == "success") {
                             toastr.success('提交数据成功');

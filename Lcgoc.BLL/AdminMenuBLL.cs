@@ -35,9 +35,9 @@ namespace Lcgoc.BLL
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public bool DeleteMenu(admin_menu model)
+        public bool DeleteMenu(string ids)
         {
-            return dal.DeleteMenu(model);
+            return dal.DeleteMenu(ids);
         }
 
         /// <summary>

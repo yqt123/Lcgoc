@@ -79,12 +79,13 @@ namespace Lcgoc.DAL
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public bool DeleteMenu(admin_menu model)
+        public bool DeleteMenu(string ids)
         {
             using (IDbConnection connection = new MyConnectionHelper().connectionGetAndOpen())
             {
-                var myparams = new DynamicParameters(new { code = model.code });
-                var res = connection.Execute("DELETE FROM admin_menu where `code`=@code;", myparams);
+                string sqlStr = "DELETE FROM admin_menu where `code`in(@code);";
+                var myparams = new DynamicParameters(new { code = ids });
+                var res = connection.Execute(sqlStr, myparams);
                 return res > 0;
             }
         }
