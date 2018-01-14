@@ -124,12 +124,12 @@ var ButtonInit = function () {
             }
             postdata.ids = "";
             var n = 0;
-            $(arrselections).each(function (item) {
+            $(arrselections).each(function (i, item) {
                 if (n == 0) {
-                    postdata.ids += "'" + item.code + "'";
+                    postdata.ids += item.code;
                 }
                 else {
-                    postdata.ids += ",'" + item.code + "'";
+                    postdata.ids += "," + item.code;
                 }
                 n++;
             });

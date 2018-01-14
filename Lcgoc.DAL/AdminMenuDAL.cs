@@ -83,9 +83,15 @@ namespace Lcgoc.DAL
         {
             using (IDbConnection connection = new MyConnectionHelper().connectionGetAndOpen())
             {
-                string sqlStr = "DELETE FROM admin_menu where `code`in(@code);";
-                var myparams = new DynamicParameters(new { code = ids });
-                var res = connection.Execute(sqlStr, myparams);
+                StringBuilder sb = new StringBuilder();
+                var myparams = new DynamicParameters();
+                var listIds = ids.Split(',');
+                for (int n = 0; n < listIds.Length; n++)
+                {
+                    sb.Append("DELETE FROM admin_menu where `code`=@code" + n + ";");
+                    myparams.Add("@code" + n, listIds[n]);
+                }
+                var res = connection.Execute(sb.ToString(), myparams);
                 return res > 0;
             }
         }
