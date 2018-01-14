@@ -24,6 +24,7 @@ namespace Lcgoc.DAL
                 var myparams = new DynamicParameters(new { inpageSize = pageSize, inpageIndex = pageIndex, incode = code, inname = name, inuserId = userId });
                 myparams.Add("outtotal", total, DbType.Int16, ParameterDirection.Output);
                 var res = connection.Query<admin_menu>("sp_GetAdminMenu", myparams, commandType: CommandType.StoredProcedure);
+                total = myparams.Get<Int16>("outtotal");
                 return res;
             }
         }

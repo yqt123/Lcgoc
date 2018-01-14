@@ -11,7 +11,7 @@ namespace Lcgoc.Model
         public string icon { get; set; }
         public string name { get; set; }
         public int allowused { get; set; }
-        public DateTime modifyDTM { get; set; }
+        public string modifyDTM { get; set; }
         public int level { get; set; }
         public string pullRightContainer { get; set; }
     }

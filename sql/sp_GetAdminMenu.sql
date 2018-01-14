@@ -21,7 +21,7 @@ top:Begin
 	SELECT count(1) INTO outtotal from admin_menu where allowused=1;
 	-- 没有用户查所有
 	IF (IFNULL(inuserId,'')='') THEN
-		SELECT a.`code`,a.`name`,a.icon,a.`level`,a.allowused,a.modifyDTM,a.pullRightContainer
+		SELECT a.`code`,a.`name`,a.icon,a.`level`,a.allowused,DATE_FORMAT(a.modifyDTM,'%Y-%m-%d %H:%i:%s') modifyDTM,a.pullRightContainer
 		from admin_menu a
 		where (ifnull(incode,'')='' OR a.`code`=incode)
 		and (ifnull(inname,'')='' OR a.`name`=inname)
@@ -29,7 +29,7 @@ top:Begin
 		ORDER BY a.`level` ASC
 		LIMIT dstartRow,inpageSize;
 	ELSE
-		SELECT DISTINCT a.`code`,a.`name`,a.icon,a.`level`,a.allowused,a.modifyDTM,a.pullRightContainer
+		SELECT DISTINCT a.`code`,a.`name`,a.icon,a.`level`,a.allowused,DATE_FORMAT(a.modifyDTM,'%Y-%m-%d %H:%i:%s') modifyDTM,a.pullRightContainer
 		from admin_menu a
 		LEFT JOIN admin_menu_detail b On a.`code`=b.`code` and b.allowused=1
 		LEFT JOIN sys_controller_action_role c on b.area=c.area and b.controller=c.controller and b.action=c.action and c.allowused=1
