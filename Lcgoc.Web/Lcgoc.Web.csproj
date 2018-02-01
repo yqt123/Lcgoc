@@ -7614,6 +7614,7 @@
     <Content Include="Areas\Admin\Views\Error\NotRight.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_LayoutSimple.cshtml" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\Menu\Detail.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <Content Include="Views\WXPay\Failed.cshtml" />
     <Content Include="Views\WXPay\Index.cshtml" />

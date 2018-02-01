@@ -21,6 +21,11 @@ namespace Lcgoc.Web.Areas.Admin.Controllers
             return View();
         }
 
+        public ActionResult Detail()
+        {
+            return View();
+        }
+
         /// <summary>
         /// 获取菜单数据
         /// </summary>
