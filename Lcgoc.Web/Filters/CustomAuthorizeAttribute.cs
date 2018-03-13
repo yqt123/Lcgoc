@@ -73,6 +73,20 @@ namespace Lcgoc.Web
 
                 string controllerName = filterContext.ActionDescriptor.ControllerDescriptor.ControllerName;
                 string actionName = filterContext.ActionDescriptor.ActionName;
+                //模块通用操作方法，判断输入的模块有误权限
+                if (controllerName == "Module")
+                {
+                    controllerName = filterContext.RequestContext.HttpContext.Request.Params["module"].ToString();
+                    if (actionName == "Action")
+                    {
+                        var actionCode = filterContext.RequestContext.HttpContext.Request.Params["actionCode"];
+                        if (!string.IsNullOrEmpty(actionCode))
+                        {
+                            actionName = actionCode;
+                        }
+                    }
+                }
+
                 this.Roles = new ControllerBLL().GetActionRoles(area, controllerName, actionName);
             }
             else

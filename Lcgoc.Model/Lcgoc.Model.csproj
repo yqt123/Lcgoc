@@ -52,6 +52,12 @@
     <Compile Include="Model\crm_weixin_controller_log.cs" />
     <Compile Include="Model\admin_menu.cs" />
     <Compile Include="Model\admin_menu_detail.cs" />
+    <Compile Include="Model\module\module_actions_columns.cs" />
+    <Compile Include="Model\module\module_actions.cs" />
+    <Compile Include="Model\module\module_queue_detail.cs" />
+    <Compile Include="Model\module\module_queue.cs" />
+    <Compile Include="Model\module\module_actions_query.cs" />
+    <Compile Include="Model\module\module.cs" />
     <Compile Include="Model\user.cs" />
     <Compile Include="Model\admin_menu_detail_right.cs" />
     <Compile Include="Model\sys_controller.cs" />

@@ -1,5 +1,5 @@
 ﻿using Lcgoc.BLL;
-using Lcgoc.Web.Areas.Admin.Models;
+using Lcgoc.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

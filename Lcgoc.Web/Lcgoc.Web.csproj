@@ -129,9 +129,11 @@
     <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="App_Start\WeixinConfig.cs" />
+    <Compile Include="Areas\Admin\Controllers\ModuleController.cs" />
     <Compile Include="Areas\Admin\Controllers\MenuController.cs" />
     <Compile Include="Areas\Admin\Controllers\ErrorController.cs" />
-    <Compile Include="Areas\Admin\Models\LoginModel.cs" />
+    <Compile Include="Models\Module.cs" />
+    <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Filters\CustomAuthorizeAttribute.cs" />
     <Compile Include="Filters\CustomAllowAnonymousAttribute.cs" />
     <Compile Include="Attributes\WeixinOAuthAuthorizeAttribute.cs" />
@@ -6211,7 +6213,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Filters\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -7615,6 +7616,7 @@
     <Content Include="Areas\Admin\Views\Shared\_LayoutSimple.cshtml" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Menu\Detail.cshtml" />
+    <Content Include="Areas\Admin\Views\Module\Index.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <Content Include="Views\WXPay\Failed.cshtml" />
     <Content Include="Views\WXPay\Index.cshtml" />

@@ -1,0 +1,74 @@
+﻿@model Lcgoc.Web.Models.ModuleModel
+@{
+    ViewBag.Title = Model.module.moduleName;
+    var action = "";
+}
+@Styles.Render("~/Areas/Admin/Content/bootstrap-table/bootstrap-table.css")
+<div class="panel-body" style="padding-bottom: 0px;">
+    <div class="panel panel-default">
+        <div class="panel-heading">查询条件</div>
+        @if (Model.query != null && Model.query.Count() > 0)
+        {
+            <div class="panel-body">
+                <form id="formSearch" class="form-horizontal">
+                    <div class="form-group" style="margin-top: 15px">
+                        @foreach (var item in Model.query)
+                        {
+                            <label class="control-label col-sm-1" for="@item.queryCode">@item.queryName</label>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" id="@item.queryCode">
+                            </div>
+                        }
+                    </div>
+                </form>
+            </div>
+        }
+    </div>
+
+    @if (Model.actions != null && Model.actions.Count() > 0)
+    {
+        <div id="toolbar" class="btn-group">
+            @foreach (var item in Model.actions)
+            {
+                <button id="@item.actionCode" type="button" class="btn btn-default">
+                    <span class="glyphicon @item.glyphicon" aria-hidden="true"></span>@item.actionName
+                </button>
+            }
+        </div>
+    }
+
+    <table id="tb_departments"></table>
+</div>
+
+@if (Model.columns != null && Model.columns.Count() > 0)
+{
+    action = Model.columns.First().actionCode;
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <h4 class="modal-title" id="myModalLabel">新增</h4>
+                </div>
+                <div class="modal-body">
+                    @foreach (var item in Model.columns)
+                    {
+
+                    }
+                    <div class="form-group has-feedback">
+                        @Html.TextBoxFor(m => m.code, new { @class = "form-control", @placeholder = "菜单编码" })
+                        <span class="glyphicon glyphicon-barcode form-control-feedback"></span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭</button>
+                    <button type="button" id="btn_submit" class="btn btn-primary" data-dismiss="modal"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@Scripts.Render("~/Areas/Admin/Content/bootstrap-table/bootstrap-table.js")
+@Scripts.Render("~/Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-zh-CN.js")
+@Scripts.Render("~/Areas/Admin/Scripts/Menu/Index.js")
