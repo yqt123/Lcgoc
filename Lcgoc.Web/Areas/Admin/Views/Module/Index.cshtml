@@ -86,16 +86,12 @@
         {
             queryStr += ""+ item.queryCode + ":$('#txt_"+ item.queryCode + "').val(),";
         }
-        queryStr += "}";
         queryStr = queryStr.Substring(0, queryStr.Length - 1);
+        queryStr += "}";
       }
     //1.初始化Table
     var oTable = new TableInit("tb_departments", "@Model.module.queryApiUrl", "@Model.module.minimumCountColumns", "@Model.module.tableHeight", @Html.Raw(columnStr), function (e) {
-        return {   //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
-            pageSize: e.limit,   //页面大小
-            pageIndex: e.offset,  //页码
-            @Html.Raw(queryStr)
-        };
+        return @Html.Raw(queryStr);
     });
 
 </script>
