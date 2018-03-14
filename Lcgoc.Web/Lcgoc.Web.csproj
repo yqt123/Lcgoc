@@ -6189,6 +6189,7 @@
     <Content Include="Areas\Admin\Img\devoops_getdata.gif" />
     <Content Include="Areas\Admin\Scripts\home\Center.js" />
     <Content Include="Areas\Admin\Scripts\Menu\Index.js" />
+    <Content Include="Areas\Admin\Scripts\Module\Index.js" />
     <Content Include="Areas\Admin\Scripts\Route\RouteHelper.js" />
     <Content Include="Areas\Admin\Scripts\sidebar-menu.js" />
     <Content Include="Content\css\jssdk\style.css" />

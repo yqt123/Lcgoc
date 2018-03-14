@@ -31,5 +31,7 @@ namespace Lcgoc.Model
         /// 时间
         /// </summary>
         public string modifyDTM { get; set; }
+
+        public int tableHeight { get; set; }
     }
 }

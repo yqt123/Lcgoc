@@ -43,5 +43,7 @@ namespace Lcgoc.Model
         /// 排序字段
         /// </summary>
         public string sorting { get; set; }
+
+        public bool dialog { get; set; }
     }
 }
