@@ -45,5 +45,7 @@ namespace Lcgoc.Model
         public string sorting { get; set; }
 
         public bool dialog { get; set; }
+        public string apiUrl { get; set; }
+        public string modlueActionType { get; set; }
     }
 }

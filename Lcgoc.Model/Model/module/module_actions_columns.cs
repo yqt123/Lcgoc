@@ -43,5 +43,6 @@ namespace Lcgoc.Model
         /// 排序
         /// </summary>
         public int level { get; set; }
+        public bool keyword { get; set; }
     }
 }

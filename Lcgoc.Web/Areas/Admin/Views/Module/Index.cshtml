@@ -1,21 +1,23 @@
 ﻿@model Lcgoc.Web.Models.ModuleModel
 @{
     ViewBag.Title = Model.module.moduleName;
+    var mainQueryAction = Model.actions.Where(n=>n.modlueActionType== "mainQuery").FirstOrDefault();
+    var mainQueryColumns = Model.columns.Where(n=>n.moduleCode== Model.module.moduleCode && n.actionCode== mainQueryAction.actionCode);
 }
 @Styles.Render("~/Areas/Admin/Content/bootstrap-table/bootstrap-table.css")
 <div class="panel-body" style="padding-bottom: 0px;">
     <div class="panel panel-default">
         <div class="panel-heading">查询条件</div>
-        @if (Model.query != null && Model.query.Count() > 0)
+        @if (mainQueryColumns != null && mainQueryColumns.Count() > 0)
         {
             <div class="panel-body">
                 <form id="formSearch" class="form-horizontal">
                     <div class="form-group" style="margin-top: 15px">
-                        @foreach (var item in Model.query)
+                        @foreach (var item in mainQueryColumns)
                         {
-                            <label class="control-label col-sm-1" for="@item.queryCode">@item.queryName</label>
+                            <label class="control-label col-sm-1" for="@item.columnCode">@item.columnName</label>
                             <div class="col-sm-3">
-                                <input type="text" class="form-control" id="@("txt_"+item.queryCode)">
+                                <input type="text" class="form-control" id="@("txt_"+item.columnCode)">
                             </div>
                         }
                     </div>
@@ -29,7 +31,7 @@
         <div id="toolbar" class="btn-group">
             @foreach (var item in Model.actions)
             {
-                <button id="@item.actionCode" type="button" class="btn btn-default">
+                <button id="@("toolbar_"+item.actionCode)" type="button" class="btn btn-default" dialog="@item.dialog.ToString()" apiUrl="@item.apiUrl" actionCode="@item.actionCode">
                     <span class="glyphicon @item.glyphicon" aria-hidden="true"></span>@item.actionName
                 </button>
             }
@@ -42,7 +44,7 @@
 {
     if (item.dialog)
     {
-        var columns = Model.columns.Where(n => n.actionCode == item.actionCode);
+        var columns = Model.columns.Where(n => n.moduleCode == Model.module.moduleCode && n.actionCode == item.actionCode);
         <div class="modal fade" id="@("dialog" + item.actionCode)" tabindex="-1" role="dialog" aria-labelledby="@("modalLabel" + item.actionCode)">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -90,8 +92,114 @@
         queryStr += "}";
       }
     //1.初始化Table
-    var oTable = new TableInit("tb_departments", "@Model.module.queryApiUrl", "@Model.module.minimumCountColumns", "@Model.module.tableHeight", @Html.Raw(columnStr), function (e) {
+    var oTable = new TableInit("tb_departments", "@Html.Raw(Model.module.queryApiUrl)", "@Model.module.minimumCountColumns", "@Model.module.tableHeight", @Html.Raw(columnStr), function (e) {
         return @Html.Raw(queryStr);
     });
+
+    var ButtonInit = function () {
+        var oInit = new Object();
+        var postdata = {};
+
+        oInit.Init = function () {
+            $("#toolbar button[dialog='Ture']").click(function () {
+                $('#dialog' + $(this).attr("actionCode")).modal();
+            });
+        
+            $("#toolbar_edit").click(function () {
+                var arrselections = $("#tb_departments").bootstrapTable('getSelections');
+                if (arrselections.length > 1) {
+                    toastr.warning('只能选择一行进行编辑');
+                    return;
+                }
+                if (arrselections.length <= 0) {
+                    toastr.warning('请选择有效数据');
+                    return;
+                }
+                $("#code").val(arrselections[0].code);
+                $("#icon").val(arrselections[0].icon);
+                $("#name").val(arrselections[0].name);
+                $("#allowused").val(arrselections[0].allowused);
+                $("#level").val(arrselections[0].level);
+                $("#pullRightContainer").val(arrselections[0].pullRightContainer);
+                postdata.code = arrselections[0].code;
+                $('#myModal').modal();
+            });
+
+            $("#btn_delete").click(function () {
+                var arrselections = $("#tb_departments").bootstrapTable('getSelections');
+                if (arrselections.length <= 0) {
+                    toastr.warning('请选择有效数据');
+                    return;
+                }
+                postdata.ids = "";
+                var n = 0;
+                $(arrselections).each(function (i, item) {
+                    if (n == 0) {
+                        postdata.ids += item.code;
+                    }
+                    else {
+                        postdata.ids += "," + item.code;
+                    }
+                    n++;
+                });
+                Ewin.confirm({ message: "确认要删除选择的数据吗？" }).on(function (e) {
+                    if (!e) {
+                        return;
+                    }
+                    $.ajax({
+                        type: "post",
+                        url: "/Admin/Menu/Delete",
+                        data: postdata,
+                        success: function (data, status) {
+                            if (status == "success") {
+                                toastr.success('提交数据成功');
+                                $("#tb_departments").bootstrapTable('refresh');
+                            }
+                        },
+                        error: function () {
+                            toastr.error('Error');
+                        },
+                        complete: function () {
+
+                        }
+                    });
+                });
+            });
+
+            $("#btn_submit").click(function () {
+                postdata.code = $("#code").val();
+                postdata.icon = $("#icon").val();
+                postdata.name = $("#name").val();
+                postdata.allowused = $("#allowused").val();
+                postdata.level = $("#level").val();
+                postdata.pullRightContainer = $("#pullRightContainer").val();
+
+                $.ajax({
+                    type: "post",
+                    //dataType: "json",
+                    url: "/Admin/Menu/CreateEdit",
+                    data: postdata,//JSON.stringify(postdata),
+                    success: function (data, status) {
+                        if (data.Status) {
+                            toastr.success('提交数据成功');
+                            $("#tb_departments").bootstrapTable('refresh');
+                        }
+                    },
+                    error: function () {
+                        toastr.error('Error');
+                    },
+                    complete: function () {
+
+                    }
+                });
+            });
+
+            $("#btn_query").click(function () {
+                $("#tb_departments").bootstrapTable('refresh');
+            });
+        };
+
+        return oInit;
+    };
 
 </script>
