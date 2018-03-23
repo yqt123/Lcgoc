@@ -52,7 +52,7 @@ namespace Lcgoc.DAL
         {
             using (IDbConnection connection = new MyConnectionHelper().connectionGetAndOpen())
             {
-                var myparams = new DynamicParameters(new { moduleCode = moduleCode, actionCode = actionCode, queryCode= queryCode });
+                var myparams = new DynamicParameters(new { moduleCode = moduleCode, actionCode = actionCode, queryCode = queryCode });
                 var sqlstr = "SELECT * FROM module_actions_query";
                 if (!string.IsNullOrEmpty(moduleCode))
                 {
@@ -98,7 +98,7 @@ namespace Lcgoc.DAL
         /// 创建数据队列
         /// </summary>
         /// <returns></returns>
-        public void CreateQueue(string moduleCode, string actionCode, string userId, Dictionary<string, string> dic, ref string billNo)
+        public void CreateQueue(int pageSize, int pageIndex, string moduleCode, string actionCode, string userId, Dictionary<string, string> dic, ref string billNo)
         {
             billNo = cdal.GetMaxBillNo("Q");
             using (IDbConnection connection = new MyConnectionHelper().connectionGetAndOpen())
@@ -133,12 +133,12 @@ namespace Lcgoc.DAL
         /// <param name="userId"></param>
         /// <param name="queueCode"></param>
         /// <returns></returns>
-        public IEnumerable<module_actions_columns> ModuleQuery(string userId, string queueCode)
+        public List<dynamic> ModuleQuery(string userId, string queueCode)
         {
             using (IDbConnection connection = new MyConnectionHelper().connectionGetAndOpen())
             {
                 var myparams = new DynamicParameters(new { inuserId = userId, inqueueCode = queueCode });
-                var res = connection.Query<module_actions_columns>("sp_ModuleQuery", myparams, commandType: CommandType.StoredProcedure);
+                var res = connection.Query("sp_ModuleQuery", myparams, commandType: CommandType.StoredProcedure).ToList();
                 return res;
             }
         }

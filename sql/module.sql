@@ -48,9 +48,7 @@ CREATE TABLE IF NOT EXISTS `module_actions_columns` (
   `actionCode` varchar(20) COMMENT '执行编码',
   `columnCode` varchar(20) COMMENT '列编码',
   `columnName` varchar(50) CHARACTER SET utf8 COMMENT'列名称',
-	`inAdd` TINYINT(1) COMMENT '在新增中显示',
-	`inEdit` TINYINT(1) COMMENT '在编辑中显示',
-	`allowused` TINYINT(1) COMMENT '是否可用',
+  `allowused` TINYINT(1) COMMENT '是否可用',
   `modifyDTM` Datetime COMMENT '时间',
   `level` INT COMMENT '排序',
   PRIMARY KEY(`moduleCode`,`actionCode`,`columnCode`)

@@ -1,0 +1,34 @@
+2018-03-21 16:04:28,518 WARN  : app started.
+2018-03-21 16:04:31,691 ERROR : 
+.客户信息：
+	Ip:::1
+	浏览器:Chrome
+	浏览器版本:59
+	操作系统:WinNT
+.错误信息：
+	页面：http://localhost:65255/favicon.ico
+	错误信息：The controller for path '/favicon.ico' was not found or does not implement IController.
+	错误源：System.Web.Mvc
+	异常方法：System.Web.Mvc.IController GetControllerInstance(System.Web.Routing.RequestContext, System.Type)
+	堆栈信息：   在 System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   在 System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)
+   在 System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   在 System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   在 System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)
+   在 System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--------------------------------------------------------------------------------------------------
+2018-03-21 16:09:29,750 ERROR : 
+.客户信息：
+	Ip:::1
+	浏览器:Safari
+	浏览器版本:9
+	操作系统:Unknown
+.错误信息：
+	页面：http://localhost:65255/Admin/Module?hash=0&module=MENU-D0001
+	错误信息：指定的转换无效。
+	错误源：Lcgoc.Model
+	异常方法：Lcgoc.Model.module_actions_columns Deserialize8c673375-d314-42e9-8b96-529ce7ce574d(System.Data.IDataReader)
+	堆栈信息：   在 Deserialize8c673375-d314-42e9-8b96-529ce7ce574d(IDataReader )
+--------------------------------------------------------------------------------------------------

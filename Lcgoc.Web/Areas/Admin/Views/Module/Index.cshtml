@@ -1,23 +1,24 @@
 ﻿@model Lcgoc.Web.Models.ModuleModel
 @{
     ViewBag.Title = Model.module.moduleName;
-    var mainQueryAction = Model.actions.Where(n=>n.modlueActionType== "mainQuery").FirstOrDefault();
-    var mainQueryColumns = Model.columns.Where(n=>n.moduleCode== Model.module.moduleCode && n.actionCode== mainQueryAction.actionCode);
+    var mainQueryAction = Model.actions.Where(n => n.modlueActionType == "mainQuery").FirstOrDefault();
 }
-@Styles.Render("~/Areas/Admin/Content/bootstrap-table/bootstrap-table.css")
+@section Styles{
+    @Styles.Render("~/Areas/Admin/Content/bootstrap-table/bootstrap-table.css")
+}
 <div class="panel-body" style="padding-bottom: 0px;">
     <div class="panel panel-default">
         <div class="panel-heading">查询条件</div>
-        @if (mainQueryColumns != null && mainQueryColumns.Count() > 0)
+        @if (Model.query != null && Model.query.Count() > 0)
         {
             <div class="panel-body">
                 <form id="formSearch" class="form-horizontal">
                     <div class="form-group" style="margin-top: 15px">
-                        @foreach (var item in mainQueryColumns)
+                        @foreach (var item in Model.query)
                         {
-                            <label class="control-label col-sm-1" for="@item.columnCode">@item.columnName</label>
+                            <label class="control-label col-sm-1" for="@item.queryCode">@item.queryName</label>
                             <div class="col-sm-3">
-                                <input type="text" class="form-control" id="@("txt_"+item.columnCode)">
+                                <input type="text" class="form-control" id="@("txt_"+item.queryCode)">
                             </div>
                         }
                     </div>
@@ -31,7 +32,7 @@
         <div id="toolbar" class="btn-group">
             @foreach (var item in Model.actions)
             {
-                <button id="@("toolbar_"+item.actionCode)" type="button" class="btn btn-default" dialog="@item.dialog.ToString()" apiUrl="@item.apiUrl" actionCode="@item.actionCode">
+                <button id="@("toolbar_"+item.actionCode)" type="button" class="btn btn-default" dialog="@item.dialog.ToString()" actionCode="@item.actionCode">
                     <span class="glyphicon @item.glyphicon" aria-hidden="true"></span>@item.actionName
                 </button>
             }
@@ -63,143 +64,112 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭</button>
-                        <button type="button" id="btn_submit" class="btn btn-primary" data-dismiss="modal"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>@item.actionName</button>
+                        <button type="button" id="@("dialog_submit_" + item.actionCode)" class="btn btn-primary" data-dismiss="modal" apiUrl="@item.apiUrl" actionCode="@item.actionCode"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>@item.actionName</button>
                     </div>
                 </div>
             </div>
         </div>
     }
 }
-@Scripts.Render("~/Areas/Admin/Content/bootstrap-table/bootstrap-table.js")
-@Scripts.Render("~/Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-zh-CN.js")
-@Scripts.Render("~/Areas/Admin/Scripts/Module/Index.js")
-<script>
-    @{
-        var columnStr = "[{checkbox: true},";
-        foreach (var item in Model.columns)
-        {
-            columnStr += "{field:'"+ item.columnCode + "',title: '"+ item.columnName + "'},";
-        }
-        columnStr = columnStr.Substring(0, columnStr.Length - 1);
-        columnStr += "]";
+@section Scripts{
+    @Scripts.Render("~/Areas/Admin/Content/bootstrap-table/bootstrap-table.js")
+    @Scripts.Render("~/Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-zh-CN.js")
+    @Scripts.Render("~/Areas/Admin/Scripts/Module/Index.js")
+    <script>
+        @{
+            //表格初始化
+            var initTable = string.Format("new TableInit('tb_departments', '{0}', '{1}', '{2}',", Model.module.queryApiUrl, Model.module.minimumCountColumns,Model.module.tableHeight);
+            initTable += "[{checkbox: true},";
+            foreach (var item in Model.columns.Where(n=>n.moduleCode== mainQueryAction.moduleCode && n.actionCode== mainQueryAction.actionCode))
+            {
+                initTable += "{field:'"+ item.columnCode + "',title: '"+ item.columnName + "'},";
+            }
+            initTable = initTable.Substring(0, initTable.Length - 1);
+            initTable += "]";
+            initTable += ", function (e) {";
+            initTable += "return {pageSize: e.limit,pageIndex: e.offset,module:'"+ mainQueryAction.moduleCode + "',actionCode:'"+ mainQueryAction.actionCode + "',";
+            foreach (var item in Model.query)
+            {
+                initTable += ""+ item.queryCode + ":$('#txt_"+ item.queryCode + "').val(),";
+            }
+            initTable = initTable.Substring(0, initTable.Length - 1);
+            initTable += "}});";
+            //end
 
-        var queryStr = "{pageSize: e.limit,pageIndex: e.offset,";
-        foreach (var item in Model.query)
-        {
-            queryStr += ""+ item.queryCode + ":$('#txt_"+ item.queryCode + "').val(),";
-        }
-        queryStr = queryStr.Substring(0, queryStr.Length - 1);
-        queryStr += "}";
-      }
-    //1.初始化Table
-    var oTable = new TableInit("tb_departments", "@Html.Raw(Model.module.queryApiUrl)", "@Model.module.minimumCountColumns", "@Model.module.tableHeight", @Html.Raw(columnStr), function (e) {
-        return @Html.Raw(queryStr);
-    });
-
-    var ButtonInit = function () {
-        var oInit = new Object();
-        var postdata = {};
-
-        oInit.Init = function () {
-            $("#toolbar button[dialog='Ture']").click(function () {
-                $('#dialog' + $(this).attr("actionCode")).modal();
-            });
-        
-            $("#toolbar_edit").click(function () {
-                var arrselections = $("#tb_departments").bootstrapTable('getSelections');
-                if (arrselections.length > 1) {
-                    toastr.warning('只能选择一行进行编辑');
-                    return;
-                }
-                if (arrselections.length <= 0) {
-                    toastr.warning('请选择有效数据');
-                    return;
-                }
-                $("#code").val(arrselections[0].code);
-                $("#icon").val(arrselections[0].icon);
-                $("#name").val(arrselections[0].name);
-                $("#allowused").val(arrselections[0].allowused);
-                $("#level").val(arrselections[0].level);
-                $("#pullRightContainer").val(arrselections[0].pullRightContainer);
-                postdata.code = arrselections[0].code;
-                $('#myModal').modal();
-            });
-
-            $("#btn_delete").click(function () {
-                var arrselections = $("#tb_departments").bootstrapTable('getSelections');
-                if (arrselections.length <= 0) {
-                    toastr.warning('请选择有效数据');
-                    return;
-                }
-                postdata.ids = "";
-                var n = 0;
-                $(arrselections).each(function (i, item) {
-                    if (n == 0) {
-                        postdata.ids += item.code;
-                    }
-                    else {
-                        postdata.ids += "," + item.code;
-                    }
-                    n++;
-                });
-                Ewin.confirm({ message: "确认要删除选择的数据吗？" }).on(function (e) {
-                    if (!e) {
-                        return;
-                    }
-                    $.ajax({
-                        type: "post",
-                        url: "/Admin/Menu/Delete",
-                        data: postdata,
-                        success: function (data, status) {
-                            if (status == "success") {
-                                toastr.success('提交数据成功');
-                                $("#tb_departments").bootstrapTable('refresh');
+            //按钮弹窗初始化
+            List<string> buttonInits = new List<string>();
+            var ajaxPost = "$.ajax({{type: 'post',url: '{0}',data: postdata,success: function (data, status) {{if (data.Status) {{toastr.success('提交数据成功');$('#tb_departments').bootstrapTable('refresh');}}}},error: function () {{toastr.error('Error');}}}});";
+            foreach (var item in Model.actions)
+            {
+                var toolbarButton = "$('#toolbar_{0}').click(function () {{";
+                var submit = "$('#dialog_submit_{0}').click(function () {{";
+                toolbarButton = string.Format(toolbarButton, item.actionCode);
+                submit = string.Format(submit, item.actionCode);
+                switch (item.modlueActionType) {
+                    case "add":
+                        foreach (var itemc in Model.columns.Where(n => n.moduleCode == item.moduleCode && n.actionCode == item.actionCode))
+                        {
+                            submit += "postdata." + itemc.columnCode + " = $('#" + item.actionCode + itemc.columnCode + "').val();";
+                            toolbarButton += "postdata." + itemc.columnCode + " = '';";
+                        }
+                        submit += string.Format(ajaxPost, item.apiUrl) + "});";
+                        toolbarButton += "$('#dialog" + item.actionCode + "').find('.form-control').val('');";
+                        toolbarButton += "$('#dialog" + item.actionCode + "').modal();});";
+                        break;
+                    case "delete":
+                        toolbarButton += "var arrselections = $('#tb_departments').bootstrapTable('getSelections');if (arrselections.length <= 0) {toastr.warning('请选择有效数据');return;}postdata.lists = [];";
+                        toolbarButton += "$(arrselections).each(function (i, item) {";
+                        var objJson = "{";
+                        foreach (var itemc in Model.columns.Where(n => n.moduleCode == item.moduleCode && n.actionCode == item.actionCode))
+                        {
+                            if (itemc.keyword)
+                            {
+                                toolbarButton += "" + itemc.columnCode + " : arrselections[0]." + itemc.columnCode + ",";
                             }
-                        },
-                        error: function () {
-                            toastr.error('Error');
-                        },
-                        complete: function () {
-
                         }
-                    });
-                });
-            });
+                        objJson += "}";
+                        toolbarButton += string.Format("postdata.lists.pop({0})", objJson);
+                        toolbarButton += "});"+ string.Format("Ewin.confirm({{ message: '确认要删除选择的数据吗？' }}).on(function (e) {{if (!e) {{return;}}{0}}});",string.Format(ajaxPost, item.apiUrl));
+                        toolbarButton += "});";
+                        break;
+                    case "edit": {
+                            toolbarButton += "var arrselections = $('#tb_departments').bootstrapTable('getSelections');if (arrselections.length > 1) { toastr.warning('只能选择一行进行编辑'); return; }if (arrselections.length <= 0) { toastr.warning('请选择有效数据'); return; }";
+                            foreach (var itemc in Model.columns.Where(n=>n.moduleCode==item.moduleCode && n.actionCode==item.actionCode))
+                            {
+                                if (itemc.keyword)
+                                {
+                                    toolbarButton += "postdata." + itemc.columnCode + " = arrselections[0]." + itemc.columnCode + ";";
+                                }
+                                else
+                                {
+                                    toolbarButton += "$('#"+ item.actionCode + itemc.columnCode + "').val(arrselections[0]."+ itemc.columnCode + ");";
+                                    submit += "postdata." + itemc.columnCode + " = $('#" + item.actionCode + itemc.columnCode + "').val();";
+                                }
+                            }
+                            toolbarButton += "$('#dialog"+ item.actionCode + "').modal();});";
+                            submit += string.Format(ajaxPost, item.apiUrl) + "});";
+                        } break;
+                    case "mainQuery":
+                        toolbarButton += "$('#tb_departments').bootstrapTable('refresh');});";
+                        break;
+                    default:
+                        toolbarButton += "});";
+                        break;
+                }
+                buttonInits.Add(toolbarButton);
+                if (item.dialog) {
+                    buttonInits.Add(submit);
+                }
+            }
+}
 
-            $("#btn_submit").click(function () {
-                postdata.code = $("#code").val();
-                postdata.icon = $("#icon").val();
-                postdata.name = $("#name").val();
-                postdata.allowused = $("#allowused").val();
-                postdata.level = $("#level").val();
-                postdata.pullRightContainer = $("#pullRightContainer").val();
+        //1.初始化Table
+        @Html.Raw(initTable);
 
-                $.ajax({
-                    type: "post",
-                    //dataType: "json",
-                    url: "/Admin/Menu/CreateEdit",
-                    data: postdata,//JSON.stringify(postdata),
-                    success: function (data, status) {
-                        if (data.Status) {
-                            toastr.success('提交数据成功');
-                            $("#tb_departments").bootstrapTable('refresh');
-                        }
-                    },
-                    error: function () {
-                        toastr.error('Error');
-                    },
-                    complete: function () {
+        (function () {
+            var postdata = {};
+            @Html.Raw(string.Join("", buttonInits));
+        })();
 
-                    }
-                });
-            });
-
-            $("#btn_query").click(function () {
-                $("#tb_departments").bootstrapTable('refresh');
-            });
-        };
-
-        return oInit;
-    };
-
-</script>
+    </script>
+}

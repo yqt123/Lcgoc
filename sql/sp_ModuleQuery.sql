@@ -26,15 +26,15 @@ top:Begin
 	SELECT group_concat(columnCode) INTO @columnCode
 	FROM module_actions_columns where moduleCode=dmoduleCode and actionCode=dactionCode and actionCode=dactionCode
 	GROUP BY moduleCode;
-	
+
 	SET @sqlstr=CONCAT(@sqlstr,@columnCode,' from ',dexeTableName);
 	if(dsorting>'')THEN
 		SET @sqlstr=CONCAT(@sqlstr,' ORDER BY ',dsorting);
 	END IF;
-
-	PREPARE stmt FROM @sqlstr; 
-	EXECUTE stmt; 
-	
+	if(@sqlstr>'') THEN
+		PREPARE stmt FROM @sqlstr; 
+		EXECUTE stmt; 
+	END IF;
 END;
 //
 delimiter ;

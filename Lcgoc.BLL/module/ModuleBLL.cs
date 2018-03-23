@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Lcgoc.Model;
 using Lcgoc.DAL;
+using System.Data;
 
 namespace Lcgoc.BLL
 {
@@ -30,10 +31,10 @@ namespace Lcgoc.BLL
             return dal.GetModuleActionsColumns(moduleCode, actionCode, columnCode);
         }
 
-        public IEnumerable<module_actions_columns> Query(string moduleCode, string actionCode, string userId, Dictionary<string, string> dic)
+        public List<dynamic> Query(int pageSize, int pageIndex, string moduleCode, string actionCode, string userId, Dictionary<string, string> dic)
         {
             var billNo = "";
-            dal.CreateQueue(moduleCode, actionCode, userId, dic, ref billNo);
+            dal.CreateQueue(pageSize, pageIndex, moduleCode, actionCode, userId, dic, ref billNo);
             return dal.ModuleQuery(userId, billNo);
         }
 

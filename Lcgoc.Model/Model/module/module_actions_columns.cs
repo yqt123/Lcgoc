@@ -24,14 +24,6 @@ namespace Lcgoc.Model
         /// </summary>
         public string columnName { get; set; }
         /// <summary>
-        /// 在新增中显示
-        /// </summary>
-        public bool inAdd { get; set; }
-        /// <summary>
-        /// 在编辑中显示
-        /// </summary>
-        public string inEdit { get; set; }
-        /// <summary>
         /// 是否可用
         /// </summary>
         public bool allowused { get; set; }

@@ -1,6 +1,7 @@
 ﻿using Lcgoc.BLL;
 using Lcgoc.Model;
 using Lcgoc.Web.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace Lcgoc.Web.Areas.Admin.Controllers
     /// <summary>
     /// 
     /// </summary>
-    public class ModuleController : Controller
+    public class ModuleController : BaseController
     {
         ModuleBLL bll = new ModuleBLL();
         //
@@ -29,8 +30,30 @@ namespace Lcgoc.Web.Areas.Admin.Controllers
             return View(model);
         }
 
+        [HttpGet]
+        public JsonResult ActionGet(int pageSize, int pageIndex, string module, string actionCode)
+        {
+            var user = WebConfig.GetUser();
+            Dictionary<string, string> dis = new Dictionary<string, string>();
+            foreach (var item in Request.QueryString.AllKeys)
+            {
+                switch (item)
+                {
+                    case "pageSize":
+                    case "pageIndex":
+                    case "module":
+                    case "actionCode":
+                    case "_": break;
+                    default: dis.Add(item, Request.QueryString[item]); break;
+                }
+            }
+            var res = bll.Query(pageSize, pageIndex, module, actionCode, user.userId, dis);
+            //return new JsonResult() { Data = new { total = res.Count(), rows = res }, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            return base.NewtonsoftJson(new { total = res.Count(), rows = res }, JsonRequestBehavior.AllowGet);
+        }
+
         [HttpPost]
-        public ActionResult Action()
+        public ActionResult ActionPost(FormCollection form)
         {
             var actionCode = Request.Params["actionCode"].ToString();
 
@@ -38,5 +61,6 @@ namespace Lcgoc.Web.Areas.Admin.Controllers
 
             return View(model);
         }
+
     }
 }

@@ -21,6 +21,7 @@
     @Styles.Render("~/Areas/Admin/Content/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css")
     <!-- toastr -->
     @Styles.Render("~/Areas/Admin/Content/toastr/toastr.css")
+    @RenderSection("Styles", required: false)
 
     <!-- Google Font -->
     @*<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">*@
@@ -100,5 +101,7 @@
     @Scripts.Render("~/Areas/Admin/Content/toastr/toastr.init.js")
     <!-- Ewin询问框 -->
     @Scripts.Render("~/Areas/Admin/Content/toastr/Ewin.js")
+
+    @RenderSection("Scripts", required: false)
 </body>
 </html>
