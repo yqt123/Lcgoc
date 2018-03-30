@@ -66,6 +66,7 @@ namespace Lcgoc.DAL
                 {
                     sqlstr += " and queryCode=@queryCode";
                 }
+                sqlstr += " ORDER BY `level` ASC";
                 var res = connection.Query<module_actions_query>(sqlstr, myparams);
                 return res;
             }
@@ -89,6 +90,7 @@ namespace Lcgoc.DAL
                 {
                     sqlstr += " and columnCode=@columnCode";
                 }
+                sqlstr += " ORDER BY `level` ASC";
                 var res = connection.Query<module_actions_columns>(sqlstr, myparams);
                 return res;
             }
@@ -108,7 +110,14 @@ namespace Lcgoc.DAL
                 var sequence = 1;
                 foreach (var item in dic)
                 {
-                    sqlsb.Append(string.Format("INSERT INTO module_queue_detail(queueCode,sequence,id,`value`) VALUES('{0}','{1}','{2}','{3}');", billNo, sequence, item.Key, item.Value));
+                    var keyword = 0;
+                    var id= item.Key;
+                    if (item.Key.EndsWith("_keyword"))
+                    {
+                        id = id.Substring(0, id.Length-8);
+                        keyword = 1;
+                    }
+                    sqlsb.Append(string.Format("INSERT INTO module_queue_detail(queueCode,sequence,id,`value`,`keyword`) VALUES('{0}','{1}','{2}','{3}','{4}');", billNo, sequence, id, item.Value, keyword));
                     sequence++;
                 }
                 using (var tran = connection.BeginTransaction())
@@ -133,12 +142,22 @@ namespace Lcgoc.DAL
         /// <param name="userId"></param>
         /// <param name="queueCode"></param>
         /// <returns></returns>
-        public List<dynamic> ModuleQuery(string userId, string queueCode)
+        public List<dynamic> Query(string userId, string queueCode)
         {
             using (IDbConnection connection = new MyConnectionHelper().connectionGetAndOpen())
             {
                 var myparams = new DynamicParameters(new { inuserId = userId, inqueueCode = queueCode });
                 var res = connection.Query("sp_ModuleQuery", myparams, commandType: CommandType.StoredProcedure).ToList();
+                return res;
+            }
+        }
+
+        public bool ActionPost(string userId, string queueCode)
+        {
+            using (IDbConnection connection = new MyConnectionHelper().connectionGetAndOpen())
+            {
+                var myparams = new DynamicParameters(new { inuserId = userId, inqueueCode = queueCode });
+                var res = connection.Query("sp_ModuleActionPost", myparams, commandType: CommandType.StoredProcedure).ToList();
                 return res;
             }
         }

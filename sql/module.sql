@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS `module` (
   `queryApiUrl` varchar(50) COMMENT '查询接口',
   `minimumCountColumns` varchar(20) COMMENT '最小显示列表数',
 	`allowused` TINYINT(1) COMMENT '是否可用',
-  `modifyDTM` Datetime COMMENT '时间',
+  `modifyDTM` Datetime DEFAULT NOW() COMMENT '时间',
   PRIMARY KEY(`moduleCode`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS `module_actions` (
   `exeProcedure` varchar(20) COMMENT '执行存储过程',
   `glyphicon` varchar(20) COMMENT '按钮字体图标',
 	`allowused` TINYINT(1) COMMENT '是否可用',
-  `modifyDTM` Datetime COMMENT '时间',
+  `modifyDTM` Datetime DEFAULT NOW() COMMENT '时间',
   `exeTableName` varchar(20) COMMENT '执行数据库表',
   `sorting` varchar(50) COMMENT '排序字段',
   PRIMARY KEY(`moduleCode`,`actionCode`)
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `module_actions_query` (
   `queryCode` varchar(20) COMMENT '查询编码',
   `queryName` varchar(50) CHARACTER SET utf8 COMMENT'查询名称',
 	`allowused` TINYINT(1) COMMENT '是否可用',
-  `modifyDTM` Datetime COMMENT '时间',
+  `modifyDTM` Datetime DEFAULT NOW() COMMENT '时间',
   PRIMARY KEY(`moduleCode`,`actionCode`,`queryCode`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS `module_actions_columns` (
   `columnCode` varchar(20) COMMENT '列编码',
   `columnName` varchar(50) CHARACTER SET utf8 COMMENT'列名称',
   `allowused` TINYINT(1) COMMENT '是否可用',
-  `modifyDTM` Datetime COMMENT '时间',
+  `modifyDTM` Datetime DEFAULT NOW() COMMENT '时间',
   `level` INT COMMENT '排序',
   PRIMARY KEY(`moduleCode`,`actionCode`,`columnCode`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -61,7 +61,7 @@ CREATE TABLE IF NOT EXISTS `module_queue` (
   `queueCode` varchar(20) COMMENT '队列编号',
   `describe` varchar(50) CHARACTER SET utf8 COMMENT'描述',
 	`allowused` TINYINT(1) COMMENT '是否可用',
-  `modifyDTM` Datetime COMMENT '时间',
+  `modifyDTM` Datetime DEFAULT NOW() COMMENT '时间',
   `moduleCode` varchar(20) COMMENT '模块编号',
   `actionCode` varchar(20) COMMENT '执行编号',
   `userId` varchar(20) COMMENT '用户编号',

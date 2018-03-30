@@ -35,7 +35,7 @@ namespace Lcgoc.BLL
         {
             var billNo = "";
             dal.CreateQueue(pageSize, pageIndex, moduleCode, actionCode, userId, dic, ref billNo);
-            return dal.ModuleQuery(userId, billNo);
+            return dal.Query(userId, billNo);
         }
 
     }

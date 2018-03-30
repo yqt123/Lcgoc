@@ -81,10 +81,10 @@ namespace Lcgoc.Web
                         controllerName = module.ToString();
                     if (actionName == "Action")
                     {
-                        var actionCode = filterContext.RequestContext.HttpContext.Request.Params["actionCode"];
-                        if (!string.IsNullOrEmpty(actionCode))
+                        var action = filterContext.RequestContext.HttpContext.Request.Params["action"];
+                        if (!string.IsNullOrEmpty(action))
                         {
-                            actionName = actionCode;
+                            actionName = action;
                         }
                     }
                 }

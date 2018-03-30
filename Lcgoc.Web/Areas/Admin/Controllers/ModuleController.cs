@@ -55,6 +55,8 @@ namespace Lcgoc.Web.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult ActionPost(FormCollection form)
         {
+            Dictionary<string, string> dis = new Dictionary<string, string>();
+
             var actionCode = Request.Params["actionCode"].ToString();
 
             ModuleModel model = new ModuleModel();

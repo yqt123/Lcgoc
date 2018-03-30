@@ -23,14 +23,15 @@ top:Begin
 	
 	SET @sqlstr='SELECT ';
 	SET @columnCode='';
-	SELECT group_concat(columnCode) INTO @columnCode
-	FROM module_actions_columns where moduleCode=dmoduleCode and actionCode=dactionCode and actionCode=dactionCode
+	SELECT group_concat(columnCode ORDER BY `level` ASC) INTO @columnCode
+	FROM module_actions_columns where moduleCode=dmoduleCode and actionCode=dactionCode
 	GROUP BY moduleCode;
-
+	
 	SET @sqlstr=CONCAT(@sqlstr,@columnCode,' from ',dexeTableName);
 	if(dsorting>'')THEN
 		SET @sqlstr=CONCAT(@sqlstr,' ORDER BY ',dsorting);
 	END IF;
+
 	if(@sqlstr>'') THEN
 		PREPARE stmt FROM @sqlstr; 
 		EXECUTE stmt; 

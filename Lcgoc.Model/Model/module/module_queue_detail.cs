@@ -23,5 +23,6 @@ namespace Lcgoc.Model
         /// 
         /// </summary>
         public string value { get; set; }
+        public bool keyword { get; set; }
     }
 }
