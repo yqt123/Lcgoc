@@ -16,6 +16,7 @@ namespace Lcgoc.Web.Areas.Admin.Controllers
     public class ModuleController : BaseController
     {
         ModuleBLL bll = new ModuleBLL();
+        userAuthorized user = WebConfig.GetUser();
         //
         // GET: /Admin/Report/
         [HttpGet]
@@ -33,7 +34,6 @@ namespace Lcgoc.Web.Areas.Admin.Controllers
         [HttpGet]
         public JsonResult ActionGet(int pageSize, int pageIndex, string module, string actionCode)
         {
-            var user = WebConfig.GetUser();
             Dictionary<string, string> dis = new Dictionary<string, string>();
             foreach (var item in Request.QueryString.AllKeys)
             {
@@ -53,15 +53,23 @@ namespace Lcgoc.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult ActionPost(FormCollection form)
+        public ActionResult ActionPost(string module, string action)
         {
             Dictionary<string, string> dis = new Dictionary<string, string>();
-
-            var actionCode = Request.Params["actionCode"].ToString();
-
-            ModuleModel model = new ModuleModel();
-
-            return View(model);
+            foreach (var item in Request.QueryString.AllKeys)
+            {
+                switch (item)
+                {
+                    case "pageSize":
+                    case "pageIndex":
+                    case "module":
+                    case "actionCode":
+                    case "_": break;
+                    default: dis.Add(item, Request.QueryString[item]); break;
+                }
+            }
+            bll.ActionPost(module, action, user.userId, dis);
+            return base.NewtonsoftJson(new { Status = true }, JsonRequestBehavior.AllowGet);
         }
 
     }

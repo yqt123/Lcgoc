@@ -38,5 +38,11 @@ namespace Lcgoc.BLL
             return dal.Query(userId, billNo);
         }
 
+        public bool ActionPost(string moduleCode, string actionCode, string userId, Dictionary<string, string> dic)
+        {
+            var billNo = "";
+            dal.CreateQueue(0, 0, moduleCode, actionCode, userId, dic, ref billNo);
+            return dal.ActionPost(userId, billNo);
+        }
     }
 }

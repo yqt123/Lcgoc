@@ -13,9 +13,9 @@ namespace Lcgoc.Model
         public string area { get; set; }
         public string controller { get; set; }
         public string action { get; set; }
-        public int ajaxlink { get; set; }
-        public int allowused { get; set; }
+        public int? ajaxlink { get; set; }
+        public int? allowused { get; set; }
         public DateTime modifyDTM { get; set; }
-        public int level { get; set; }
+        public int? level { get; set; }
     }
 }

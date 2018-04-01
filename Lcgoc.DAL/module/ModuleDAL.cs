@@ -111,10 +111,10 @@ namespace Lcgoc.DAL
                 foreach (var item in dic)
                 {
                     var keyword = 0;
-                    var id= item.Key;
+                    var id = item.Key;
                     if (item.Key.EndsWith("_keyword"))
                     {
-                        id = id.Substring(0, id.Length-8);
+                        id = id.Substring(0, id.Length - 8);
                         keyword = 1;
                     }
                     sqlsb.Append(string.Format("INSERT INTO module_queue_detail(queueCode,sequence,id,`value`,`keyword`) VALUES('{0}','{1}','{2}','{3}','{4}');", billNo, sequence, id, item.Value, keyword));
@@ -156,9 +156,16 @@ namespace Lcgoc.DAL
         {
             using (IDbConnection connection = new MyConnectionHelper().connectionGetAndOpen())
             {
-                var myparams = new DynamicParameters(new { inuserId = userId, inqueueCode = queueCode });
-                var res = connection.Query("sp_ModuleActionPost", myparams, commandType: CommandType.StoredProcedure).ToList();
-                return res;
+                try
+                {
+                    var myparams = new DynamicParameters(new { inuserId = userId, inqueueCode = queueCode });
+                    connection.Execute("sp_ModuleActionPost", myparams, commandType: CommandType.StoredProcedure);
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                }
             }
         }
 
