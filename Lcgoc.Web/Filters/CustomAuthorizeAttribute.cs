@@ -76,12 +76,12 @@ namespace Lcgoc.Web
                 //模块通用操作方法，判断输入的模块有误权限
                 if (controllerName == "Module")
                 {
-                    var module = filterContext.RequestContext.HttpContext.Request.Params["module"];
+                    var module = filterContext.RequestContext.HttpContext.Request.Params["_module"];
                     if (!string.IsNullOrEmpty(module))
                         controllerName = module.ToString();
-                    if (actionName == "Action")
+                    if (actionName == "ActionGet" || actionName == "ActionPost")
                     {
-                        var action = filterContext.RequestContext.HttpContext.Request.Params["action"];
+                        var action = filterContext.RequestContext.HttpContext.Request.Params["_action"];
                         if (!string.IsNullOrEmpty(action))
                         {
                             actionName = action;

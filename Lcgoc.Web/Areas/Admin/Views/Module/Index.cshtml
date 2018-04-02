@@ -78,7 +78,7 @@
     <script>
         @{
             //表格初始化
-            var initTable = string.Format("new TableInit('tb_departments', '{0}', '{1}', '{2}',", Model.module.queryApiUrl, Model.module.minimumCountColumns,Model.module.tableHeight);
+            var initTable = string.Format("new TableInit('tb_departments', '{0}', '{1}', '{2}',", mainQueryAction.apiUrl, Model.module.minimumCountColumns,Model.module.tableHeight);
             initTable += "[{checkbox: true},";
             foreach (var item in Model.columns.Where(n=>n.moduleCode== mainQueryAction.moduleCode && n.actionCode== mainQueryAction.actionCode))
             {
@@ -87,7 +87,8 @@
             initTable = initTable.Substring(0, initTable.Length - 1);
             initTable += "]";
             initTable += ", function (e) {";
-            initTable += "return {pageSize: e.limit,pageIndex: e.offset,module:'"+ mainQueryAction.moduleCode + "',actionCode:'"+ mainQueryAction.actionCode + "',";
+            //initTable += "return {pageSize: e.limit,pageIndex: e.offset,module:'"+ mainQueryAction.moduleCode + "',actionCode:'"+ mainQueryAction.actionCode + "',";
+            initTable += "return {pageSize: e.limit,pageIndex: e.offset,";
             foreach (var item in Model.query)
             {
                 initTable += ""+ item.queryCode + ":$('#txt_"+ item.queryCode + "').val(),";
