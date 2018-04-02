@@ -41,8 +41,9 @@ namespace Lcgoc.DAL
                 }
                 if (!string.IsNullOrEmpty(actionCode))
                 {
-                    sqlstr += " and actionCode=@actionCode;";
+                    sqlstr += " and actionCode=@actionCode";
                 }
+                sqlstr += " ORDER BY `level` ASC";
                 var res = connection.Query<module_actions>(sqlstr, myparams);
                 return res;
             }

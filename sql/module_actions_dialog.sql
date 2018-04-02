@@ -50,3 +50,12 @@ CALL Add_Column (
   '0',-- 默认值,
   '主键' -- 备注
 );
+
+CALL Add_Column (
+	'module_actions',-- 表名,
+	'level', -- 字段名,
+	'INT', -- 字段类型,
+  '1',-- 允许为空,
+  '',-- 默认值,
+  '排序' -- 备注
+);

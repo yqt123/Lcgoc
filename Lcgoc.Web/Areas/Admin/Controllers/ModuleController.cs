@@ -38,7 +38,7 @@ namespace Lcgoc.Web.Areas.Admin.Controllers
         [HttpGet]
         public JsonResult ActionGet(int pageSize, int pageIndex, string _module, string _action)
         {
-            var dis = GetPostParams(new string[] { "pageSize", "pageIndex", "_module", "_action" });
+            var dis = GetPostParams(new string[] { "pageSize", "pageIndex", "_module", "_action", "_" });
             var res = bll.Query(pageSize, pageIndex, _module, _action, user.userId, dis);
             //return new JsonResult() { Data = new { total = res.Count(), rows = res }, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
             return base.NewtonsoftJson(new { total = res.Count(), rows = res }, JsonRequestBehavior.AllowGet);
@@ -62,7 +62,7 @@ namespace Lcgoc.Web.Areas.Admin.Controllers
             Dictionary<string, string> dis = new Dictionary<string, string>();
             foreach (var item in Request.QueryString.AllKeys)
             {
-                if (excludeParams == null || !excludeParams.Contains(Request.QueryString[item]))
+                if (excludeParams == null || !excludeParams.Contains(item))
                     dis.Add(item, Request.QueryString[item]);
             }
             return dis;
