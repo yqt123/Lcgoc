@@ -57,8 +57,15 @@
                         @foreach (var iCloumn in columns)
                         {
                             <div class="form-group has-feedback">
-                                <input type="text" class="form-control" id="@(item.actionCode + iCloumn.columnCode)" placeholder="@iCloumn.columnName">
-                                <span class="glyphicon glyphicon-barcode form-control-feedback"></span>
+                                @if (iCloumn.@typeof == "bool")
+                                {
+                                    <label class="form-check-label"><input type="checkbox" class="form-check-input" value="" id="@(item.actionCode + iCloumn.columnCode)" />@iCloumn.columnName</label>
+                                }
+                                else
+                                {
+                                    <input type="text" class="form-control" id="@(item.actionCode + iCloumn.columnCode)" placeholder="@iCloumn.columnName" />
+                                    <span class="glyphicon form-control-feedback @item.glyphicon"></span>
+                                }
                             </div>
                         }
                     </div>
@@ -76,13 +83,20 @@
     @Scripts.Render("~/Areas/Admin/Content/bootstrap-table/locale/bootstrap-table-zh-CN.js")
     @Scripts.Render("~/Areas/Admin/Scripts/Module/Index.js")
     <script>
+        function operateFormatterBool(value, row, index) {
+            if (value)
+                return '<input type="checkbox" checked/>';
+            else
+                return '<input type="checkbox" />';
+        }
+
         @{
             //表格初始化
             var initTable = string.Format("new TableInit('tb_departments', '{0}', '{1}', '{2}',", mainQueryAction.apiUrl, Model.module.minimumCountColumns,Model.module.tableHeight);
             initTable += "[{checkbox: true},";
             foreach (var item in Model.columns.Where(n=>n.moduleCode== mainQueryAction.moduleCode && n.actionCode== mainQueryAction.actionCode))
             {
-                initTable += "{field:'"+ item.columnCode + "',title: '"+ item.columnName + "'},";
+                initTable += "{field:'"+ item.columnCode + "',title: '"+ item.columnName + "'"+(item.@typeof=="bool"? ",formatter: operateFormatterBool" : "") +"},";
             }
             initTable = initTable.Substring(0, initTable.Length - 1);
             initTable += "]";
@@ -143,7 +157,11 @@
                                 }
                                 else
                                 {
-                                    toolbarButton += "$('#"+ item.actionCode + itemc.columnCode + "').val(arrselections[0]."+ itemc.columnCode + ");";
+                                    if (itemc.@typeof == "bool")
+                                    {
+                                        toolbarButton += "$('#" + item.actionCode + itemc.columnCode + "').prop('checked',arrselections[0]." + itemc.columnCode + ");";
+                                    }
+                                    toolbarButton += "$('#" + item.actionCode + itemc.columnCode + "').val(arrselections[0]." + itemc.columnCode + ");";
                                     submit += "postdata." + itemc.columnCode + " = $('#" + item.actionCode + itemc.columnCode + "').val();";
                                 }
                             }
@@ -162,7 +180,7 @@
                     buttonInits.Add(submit);
                 }
             }
-}
+            }
 
         //1.初始化Table
         @Html.Raw(initTable);

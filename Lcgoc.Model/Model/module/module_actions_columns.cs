@@ -36,5 +36,10 @@ namespace Lcgoc.Model
         /// </summary>
         public int level { get; set; }
         public bool keyword { get; set; }
+        public string @typeof { get; set; }
+        /// <summary>
+        /// 图标
+        /// </summary>
+        public string glyphicon { get; set; }
     }
 }

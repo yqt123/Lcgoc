@@ -38,7 +38,7 @@ namespace Lcgoc.Web.Areas.Admin.Controllers
         [HttpGet]
         public JsonResult ActionGet(int pageSize, int pageIndex, string _module, string _action)
         {
-            var dis = GetPostParams(new string[] { "pageSize", "pageIndex", "_module", "_action", "_" });
+            var dis = base.SizerPostParams(new string[] { "pageSize", "pageIndex", "_module", "_action", "_" });
             var res = bll.Query(pageSize, pageIndex, _module, _action, user.userId, dis);
             //return new JsonResult() { Data = new { total = res.Count(), rows = res }, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
             return base.NewtonsoftJson(new { total = res.Count(), rows = res }, JsonRequestBehavior.AllowGet);
@@ -47,26 +47,9 @@ namespace Lcgoc.Web.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult ActionPost(string _module, string _action)
         {
-            var dis = GetPostParams(new string[] { "_module", "_action" });
+            var dis = base.SizerPostParams(new string[] { "_module", "_action" });
             bll.ActionPost(_module, _action, user.userId, dis);
             return base.NewtonsoftJson(new { Status = true }, JsonRequestBehavior.AllowGet);
         }
-
-        /// <summary>
-        /// 获取Post过来的参数
-        /// </summary>
-        /// <param name="excludeParams"></param>
-        /// <returns></returns>
-        private Dictionary<string, string> GetPostParams(string[] excludeParams = null)
-        {
-            Dictionary<string, string> dis = new Dictionary<string, string>();
-            foreach (var item in Request.QueryString.AllKeys)
-            {
-                if (excludeParams == null || !excludeParams.Contains(item))
-                    dis.Add(item, Request.QueryString[item]);
-            }
-            return dis;
-        }
-
     }
 }

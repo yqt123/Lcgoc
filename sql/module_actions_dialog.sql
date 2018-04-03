@@ -59,3 +59,21 @@ CALL Add_Column (
   '',-- 默认值,
   '排序' -- 备注
 );
+
+CALL Add_Column (
+	'module_actions_columns',-- 表名,
+	'typeof', -- 字段名,
+	'varchar(20)', -- 字段类型,
+  '1',-- 允许为空,
+  '',-- 默认值,
+  '数据类型' -- 备注
+);
+
+CALL Add_Column (
+	'module_actions_columns',-- 表名,
+	'glyphicon', -- 字段名,
+	'varchar(50)', -- 字段类型,
+  '1',-- 允许为空,
+  '',-- 默认值,
+  '列显示图标' -- 备注
+);
