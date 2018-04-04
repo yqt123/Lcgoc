@@ -76,7 +76,7 @@ namespace Lcgoc.Web.Areas.Admin.Controllers
 
             HttpResponseBase response = context.HttpContext.Response;
 
-            if (string.IsNullOrEmpty(this.ContentType))
+            if (!string.IsNullOrEmpty(this.ContentType))
             {
                 response.ContentType = this.ContentType;
             }
@@ -84,7 +84,6 @@ namespace Lcgoc.Web.Areas.Admin.Controllers
             {
                 response.ContentType = "application/json";
             }
-
             if (this.ContentEncoding != null)
             {
                 response.ContentEncoding = this.ContentEncoding;

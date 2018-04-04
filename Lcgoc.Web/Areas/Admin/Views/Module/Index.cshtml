@@ -160,9 +160,13 @@
                                     if (itemc.@typeof == "bool")
                                     {
                                         toolbarButton += "$('#" + item.actionCode + itemc.columnCode + "').prop('checked',arrselections[0]." + itemc.columnCode + ");";
+                                        submit += "postdata." + itemc.columnCode + " = $('#" + item.actionCode + itemc.columnCode + "').prop('checked');";
                                     }
-                                    toolbarButton += "$('#" + item.actionCode + itemc.columnCode + "').val(arrselections[0]." + itemc.columnCode + ");";
-                                    submit += "postdata." + itemc.columnCode + " = $('#" + item.actionCode + itemc.columnCode + "').val();";
+                                    else
+                                    {
+                                        toolbarButton += "$('#" + item.actionCode + itemc.columnCode + "').val(arrselections[0]." + itemc.columnCode + ");";
+                                        submit += "postdata." + itemc.columnCode + " = $('#" + item.actionCode + itemc.columnCode + "').val();";
+                                    }
                                 }
                             }
                             toolbarButton += "$('#dialog"+ item.actionCode + "').modal();});";

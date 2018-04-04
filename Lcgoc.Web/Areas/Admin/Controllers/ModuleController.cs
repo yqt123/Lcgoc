@@ -48,8 +48,8 @@ namespace Lcgoc.Web.Areas.Admin.Controllers
         public ActionResult ActionPost(string _module, string _action)
         {
             var dis = base.SizerPostParams(new string[] { "_module", "_action" });
-            bll.ActionPost(_module, _action, user.userId, dis);
-            return base.NewtonsoftJson(new { Status = true }, JsonRequestBehavior.AllowGet);
+            var res=bll.ActionPost(_module, _action, user.userId, dis);
+            return base.NewtonsoftJson(new BaseResponse { Status = false, Code = ResponseCodeEnum.Fail }, JsonRequestBehavior.AllowGet);
         }
     }
 }

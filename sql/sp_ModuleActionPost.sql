@@ -32,21 +32,40 @@ top:Begin
 		
 		SET @sqlstr=CONCAT(@sqlstr,dids,')VALUES(');
 		
-		SELECT GROUP_CONCAT('''',`value`,'''') INTO dvalues from module_queue_detail where queueCode=inqueueCode GROUP BY queueCode;
-		
+		SELECT GROUP_CONCAT(
+		case mac.typeof when 'bool' then (case d.`value` when 'true' then '1' else '0' end)
+		else CONCAT('''',d.`value`,'''') end
+		) INTO dvalues 
+		from module_queue_detail d
+		LEFT JOIN module_queue m On m.queueCode=d.queueCode
+		LEFT JOIN module_actions_columns mac ON m.moduleCode=mac.moduleCode and m.actionCode=mac.actionCode and d.id=mac.columnCode
+		where d.queueCode=inqueueCode GROUP BY queueCode;
+				
 		SET @sqlstr=CONCAT(@sqlstr,dvalues,');');
 		
 	ELSEIF dmodlueActionType='edit' THEN
 		
 		SET @sqlstr=CONCAT('UPDATE ',dexeTableName,' set ');
 		
-		SELECT GROUP_CONCAT('`',`id`,'`','=','''',`value`,'''') INTO dids
-		from module_queue_detail where queueCode=inqueueCode and keyword=0;
+		SELECT GROUP_CONCAT('`',`id`,'`','=',
+		case mac.typeof when 'bool' then (case d.`value` when 'true' then '1' else '0' end)
+		else CONCAT('''',d.`value`,'''') end
+		) INTO dids
+		from module_queue_detail d
+		LEFT JOIN module_queue m On m.queueCode=d.queueCode
+		LEFT JOIN module_actions_columns mac ON m.moduleCode=mac.moduleCode and m.actionCode=mac.actionCode and d.id=mac.columnCode
+		where d.queueCode=inqueueCode and d.keyword=0;
 		
 		SET @sqlstr=CONCAT(@sqlstr,dids,' where ');
 		
-		SELECT GROUP_CONCAT('`',`id`,'`','=','''',`value`,'''' separator ' and ') INTO dvalues
-		from module_queue_detail where queueCode=inqueueCode and keyword=1;
+		SELECT GROUP_CONCAT('`',`id`,'`','=',
+		case mac.typeof when 'bool' then (case d.`value` when 'true' then '1' else '0' end)
+		else CONCAT('''',d.`value`,'''') end
+		separator ' and ') INTO dvalues
+		from module_queue_detail d
+		LEFT JOIN module_queue m On m.queueCode=d.queueCode
+		LEFT JOIN module_actions_columns mac ON m.moduleCode=mac.moduleCode and m.actionCode=mac.actionCode and d.id=mac.columnCode		
+		where d.queueCode=inqueueCode and d.keyword=1;
 		
 		SET @sqlstr=CONCAT(@sqlstr,dvalues);
 		
