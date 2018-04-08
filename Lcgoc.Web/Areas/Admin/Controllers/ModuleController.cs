@@ -49,7 +49,7 @@ namespace Lcgoc.Web.Areas.Admin.Controllers
         {
             var dis = base.SizerPostParams(new string[] { "_module", "_action" });
             var res=bll.ActionPost(_module, _action, user.userId, dis);
-            return base.NewtonsoftJson(new BaseResponse { Status = false, Code = ResponseCodeEnum.Fail }, JsonRequestBehavior.AllowGet);
+            return base.NewtonsoftJson(new BaseResponse { Status = res, Code = ResponseCodeEnum.Fail }, JsonRequestBehavior.AllowGet);
         }
     }
 }

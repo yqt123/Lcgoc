@@ -64,7 +64,7 @@
                                 else
                                 {
                                     <input type="text" class="form-control" id="@(item.actionCode + iCloumn.columnCode)" placeholder="@iCloumn.columnName" />
-                                    <span class="glyphicon form-control-feedback @item.glyphicon"></span>
+                                    <span class="glyphicon form-control-feedback @iCloumn.glyphicon"></span>
                                 }
                             </div>
                         }
@@ -113,7 +113,7 @@
 
             //按钮弹窗初始化
             List<string> buttonInits = new List<string>();
-            var ajaxPost = "$.ajax({{type: 'post',url: '{0}',data: postdata,success: function (data, status) {{if (data.Status) {{toastr.success('提交数据成功');$('#tb_departments').bootstrapTable('refresh');}}}else{{toastr.success('提交数据失败！');}}},error: function () {{toastr.error('Error');}}}});";
+            var ajaxPost = "$.ajax({{type: 'post',url: '{0}',data: postdata,success: function (data, status) {{if (data.Status) {{toastr.success('提交数据成功');$('#tb_departments').bootstrapTable('refresh');}}else{{toastr.error('提交数据失败！');}}}},error: function () {{toastr.error('Error');}}}});";
             foreach (var item in Model.actions)
             {
                 var toolbarButton = "$('#toolbar_{0}').click(function () {{";
