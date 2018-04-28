@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\PublicDll\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -46,6 +46,7 @@
     <Compile Include="Enum\ResponseCodeEnum.cs" />
     <Compile Include="Enum\RightTypesEnum.cs" />
     <Compile Include="Enum\RightResultTypesEnum.cs" />
+    <Compile Include="Model\access_token.cs" />
     <Compile Include="Model\api_Controller.cs" />
     <Compile Include="Model\api_controller_log.cs" />
     <Compile Include="Model\crm_weixin_log.cs" />
@@ -67,6 +68,16 @@
     <Compile Include="Model\sys_controller_action_role.cs" />
     <Compile Include="Model\userAuthorizedRes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sched\ClearScheduleJob.cs" />
+    <Compile Include="Sched\MessageSend.cs" />
+    <Compile Include="Sched\MessageSended.cs" />
+    <Compile Include="Sched\QuerySchedule.cs" />
+    <Compile Include="Sched\ScheduleJob.cs" />
+    <Compile Include="Sched\ScheduleJob_ApiLog.cs" />
+    <Compile Include="Sched\ScheduleJob_Details.cs" />
+    <Compile Include="Sched\ScheduleJob_Details_Triggers.cs" />
+    <Compile Include="Sched\ScheduleJob_Log.cs" />
+    <Compile Include="Sched\WriteScheduleJob_Log.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

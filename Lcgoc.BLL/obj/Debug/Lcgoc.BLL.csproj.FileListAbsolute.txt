@@ -26,3 +26,5 @@ E:\Lcgoc\Lcgoc.BLL\bin\Debug\Dapper.xml
 E:\Lcgoc\Lcgoc.BLL\obj\Debug\Lcgoc.BLL.csprojResolveAssemblyReference.cache
 E:\Lcgoc\Lcgoc.BLL\obj\Debug\Lcgoc.BLL.dll
 E:\Lcgoc\Lcgoc.BLL\obj\Debug\Lcgoc.BLL.pdb
+E:\Lcgoc\PublicDll\Lcgoc.BLL.dll
+E:\Lcgoc\PublicDll\Lcgoc.BLL.pdb

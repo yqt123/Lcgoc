@@ -22,3 +22,5 @@ E:\Lcgoc\Lcgoc.DAL\bin\Debug\Dapper.xml
 E:\Lcgoc\Lcgoc.DAL\obj\Debug\Lcgoc.DAL.csprojResolveAssemblyReference.cache
 E:\Lcgoc\Lcgoc.DAL\obj\Debug\Lcgoc.DAL.dll
 E:\Lcgoc\Lcgoc.DAL\obj\Debug\Lcgoc.DAL.pdb
+E:\Lcgoc\PublicDll\Lcgoc.DAL.dll
+E:\Lcgoc\PublicDll\Lcgoc.DAL.pdb

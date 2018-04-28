@@ -8,3 +8,5 @@ E:\Lcgoc\Lcgoc.Weixin.SDK\bin\Debug\Lcgoc.Weixin.SDK.pdb
 E:\Lcgoc\Lcgoc.Weixin.SDK\obj\Debug\Lcgoc.Weixin.SDK.dll
 E:\Lcgoc\Lcgoc.Weixin.SDK\obj\Debug\Lcgoc.Weixin.SDK.pdb
 E:\Lcgoc\Lcgoc.Weixin.SDK\obj\Debug\Lcgoc.Weixin.SDK.csprojResolveAssemblyReference.cache
+E:\Lcgoc\PublicDll\Lcgoc.Weixin.SDK.dll
+E:\Lcgoc\PublicDll\Lcgoc.Weixin.SDK.pdb
