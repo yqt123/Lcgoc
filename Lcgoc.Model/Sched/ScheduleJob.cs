@@ -14,14 +14,14 @@ namespace Lcgoc.Model
         /// <summary>
         /// 是否写日志到数据库
         /// </summary>
-        public bool WriteDBLog { get; set; }
+        public bool writeDBLog { get; set; }
         /// <summary>
         /// 是否写日志到文本
         /// </summary>
-        public bool WriteTxtLog { get; set; }
+        public bool writeTxtLog { get; set; }
         /// <summary>
         /// 是否可以使用
         /// </summary>
-        public string AllowUsed { get; set; }
+        public string allowUsed { get; set; }
     }
 }

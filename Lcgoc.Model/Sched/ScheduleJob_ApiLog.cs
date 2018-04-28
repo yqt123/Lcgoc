@@ -9,58 +9,42 @@ namespace Lcgoc.Model
         /// <summary>
         /// 流水ID
         /// </summary>
-        public string LogID { get; set; }
+        public string apiLogId { get; set; }
         /// <summary>
         /// 接口
         /// </summary>
-        public string ApiID { get; set; }
+        public string apiID { get; set; }
         /// <summary>
         /// 接口名称
         /// </summary>
-        public string ApiName { get; set; }
-        /// <summary>
-        /// 公司代码
-        /// </summary>
-        public string CompanyID { get; set; }
-        /// <summary>
-        /// 日志ID
-        /// </summary>
-        public string SourceLogID { get; set; }
+        public string apiName { get; set; }
         /// <summary>
         /// 传递参数
         /// </summary>
-        public string ParamValue { get; set; }
+        public string post { get; set; }
         /// <summary>
         /// 返回参数
         /// </summary>
-        public string RetuenValue { get; set; }
+        public string get { get; set; }
         /// <summary>
         /// 执行结果 0成功，1失败
         /// </summary>
-        public string LogState { get; set; }
+        public string state { get; set; }
         /// <summary>
         /// 备注
         /// </summary>
-        public string Remark { get; set; }
+        public string remark { get; set; }
         /// <summary>
         /// 执行时间
         /// </summary>
-        public string ModifyDTM { get; set; }
+        public string modifyDTM { get; set; }
         /// <summary>
         /// 接口开始执行时间
         /// </summary>
-        public string StartTime { get; set; }
+        public string startTime { get; set; }
         /// <summary>
         /// 接口结束时间
         /// </summary>
-        public string EndTime { get; set; }
-        /// <summary>
-        /// 调度
-        /// </summary>
-        public string Sched_Name { get; set; }
-        /// <summary>
-        /// 作业
-        /// </summary>
-        public string Job_Name { get; set; }
+        public string endTime { get; set; }
     }
 }

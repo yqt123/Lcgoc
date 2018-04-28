@@ -199,15 +199,15 @@ namespace Lcgoc.Scheduler
                     eItem.AppendChild(job_name);
 
                     var WriteDBLog = xmlDoc.CreateElement("WriteDBLog");
-                    WriteDBLog.InnerText = item.WriteDBLog.ToString();
+                    WriteDBLog.InnerText = item.writeDBLog.ToString();
                     eItem.AppendChild(WriteDBLog);
 
                     var WriteTxtLog = xmlDoc.CreateElement("WriteTxtLog");
-                    WriteTxtLog.InnerText = item.WriteTxtLog.ToString();
+                    WriteTxtLog.InnerText = item.writeTxtLog.ToString();
                     eItem.AppendChild(WriteTxtLog);
 
                     var AllowUsed = xmlDoc.CreateElement("AllowUsed");
-                    AllowUsed.InnerText = item.AllowUsed.ToString();
+                    AllowUsed.InnerText = item.allowUsed.ToString();
                     eItem.AppendChild(AllowUsed);
                 }
             }
@@ -250,35 +250,7 @@ namespace Lcgoc.Scheduler
                     var is_durable = xmlDoc.CreateElement("is_durable");
                     is_durable.InnerText = item.is_durable.ToString();
                     eItem.AppendChild(is_durable);
-
-                    var apiurl = xmlDoc.CreateElement("apiurl");
-                    apiurl.InnerText = item.apiurl.ToString();
-                    eItem.AppendChild(apiurl);
-
-                    var ftpuser = xmlDoc.CreateElement("ftpuser");
-                    ftpuser.InnerText = item.ftpuser.ToString();
-                    eItem.AppendChild(ftpuser);
-
-                    var ftppassword = xmlDoc.CreateElement("ftppassword");
-                    ftppassword.InnerText = item.ftppassword.ToString();
-                    eItem.AppendChild(ftppassword);
-
-                    var cardidlist = xmlDoc.CreateElement("cardidlist");
-                    cardidlist.InnerText = item.cardidlist.ToString();
-                    eItem.AppendChild(cardidlist);
-
-                    var shopidlist = xmlDoc.CreateElement("shopidlist");
-                    shopidlist.InnerText = item.shopidlist.ToString();
-                    eItem.AppendChild(shopidlist);
-
-                    var companyID = xmlDoc.CreateElement("companyID");
-                    companyID.InnerText = item.companyID.ToString();
-                    eItem.AppendChild(companyID);
-
-                    var pagesCount = xmlDoc.CreateElement("pagesCount");
-                    pagesCount.InnerText = item.pagesCount.ToString();
-                    eItem.AppendChild(pagesCount);
-
+                    
                     var StartTime = xmlDoc.CreateElement("StartTime");
                     StartTime.InnerText = item.startTime.ToString();
                     eItem.AppendChild(StartTime);
@@ -286,18 +258,6 @@ namespace Lcgoc.Scheduler
                     var EndTime = xmlDoc.CreateElement("EndTime");
                     EndTime.InnerText = item.endTime.ToString();
                     eItem.AppendChild(EndTime);
-
-                    var extra1 = xmlDoc.CreateElement("extra1");
-                    extra1.InnerText = item.extra1.ToString();
-                    eItem.AppendChild(extra1);
-
-                    var Threads = xmlDoc.CreateElement("Threads");
-                    Threads.InnerText = item.Threads.ToString();
-                    eItem.AppendChild(Threads);
-
-                    var MinThreadPages = xmlDoc.CreateElement("MinThreadPages");
-                    MinThreadPages.InnerText = item.MinThreadPages.ToString();
-                    eItem.AppendChild(MinThreadPages);
                 }
             }
             xmlDoc.Save(FilePath);

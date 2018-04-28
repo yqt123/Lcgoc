@@ -45,7 +45,7 @@ namespace Lcgoc.Scheduler
                         throw new Exception(string.Format("【{0}】的[Execute]从[IJobExecutionContext]读取不到作业计划信息，本次执行失败！", this.JobName));
                     }
                     ScheduleSet = new ScheduleSDK().QuerySchedule(jobDetail.sched_name, jobDetail.job_name).FirstOrDefault();
-                    if (ScheduleSet.WriteTxtLog) SysParams.logger.Info(string.Format("【{0}】开始执行IJOB的[Execute]...", this.JobName));
+                    if (ScheduleSet.writeTxtLog) SysParams.logger.Info(string.Format("【{0}】开始执行IJOB的[Execute]...", this.JobName));
                     //刷新作业计划信息，防止作业计划配置发生改变
                     ScheduleJob_Details jobDetailNew = new ScheduleSDK().QueryJobDetails(jobDetail.sched_name, jobDetail.job_name).FirstOrDefault(); //刷新作业计划信息
                     IEnumerable<ScheduleJob_Details_Triggers> jobDetailTriggerNew = new ScheduleSDK().QueryTriggers(jobDetail.sched_name, jobDetail.job_name);
@@ -60,7 +60,7 @@ namespace Lcgoc.Scheduler
                     //不从调度计划中删除本作业，因为有可能客户又启用该作业计划
                     if (!jobDetailNew.is_durable)
                     {
-                        if (ScheduleSet.WriteTxtLog) SysParams.logger.Info(string.Format("【{0}】作业计划不允许使用，跳过此次执行。", this.jobDetail.description));
+                        if (ScheduleSet.writeTxtLog) SysParams.logger.Info(string.Format("【{0}】作业计划不允许使用，跳过此次执行。", this.jobDetail.description));
                         context.Put("ExecResult", "完成");
                         return;
                     }
@@ -105,7 +105,7 @@ namespace Lcgoc.Scheduler
         protected void WirteScheduleLog(IJobExecutionContext context)
         {
             string _result = string.Format("【{0}】执行完毕，执行结果：{1}", this.JobName, context.Get("ExecResult") != null ? context.Get("ExecResult").ToString() : "失败");
-            if (ScheduleSet.WriteTxtLog) SysParams.logger.Info(_result);
+            if (ScheduleSet.writeTxtLog) SysParams.logger.Info(_result);
             WriteScheduleJob_Log _ScheduleLog = null;
             if (jobDetail == null)
                 _ScheduleLog = new WriteScheduleJob_Log { sched_name = "", description = _result, success = false, update_time = ExeEndQueryTime.ToString("yyyy/MM/dd HH:mm:ss.fff") };

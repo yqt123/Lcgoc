@@ -31,11 +31,11 @@ namespace Lcgoc.Scheduler
                 string remark = string.Empty;
                 try
                 {
-                    if (ScheduleSet.WriteTxtLog)
+                    if (ScheduleSet.writeTxtLog)
                         SysParams.logger.Info(string.Format("【{0}】已经开始", JobName));
                     string lastSuccessTime = new ScheduleSDK().LastSuccessTimeDAL(this.jobDetail.sched_name, this.jobDetail.job_name);
 
-                    if (ScheduleSet.WriteTxtLog)
+                    if (ScheduleSet.writeTxtLog)
                         context.Put("ExecResult", "成功");
                 }
                 catch (Exception ex)
@@ -45,7 +45,7 @@ namespace Lcgoc.Scheduler
                 }
                 finally
                 {
-                    if (ScheduleSet.WriteTxtLog) SysParams.logger.Info(string.Format("【{0}】结束", JobName));
+                    if (ScheduleSet.writeTxtLog) SysParams.logger.Info(string.Format("【{0}】结束", JobName));
                     base.WirteScheduleLog(context);
                     base.IsWriteScheduleJobLogAtParent = false;
                     System.Threading.Monitor.Exit(lockObj);

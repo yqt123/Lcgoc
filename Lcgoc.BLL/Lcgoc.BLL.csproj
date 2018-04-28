@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="module\ModuleBLL.cs" />
+    <Compile Include="Sched\AdminMenuBLL.cs" />
     <Compile Include="UserBLL.cs" />
     <Compile Include="ApiControllerBLL.cs" />
     <Compile Include="HomeApiBLL.cs" />

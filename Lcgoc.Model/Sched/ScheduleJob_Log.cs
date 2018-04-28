@@ -9,7 +9,7 @@ namespace Lcgoc.Model
         /// <summary>
         /// 日志ID
         /// </summary>
-        public string sched_LogID { get; set; }
+        public string sched_logId { get; set; }
         /// <summary>
         /// 采集器名称
         /// </summary>

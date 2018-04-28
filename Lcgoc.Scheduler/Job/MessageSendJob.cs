@@ -32,7 +32,7 @@ namespace Lcgoc.Scheduler
                 string remark = string.Empty;
                 try
                 {
-                    if (ScheduleSet.WriteTxtLog)
+                    if (ScheduleSet.writeTxtLog)
                         SysParams.logger.Info(string.Format("【{0}】已经开始", this.jobDetail.description));
                     //检查需要发送的信息
                     var messgeSends = new ScheduleSDK().GetMessageSend(this.jobDetail.sched_name, this.jobDetail.job_name);
@@ -117,7 +117,7 @@ namespace Lcgoc.Scheduler
                 }
                 finally
                 {
-                    if (ScheduleSet.WriteTxtLog) SysParams.logger.Info(string.Format("【{0}】结束", JobName));
+                    if (ScheduleSet.writeTxtLog) SysParams.logger.Info(string.Format("【{0}】结束", JobName));
                     base.WirteScheduleLog(context);
                     base.IsWriteScheduleJobLogAtParent = false;
                     System.Threading.Monitor.Exit(lockObj);

@@ -50,6 +50,7 @@
     <Compile Include="ApiControllerDAL.cs" />
     <Compile Include="module\ModuleDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sched\ScheduleDAL.cs" />
     <Compile Include="TestDAL.cs" />
     <Compile Include="WeixinLogDAL.cs" />
     <Compile Include="AdminMenuDAL.cs" />

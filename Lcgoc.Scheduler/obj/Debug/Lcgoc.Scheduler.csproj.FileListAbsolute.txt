@@ -103,3 +103,12 @@ E:\Lcgoc\Lcgoc.Scheduler\bin\Debug\System.Data.SQLite.Linq.dll
 E:\Lcgoc\Lcgoc.Scheduler\bin\Debug\EntityFramework.xml
 E:\Lcgoc\Lcgoc.Scheduler\bin\Debug\EntityFramework.SqlServer.xml
 E:\Lcgoc\Lcgoc.Scheduler\bin\Debug\System.Data.SQLite.xml
+E:\Lcgoc\Lcgoc.Scheduler\bin\Debug\Lcgoc.BLL.dll
+E:\Lcgoc\Lcgoc.Scheduler\bin\Debug\Lcgoc.DAL.dll
+E:\Lcgoc\Lcgoc.Scheduler\bin\Debug\Dapper.dll
+E:\Lcgoc\Lcgoc.Scheduler\bin\Debug\Lcgoc.Common.dll
+E:\Lcgoc\Lcgoc.Scheduler\bin\Debug\MySql.Data.dll
+E:\Lcgoc\Lcgoc.Scheduler\bin\Debug\Lcgoc.BLL.pdb
+E:\Lcgoc\Lcgoc.Scheduler\bin\Debug\Lcgoc.DAL.pdb
+E:\Lcgoc\Lcgoc.Scheduler\bin\Debug\Dapper.xml
+E:\Lcgoc\Lcgoc.Scheduler\bin\Debug\Lcgoc.Common.pdb
