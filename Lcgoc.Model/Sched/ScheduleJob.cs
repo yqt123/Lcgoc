@@ -3,6 +3,7 @@ namespace Lcgoc.Model
 {
     public class ScheduleJob
     {
+        public int id { get; set; }
         /// <summary>
         /// 采集器名称
         /// </summary>
@@ -22,6 +23,6 @@ namespace Lcgoc.Model
         /// <summary>
         /// 是否可以使用
         /// </summary>
-        public string allowUsed { get; set; }
+        public bool allowUsed { get; set; }
     }
 }

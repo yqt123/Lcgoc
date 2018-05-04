@@ -166,7 +166,6 @@ namespace Lcgoc.Scheduler
         private void panel2_Click(object sender, EventArgs e)
         {
             SchdulerManage frm = new SchdulerManage();
-            frm.WindowState = FormWindowState.Maximized;
             frm.ShowDialog();
         }
         private void btn_min_Click(object sender, EventArgs e)

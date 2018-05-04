@@ -100,3 +100,4 @@ E:\Lcgoc\Lcgoc.Web\bin\Dapper.xml
 E:\Lcgoc\Lcgoc.Web\obj\Debug\Lcgoc.Web.csprojResolveAssemblyReference.cache
 E:\Lcgoc\Lcgoc.Web\obj\Debug\Lcgoc.Web.dll
 E:\Lcgoc\Lcgoc.Web\obj\Debug\Lcgoc.Web.pdb
+E:\Lcgoc\Lcgoc.Web\bin\System.Data.SQLite.dll

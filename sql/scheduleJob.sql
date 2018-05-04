@@ -1,4 +1,5 @@
 CREATE TABLE IF NOT EXISTS `scheduleJob` (
+  `id` BIGINT NOT NULL auto_increment COMMENT '自增ID',
   `sched_name` varchar(50) NOT NULL COMMENT '调度作业',
   `job_name` varchar(50) NOT NULL COMMENT '作业名称',
   `writeDBLog` TINYINT NOT NULL COMMENT '是否写数据库日志',
@@ -8,6 +9,7 @@ CREATE TABLE IF NOT EXISTS `scheduleJob` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS `scheduleJob_details` (
+  `id` BIGINT NOT NULL auto_increment COMMENT '自增ID',
   `sched_name` varchar(50) NOT NULL COMMENT '调度作业',
   `job_name` varchar(50) NOT NULL COMMENT '作业名',
   `job_group` varchar(200) NULL COMMENT '作业主',
@@ -20,6 +22,7 @@ CREATE TABLE IF NOT EXISTS `scheduleJob_details` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS `scheduleJob_details_triggers` (
+  `id` BIGINT NOT NULL auto_increment COMMENT '自增ID',
   `sched_name` varchar(200) NOT NULL COMMENT '调度作业',
   `job_name` varchar(200) NOT NULL COMMENT '作业名',
   `trigger_name` varchar(200) NOT NULL COMMENT '触发器名称',

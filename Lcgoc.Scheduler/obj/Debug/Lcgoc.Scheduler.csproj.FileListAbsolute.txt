@@ -2,7 +2,6 @@ E:\Lcgoc\Lcgoc.Scheduler\obj\Debug\Lcgoc.Scheduler.csprojResolveAssemblyReferenc
 E:\Lcgoc\Lcgoc.Scheduler\obj\Debug\Lcgoc.Scheduler.Form1.resources
 E:\Lcgoc\Lcgoc.Scheduler\obj\Debug\Lcgoc.Scheduler.Properties.Resources.resources
 E:\Lcgoc\Lcgoc.Scheduler\obj\Debug\Lcgoc.Scheduler.csproj.GenerateResource.Cache
-E:\Lcgoc\Lcgoc.Scheduler\obj\Debug\Lcgoc.Scheduler.exe.licenses
 E:\Lcgoc\Lcgoc.Scheduler\obj\Debug\Lcgoc.Scheduler.SchdulerManage.resources
 E:\Lcgoc\Lcgoc.Scheduler\obj\Debug\Lcgoc.Scheduler.SchedulerMain.resources
 E:\Lcgoc\Lcgoc.Scheduler\obj\Debug\Lcgoc.Scheduler.SchedulerMain1.resources
@@ -112,3 +111,14 @@ E:\Lcgoc\Lcgoc.Scheduler\bin\Debug\Lcgoc.BLL.pdb
 E:\Lcgoc\Lcgoc.Scheduler\bin\Debug\Lcgoc.DAL.pdb
 E:\Lcgoc\Lcgoc.Scheduler\bin\Debug\Dapper.xml
 E:\Lcgoc\Lcgoc.Scheduler\bin\Debug\Lcgoc.Common.pdb
+E:\Lcgoc\Lcgoc.Scheduler\bin\Debug\DevExpress.TreeMap.v17.2.Core.dll
+E:\Lcgoc\Lcgoc.Scheduler\bin\Debug\DevExpress.XtraTreeMap.v17.2.dll
+E:\Lcgoc\Lcgoc.Scheduler\bin\Debug\DevExpress.TreeMap.v17.2.Core.xml
+E:\Lcgoc\Lcgoc.Scheduler\bin\Debug\DevExpress.XtraTreeMap.v17.2.xml
+E:\Lcgoc\Lcgoc.Scheduler\obj\Debug\Lcgoc.Scheduler.exe.licenses
+E:\Lcgoc\Lcgoc.Scheduler\bin\Debug\DevExpress.XtraNavBar.v17.2.dll
+E:\Lcgoc\Lcgoc.Scheduler\bin\Debug\DevExpress.XtraNavBar.v17.2.xml
+E:\Lcgoc\Lcgoc.Scheduler\bin\Debug\de\DevExpress.XtraNavBar.v17.2.resources.dll
+E:\Lcgoc\Lcgoc.Scheduler\bin\Debug\es\DevExpress.XtraNavBar.v17.2.resources.dll
+E:\Lcgoc\Lcgoc.Scheduler\bin\Debug\ja\DevExpress.XtraNavBar.v17.2.resources.dll
+E:\Lcgoc\Lcgoc.Scheduler\bin\Debug\ru\DevExpress.XtraNavBar.v17.2.resources.dll

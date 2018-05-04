@@ -3,6 +3,7 @@ namespace Lcgoc.Model
 {
     public class ScheduleJob_Details_Triggers
     {
+        public int id { get; set; }
         /// <summary>
         /// 采集器名称
         /// </summary>
@@ -58,7 +59,7 @@ namespace Lcgoc.Model
         /// </summary>
         /// <param name="plNew"></param>
         /// <returns></returns>
-        public override bool Equals(object obj)
+        public bool scheEquals(object obj)
         {
             ScheduleJob_Details_Triggers jobDetailTrigger = obj as ScheduleJob_Details_Triggers;
             return jobDetailTrigger != null &&

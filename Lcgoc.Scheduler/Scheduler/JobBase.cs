@@ -64,7 +64,7 @@ namespace Lcgoc.Scheduler
                         context.Put("ExecResult", "完成");
                         return;
                     }
-                    if (!jobDetailNew.Equals(jobDetail) || IsChangedTrigger(jobDetailTrigger, jobDetailTriggerNew))
+                    if (!jobDetailNew.scheEquals(jobDetail) || IsChangedTrigger(jobDetailTrigger, jobDetailTriggerNew))
                     {
                         //脏数据，删除此作业，然后重新创建一个
                         SysParams.logger.Info(string.Format("【{0}】的作业计划属性已更改，将删除该计划的实现作业，然后重新创建一个作业。", this.jobDetail.description));
@@ -122,7 +122,7 @@ namespace Lcgoc.Scheduler
             foreach (var oldTriggerItem in oldTrigger)
             {
                 var newTriggerItem = newTrigger.Where(n => n.sched_name == oldTriggerItem.sched_name && n.job_name == oldTriggerItem.job_name && n.trigger_name == oldTriggerItem.trigger_name);
-                if (newTriggerItem == null || newTriggerItem.Count() == 0 || !oldTriggerItem.Equals(newTriggerItem.FirstOrDefault()))
+                if (newTriggerItem == null || newTriggerItem.Count() == 0 || !oldTriggerItem.scheEquals(newTriggerItem.FirstOrDefault()))
                     return true;
             }
             return false;

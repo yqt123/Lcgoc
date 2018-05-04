@@ -3,6 +3,7 @@ namespace Lcgoc.Model
 {
     public class ScheduleJob_Details
     {
+        public int id { get; set; }
         /// <summary>
         /// 采集器名称
         /// </summary>
@@ -40,7 +41,7 @@ namespace Lcgoc.Model
         /// </summary>
         /// <param name="plNew"></param>
         /// <returns></returns>
-        public override bool Equals(object obj)
+        public bool scheEquals(object obj)
         {
             ScheduleJob_Details jobDetail = obj as ScheduleJob_Details;
             return jobDetail != null &&
