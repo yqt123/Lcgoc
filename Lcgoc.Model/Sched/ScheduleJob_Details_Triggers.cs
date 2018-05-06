@@ -43,11 +43,11 @@ namespace Lcgoc.Model
         /// <summary>
         /// 
         /// </summary>
-        public string start_Time { get; set; }
+        public string startTime { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string end_Time { get; set; }
+        public string endTime { get; set; }
         /// <summary>
         /// 采集类型 如：cron
         /// </summary>
@@ -72,8 +72,8 @@ namespace Lcgoc.Model
                 jobDetailTrigger.cronexpression == cronexpression &&
                 jobDetailTrigger.repeat_count == repeat_count &&
                 jobDetailTrigger.repeat_interval == repeat_interval &&
-                jobDetailTrigger.start_Time == start_Time &&
-                jobDetailTrigger.end_Time == end_Time &&
+                jobDetailTrigger.startTime == startTime &&
+                jobDetailTrigger.endTime == endTime &&
                 jobDetailTrigger.trigger_type == trigger_type;
         }
 

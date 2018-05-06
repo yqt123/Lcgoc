@@ -24,3 +24,5 @@ E:\Lcgoc\Lcgoc.DAL\obj\Debug\Lcgoc.DAL.dll
 E:\Lcgoc\Lcgoc.DAL\obj\Debug\Lcgoc.DAL.pdb
 E:\Lcgoc\PublicDll\Lcgoc.DAL.dll
 E:\Lcgoc\PublicDll\Lcgoc.DAL.pdb
+D:\Lcgoc\PublicDll\Lcgoc.DAL.dll
+D:\Lcgoc\PublicDll\Lcgoc.DAL.pdb

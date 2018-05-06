@@ -24,40 +24,40 @@ namespace Lcgoc.Scheduler
         /// </summary>
         protected override void ExecuteJobImpl(Quartz.IJobExecutionContext context)
         {
-            if (System.Threading.Monitor.TryEnter(lockObj))
-            {
-                string upData = string.Empty;
-                string result = string.Empty;
-                string remark = string.Empty;
-                try
-                {
-                    if (ScheduleSet.writeTxtLog)
-                        SysParams.logger.Info(string.Format("【{0}】已经开始", JobName));
-                    string lastSuccessTime = new ScheduleSDK().LastSuccessTimeDAL(this.jobDetail.sched_name, this.jobDetail.job_name);
+            //if (System.Threading.Monitor.TryEnter(lockObj))
+            //{
+            //    string upData = string.Empty;
+            //    string result = string.Empty;
+            //    string remark = string.Empty;
+            //    try
+            //    {
+            //        if (ScheduleSet.writeTxtLog)
+            //            SysParams.logger.Info(string.Format("【{0}】已经开始", JobName));
+            //        string lastSuccessTime = new ScheduleSDK().LastSuccessTimeDAL(this.jobDetail.sched_name, this.jobDetail.job_name);
 
-                    if (ScheduleSet.writeTxtLog)
-                        context.Put("ExecResult", "成功");
-                }
-                catch (Exception ex)
-                {
-                    SysParams.logger.Error(string.Format("【{0}】出错, 错误原因：{1}", jobDetail.description, ex.Message));
-                    context.Put("ExecResult", "失败");
-                }
-                finally
-                {
-                    if (ScheduleSet.writeTxtLog) SysParams.logger.Info(string.Format("【{0}】结束", JobName));
-                    base.WirteScheduleLog(context);
-                    base.IsWriteScheduleJobLogAtParent = false;
-                    System.Threading.Monitor.Exit(lockObj);
-                }
-            }
-            else
-            {
-                base.IsWriteScheduleJobLogAtParent = false;
-                context.Put("ExecResult", "失败,作业正在执行..");
-                ExeEndQueryTime = DateTime.Now;
-                base.WirteScheduleLog(context);
-            }
+            //        if (ScheduleSet.writeTxtLog)
+            //            context.Put("ExecResult", "成功");
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        SysParams.logger.Error(string.Format("【{0}】出错, 错误原因：{1}", jobDetail.description, ex.Message));
+            //        context.Put("ExecResult", "失败");
+            //    }
+            //    finally
+            //    {
+            //        if (ScheduleSet.writeTxtLog) SysParams.logger.Info(string.Format("【{0}】结束", JobName));
+            //        base.WirteScheduleLog(context);
+            //        base.IsWriteScheduleJobLogAtParent = false;
+            //        System.Threading.Monitor.Exit(lockObj);
+            //    }
+            //}
+            //else
+            //{
+            //    base.IsWriteScheduleJobLogAtParent = false;
+            //    context.Put("ExecResult", "失败,作业正在执行..");
+            //    ExeEndQueryTime = DateTime.Now;
+            //    base.WirteScheduleLog(context);
+            //}
         }
 
     }

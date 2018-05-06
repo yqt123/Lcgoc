@@ -17,7 +17,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lcgoc.Common", "Lcgoc.Commo
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "schedule", "schedule", "{6A03E1F5-7827-4B3B-9E29-4DE27336A8BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lcgoc.Scheduler", "Lcgoc.Scheduler\Lcgoc.Scheduler.csproj", "{030CCBF0-ADCE-4292-9B48-AD097B1F2004}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lcgoc.SchedulerESB", "Lcgoc.SchedulerESB\Lcgoc.SchedulerESB.csproj", "{030CCBF0-ADCE-4292-9B48-AD097B1F2004}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lcgoc.Scheduler", "Lcgoc.Scheduler\Lcgoc.Scheduler.csproj", "{1AA06931-A923-41C3-9433-14059D2D5CCF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lcgoc.SchedulerJob", "Lcgoc.SchedulerJob\Lcgoc.SchedulerJob.csproj", "{982E9F66-3458-4F14-A6EA-EA133856FF1A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,11 +57,21 @@ Global
 		{030CCBF0-ADCE-4292-9B48-AD097B1F2004}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{030CCBF0-ADCE-4292-9B48-AD097B1F2004}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{030CCBF0-ADCE-4292-9B48-AD097B1F2004}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1AA06931-A923-41C3-9433-14059D2D5CCF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1AA06931-A923-41C3-9433-14059D2D5CCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1AA06931-A923-41C3-9433-14059D2D5CCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1AA06931-A923-41C3-9433-14059D2D5CCF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{982E9F66-3458-4F14-A6EA-EA133856FF1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{982E9F66-3458-4F14-A6EA-EA133856FF1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{982E9F66-3458-4F14-A6EA-EA133856FF1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{982E9F66-3458-4F14-A6EA-EA133856FF1A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{030CCBF0-ADCE-4292-9B48-AD097B1F2004} = {6A03E1F5-7827-4B3B-9E29-4DE27336A8BD}
+		{1AA06931-A923-41C3-9433-14059D2D5CCF} = {6A03E1F5-7827-4B3B-9E29-4DE27336A8BD}
+		{982E9F66-3458-4F14-A6EA-EA133856FF1A} = {6A03E1F5-7827-4B3B-9E29-4DE27336A8BD}
 	EndGlobalSection
 EndGlobal

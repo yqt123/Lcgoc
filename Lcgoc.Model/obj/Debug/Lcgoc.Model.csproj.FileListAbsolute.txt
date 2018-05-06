@@ -1,8 +1,5 @@
 D:\Lcgoc\Lcgoc.Model\bin\Debug\Lcgoc.Model.dll
 D:\Lcgoc\Lcgoc.Model\bin\Debug\Lcgoc.Model.pdb
-D:\Lcgoc\Lcgoc.Model\obj\Debug\Lcgoc.Model.csprojResolveAssemblyReference.cache
-D:\Lcgoc\Lcgoc.Model\obj\Debug\Lcgoc.Model.dll
-D:\Lcgoc\Lcgoc.Model\obj\Debug\Lcgoc.Model.pdb
 E:\Lcgoc\Lcgoc.Model\bin\Debug\Lcgoc.Model.dll
 E:\Lcgoc\Lcgoc.Model\bin\Debug\Lcgoc.Model.pdb
 E:\Lcgoc\Lcgoc.Model\obj\Debug\Lcgoc.Model.dll
@@ -10,3 +7,8 @@ E:\Lcgoc\Lcgoc.Model\obj\Debug\Lcgoc.Model.pdb
 E:\Lcgoc\Lcgoc.Model\obj\Debug\Lcgoc.Model.csprojResolveAssemblyReference.cache
 E:\Lcgoc\PublicDll\Lcgoc.Model.dll
 E:\Lcgoc\PublicDll\Lcgoc.Model.pdb
+D:\Lcgoc\PublicDll\Lcgoc.Model.dll
+D:\Lcgoc\PublicDll\Lcgoc.Model.pdb
+D:\Lcgoc\Lcgoc.Model\obj\Debug\Lcgoc.Model.csprojResolveAssemblyReference.cache
+D:\Lcgoc\Lcgoc.Model\obj\Debug\Lcgoc.Model.dll
+D:\Lcgoc\Lcgoc.Model\obj\Debug\Lcgoc.Model.pdb

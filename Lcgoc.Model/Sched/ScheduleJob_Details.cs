@@ -21,6 +21,10 @@ namespace Lcgoc.Model
         /// </summary>
         public string description { get; set; }
         /// <summary>
+        /// 外部程序集
+        /// </summary>
+        public string outAssembly { get; set; }
+        /// <summary>
         /// 采集作业执行类名（完整的类名）
         /// </summary>
         public string job_class_name { get; set; }

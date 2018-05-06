@@ -28,3 +28,5 @@ E:\Lcgoc\Lcgoc.BLL\obj\Debug\Lcgoc.BLL.dll
 E:\Lcgoc\Lcgoc.BLL\obj\Debug\Lcgoc.BLL.pdb
 E:\Lcgoc\PublicDll\Lcgoc.BLL.dll
 E:\Lcgoc\PublicDll\Lcgoc.BLL.pdb
+D:\Lcgoc\PublicDll\Lcgoc.BLL.dll
+D:\Lcgoc\PublicDll\Lcgoc.BLL.pdb
