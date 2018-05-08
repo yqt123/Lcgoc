@@ -72,7 +72,6 @@
     <Compile Include="Sched\MessageSend.cs" />
     <Compile Include="Sched\MessageSended.cs" />
     <Compile Include="Sched\QuerySchedule.cs" />
-    <Compile Include="Sched\ScheduleJob.cs" />
     <Compile Include="Sched\ScheduleJob_ApiLog.cs" />
     <Compile Include="Sched\ScheduleJob_Details.cs" />
     <Compile Include="Sched\ScheduleJob_Details_Triggers.cs" />

@@ -29,18 +29,14 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SchdulerManage));
-            this.gridMain = new DevExpress.XtraGrid.GridControl();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.splitterControl1 = new DevExpress.XtraEditors.SplitterControl();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.navBarControl1 = new DevExpress.XtraNavBar.NavBarControl();
             this.navBarGroup1 = new DevExpress.XtraNavBar.NavBarGroup();
-            this.navBar_scheduleJob = new DevExpress.XtraNavBar.NavBarItem();
             this.navBar_scheduleJob_details = new DevExpress.XtraNavBar.NavBarItem();
             this.navBar_scheduleJob_details_triggers = new DevExpress.XtraNavBar.NavBarItem();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.tabPane1 = new DevExpress.XtraBars.Navigation.TabPane();
-            this.tabNav_navBar_scheduleJob = new DevExpress.XtraBars.Navigation.TabNavigationPage();
             this.tabNav_navBar_scheduleJob_details = new DevExpress.XtraBars.Navigation.TabNavigationPage();
             this.gridDetail = new DevExpress.XtraGrid.GridControl();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -49,8 +45,6 @@
             this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.panelControl4 = new DevExpress.XtraEditors.PanelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            ((System.ComponentModel.ISupportInitialize)(this.gridMain)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).BeginInit();
@@ -58,7 +52,6 @@
             this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabPane1)).BeginInit();
             this.tabPane1.SuspendLayout();
-            this.tabNav_navBar_scheduleJob.SuspendLayout();
             this.tabNav_navBar_scheduleJob_details.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridDetail)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
@@ -68,25 +61,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).BeginInit();
             this.panelControl4.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // gridMain
-            // 
-            this.gridMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridMain.Location = new System.Drawing.Point(0, 0);
-            this.gridMain.MainView = this.gridView1;
-            this.gridMain.Name = "gridMain";
-            this.gridMain.Size = new System.Drawing.Size(484, 413);
-            this.gridMain.TabIndex = 0;
-            this.gridMain.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
-            this.gridMain.KeyUp += new System.Windows.Forms.KeyEventHandler(this.gridMain_KeyUp);
-            // 
-            // gridView1
-            // 
-            this.gridView1.GridControl = this.gridMain;
-            this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsView.ColumnAutoWidth = false;
-            this.gridView1.OptionsView.ShowGroupPanel = false;
             // 
             // splitterControl1
             // 
@@ -112,7 +86,6 @@
             this.navBarControl1.Groups.AddRange(new DevExpress.XtraNavBar.NavBarGroup[] {
             this.navBarGroup1});
             this.navBarControl1.Items.AddRange(new DevExpress.XtraNavBar.NavBarItem[] {
-            this.navBar_scheduleJob,
             this.navBar_scheduleJob_details,
             this.navBar_scheduleJob_details_triggers});
             this.navBarControl1.Location = new System.Drawing.Point(2, 2);
@@ -124,29 +97,22 @@
             // 
             // navBarGroup1
             // 
-            this.navBarGroup1.Caption = "作业管理";
+            this.navBarGroup1.Caption = "作业配置";
             this.navBarGroup1.Expanded = true;
             this.navBarGroup1.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
-            new DevExpress.XtraNavBar.NavBarItemLink(this.navBar_scheduleJob),
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBar_scheduleJob_details),
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBar_scheduleJob_details_triggers)});
             this.navBarGroup1.Name = "navBarGroup1";
             // 
-            // navBar_scheduleJob
-            // 
-            this.navBar_scheduleJob.Caption = "scheduleJob";
-            this.navBar_scheduleJob.ImageOptions.SmallImage = global::Lcgoc.SchedulerESB.Properties.Resources.Organizer;
-            this.navBar_scheduleJob.Name = "navBar_scheduleJob";
-            // 
             // navBar_scheduleJob_details
             // 
-            this.navBar_scheduleJob_details.Caption = "scheduleJob_details";
+            this.navBar_scheduleJob_details.Caption = "作业调度明细";
             this.navBar_scheduleJob_details.ImageOptions.SmallImage = global::Lcgoc.SchedulerESB.Properties.Resources.Organizer;
             this.navBar_scheduleJob_details.Name = "navBar_scheduleJob_details";
             // 
             // navBar_scheduleJob_details_triggers
             // 
-            this.navBar_scheduleJob_details_triggers.Caption = "scheduleJob_details_triggers";
+            this.navBar_scheduleJob_details_triggers.Caption = "作业调度触发器";
             this.navBar_scheduleJob_details_triggers.ImageOptions.SmallImage = global::Lcgoc.SchedulerESB.Properties.Resources.Organizer;
             this.navBar_scheduleJob_details_triggers.Name = "navBar_scheduleJob_details_triggers";
             // 
@@ -162,34 +128,25 @@
             // 
             // tabPane1
             // 
-            this.tabPane1.Controls.Add(this.tabNav_navBar_scheduleJob);
             this.tabPane1.Controls.Add(this.tabNav_navBar_scheduleJob_details);
             this.tabPane1.Controls.Add(this.tabNav_navBar_scheduleJob_details_triggers);
             this.tabPane1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabPane1.Location = new System.Drawing.Point(2, 2);
             this.tabPane1.Name = "tabPane1";
             this.tabPane1.Pages.AddRange(new DevExpress.XtraBars.Navigation.NavigationPageBase[] {
-            this.tabNav_navBar_scheduleJob,
             this.tabNav_navBar_scheduleJob_details,
             this.tabNav_navBar_scheduleJob_details_triggers});
             this.tabPane1.RegularSize = new System.Drawing.Size(502, 520);
-            this.tabPane1.SelectedPage = this.tabNav_navBar_scheduleJob;
+            this.tabPane1.SelectedPage = this.tabNav_navBar_scheduleJob_details;
             this.tabPane1.Size = new System.Drawing.Size(502, 520);
             this.tabPane1.TabIndex = 2;
             // 
-            // tabNav_navBar_scheduleJob
-            // 
-            this.tabNav_navBar_scheduleJob.Caption = "navBar_scheduleJob";
-            this.tabNav_navBar_scheduleJob.Controls.Add(this.gridMain);
-            this.tabNav_navBar_scheduleJob.Name = "tabNav_navBar_scheduleJob";
-            this.tabNav_navBar_scheduleJob.Size = new System.Drawing.Size(484, 413);
-            // 
             // tabNav_navBar_scheduleJob_details
             // 
-            this.tabNav_navBar_scheduleJob_details.Caption = "navBar_scheduleJob_details";
+            this.tabNav_navBar_scheduleJob_details.Caption = "作业调度明细";
             this.tabNav_navBar_scheduleJob_details.Controls.Add(this.gridDetail);
             this.tabNav_navBar_scheduleJob_details.Name = "tabNav_navBar_scheduleJob_details";
-            this.tabNav_navBar_scheduleJob_details.Size = new System.Drawing.Size(484, 413);
+            this.tabNav_navBar_scheduleJob_details.Size = new System.Drawing.Size(484, 474);
             // 
             // gridDetail
             // 
@@ -197,7 +154,7 @@
             this.gridDetail.Location = new System.Drawing.Point(0, 0);
             this.gridDetail.MainView = this.gridView2;
             this.gridDetail.Name = "gridDetail";
-            this.gridDetail.Size = new System.Drawing.Size(484, 413);
+            this.gridDetail.Size = new System.Drawing.Size(484, 474);
             this.gridDetail.TabIndex = 3;
             this.gridDetail.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
@@ -212,7 +169,7 @@
             // 
             // tabNav_navBar_scheduleJob_details_triggers
             // 
-            this.tabNav_navBar_scheduleJob_details_triggers.Caption = "scheduleJob_details_triggers";
+            this.tabNav_navBar_scheduleJob_details_triggers.Caption = "作业调度触发器";
             this.tabNav_navBar_scheduleJob_details_triggers.Controls.Add(this.gridTrigger);
             this.tabNav_navBar_scheduleJob_details_triggers.Name = "tabNav_navBar_scheduleJob_details_triggers";
             this.tabNav_navBar_scheduleJob_details_triggers.Size = new System.Drawing.Size(484, 474);
@@ -272,8 +229,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "作业配置";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            ((System.ComponentModel.ISupportInitialize)(this.gridMain)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).EndInit();
@@ -281,7 +236,6 @@
             this.panelControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tabPane1)).EndInit();
             this.tabPane1.ResumeLayout(false);
-            this.tabNav_navBar_scheduleJob.ResumeLayout(false);
             this.tabNav_navBar_scheduleJob_details.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridDetail)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
@@ -296,19 +250,14 @@
         }
 
         #endregion
-
-        private DevExpress.XtraGrid.GridControl gridMain;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraEditors.SplitterControl splitterControl1;
         private DevExpress.XtraEditors.PanelControl panelControl1;
         private DevExpress.XtraEditors.PanelControl panelControl2;
         private DevExpress.XtraNavBar.NavBarControl navBarControl1;
         private DevExpress.XtraNavBar.NavBarGroup navBarGroup1;
-        private DevExpress.XtraNavBar.NavBarItem navBar_scheduleJob;
         private DevExpress.XtraNavBar.NavBarItem navBar_scheduleJob_details;
         private DevExpress.XtraNavBar.NavBarItem navBar_scheduleJob_details_triggers;
         private DevExpress.XtraBars.Navigation.TabPane tabPane1;
-        private DevExpress.XtraBars.Navigation.TabNavigationPage tabNav_navBar_scheduleJob;
         private DevExpress.XtraBars.Navigation.TabNavigationPage tabNav_navBar_scheduleJob_details;
         private DevExpress.XtraBars.Navigation.TabNavigationPage tabNav_navBar_scheduleJob_details_triggers;
         private DevExpress.XtraGrid.GridControl gridDetail;

@@ -1,4 +1,6 @@
 ﻿
+using System;
+
 namespace Lcgoc.Model
 {
     public class ScheduleJob_Details
@@ -35,11 +37,11 @@ namespace Lcgoc.Model
         /// <summary>
         /// 开始采集时间
         /// </summary>
-        public string startTime { get; set; }
+        public DateTime? startTime { get; set; }
         /// <summary>
         /// 结束采集时间（可以不设置）
         /// </summary>
-        public string endTime { get; set; }
+        public DateTime? endTime { get; set; }
         /// <summary>
         /// 比较值是否相等
         /// </summary>

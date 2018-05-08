@@ -6,3 +6,11 @@ D:\Lcgoc\Lcgoc.SchedulerJob\bin\Debug\Common.Logging.dll
 D:\Lcgoc\Lcgoc.SchedulerJob\bin\Debug\Quartz.dll
 D:\Lcgoc\Lcgoc.SchedulerJob\obj\Debug\Lcgoc.SchedulerJob.dll
 D:\Lcgoc\Lcgoc.SchedulerJob\obj\Debug\Lcgoc.SchedulerJob.pdb
+E:\Lcgoc\Lcgoc.SchedulerJob\bin\Debug\Lcgoc.SchedulerJob.dll
+E:\Lcgoc\Lcgoc.SchedulerJob\bin\Debug\Lcgoc.SchedulerJob.pdb
+E:\Lcgoc\Lcgoc.SchedulerJob\bin\Debug\Common.Logging.Core.dll
+E:\Lcgoc\Lcgoc.SchedulerJob\bin\Debug\Common.Logging.dll
+E:\Lcgoc\Lcgoc.SchedulerJob\bin\Debug\Quartz.dll
+E:\Lcgoc\Lcgoc.SchedulerJob\obj\Debug\Lcgoc.SchedulerJob.csprojResolveAssemblyReference.cache
+E:\Lcgoc\Lcgoc.SchedulerJob\obj\Debug\Lcgoc.SchedulerJob.dll
+E:\Lcgoc\Lcgoc.SchedulerJob\obj\Debug\Lcgoc.SchedulerJob.pdb

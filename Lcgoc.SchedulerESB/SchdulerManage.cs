@@ -15,7 +15,6 @@ namespace Lcgoc.SchedulerESB
     public partial class SchdulerManage : DevExpress.XtraEditors.XtraForm
     {
         #region 声明
-        BindingList<ScheduleJob> schedule = new BindingList<ScheduleJob>();
         BindingList<ScheduleJob_Details> details = new BindingList<ScheduleJob_Details>();
         BindingList<ScheduleJob_Details_Triggers> triggers = new BindingList<ScheduleJob_Details_Triggers>();
         ScheduleBLL bll = new ScheduleBLL();
@@ -34,27 +33,18 @@ namespace Lcgoc.SchedulerESB
 
         private void Init()
         {
-            gridView1.OptionsView.ShowGroupPanel = false;
-            navBar_scheduleJob.LinkClicked += NavBar_scheduleJob_LinkClicked;
             navBar_scheduleJob_details.LinkClicked += NavBar_scheduleJob_details_LinkClicked;
             navBar_scheduleJob_details_triggers.LinkClicked += NavBar_scheduleJob_details_triggers_LinkClicked;
 
             tabPane1.SelectedPageIndexChanged += TabPane1_SelectedPageIndexChanged;
             tabPane1.SelectedPageIndex = 0;
-
-            gridView1.CellValueChanged += GridView1_CellValueChanged;
+            
             gridView2.CellValueChanged += GridView2_CellValueChanged;
             gridView3.CellValueChanged += GridView3_CellValueChanged;
         }
         #endregion
 
         #region 数据
-        private void GridView1_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
-        {
-            var row = schedule.ElementAt(gridView1.FocusedRowHandle);
-            bll.ScheduleEdit(row);
-        }
-
         private void GridView2_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
             var row = details.ElementAt(gridView2.FocusedRowHandle);
@@ -71,9 +61,8 @@ namespace Lcgoc.SchedulerESB
         {
             var index = ((DevExpress.XtraBars.Navigation.TabPane)sender).SelectedPageIndex;
             BandingData(
-                index == 0 ? "Schedule" :
-                index == 1 ? "ScheduleDetails" :
-                index == 2 ? "ScheduleDetailsTriggers" : ""
+                index == 0 ? "ScheduleDetails" :
+                index == 1 ? "ScheduleDetailsTriggers" : ""
                 );
         }
 
@@ -81,15 +70,6 @@ namespace Lcgoc.SchedulerESB
         {
             switch (name)
             {
-                case "Schedule":
-                    {
-                        schedule = new BindingList<ScheduleJob>(bll.QuerySchedule().ToList());
-                        if (schedule.Count > 0) schedulemaxIndex = schedule.Max(n => n.id);
-                        gridMain.DataSource = schedule;
-                        gridView1.Columns[0].OptionsColumn.AllowEdit = false;
-                        gridView1.BestFitColumns();
-                    }
-                    break;
                 case "ScheduleDetails":
                     {
                         details = new BindingList<ScheduleJob_Details>(bll.QueryScheduleDetails().ToList());
@@ -116,28 +96,23 @@ namespace Lcgoc.SchedulerESB
         #region 按钮事件
         private void NavBar_scheduleJob_details_triggers_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
-            tabPane1.SelectedPageIndex = 2;
+            tabPane1.SelectedPageIndex = 1;
         }
 
         private void NavBar_scheduleJob_details_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
-            tabPane1.SelectedPageIndex = 1;
-        }
-
-        private void NavBar_scheduleJob_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
-        {
             tabPane1.SelectedPageIndex = 0;
         }
-
-        private void gridMain_KeyUp(object sender, KeyEventArgs e)
+                
+        private void gridDetail_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Insert)
             {
-                schedulemaxIndex += 1;
-                var row = new ScheduleJob { id = schedulemaxIndex, allowUsed = false, writeDBLog = true, writeTxtLog = true };
-                if (bll.ScheduleAdd(row))
+                detailsmaxIndex += 1;
+                var row = new ScheduleJob_Details { id = detailsmaxIndex, is_durable = true };
+                if (bll.ScheduleDetailsAdd(row))
                 {
-                    schedule.Add(row);
+                    details.Add(row);
                 }
                 else
                 {
@@ -148,10 +123,10 @@ namespace Lcgoc.SchedulerESB
             {
                 if (XtraMessageBox.Show("数据删除无法恢复，是否删除？", "系统提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
-                    var row = schedule.ElementAt(gridView1.FocusedRowHandle);
-                    if (bll.ScheduleDelete(row.id))
+                    var row = details.ElementAt(gridView2.FocusedRowHandle);
+                    if (bll.ScheduleDetailsDelete(row.id))
                     {
-                        schedule.RemoveAt(gridView1.FocusedRowHandle);
+                        details.RemoveAt(gridView2.FocusedRowHandle);
                     }
                     else
                     {
@@ -161,35 +136,35 @@ namespace Lcgoc.SchedulerESB
             }
         }
 
-        private void gridDetail_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Insert)
-            {
-                detailsmaxIndex += 1;
-                details.Add(new ScheduleJob_Details { id = detailsmaxIndex, is_durable = true });
-            }
-            else if (e.KeyCode == Keys.Delete)
-            {
-                if (XtraMessageBox.Show("数据删除无法恢复，是否删除？", "系统提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-                {
-                    var row = details.ElementAt(gridView2.FocusedRowHandle);
-                    details.Remove(row);
-                }
-            }
-        }
-
         private void gridTrigger_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Insert)
             {
                 triggersmaxIndex += 1;
-                triggers.Add(new ScheduleJob_Details_Triggers { id = triggersmaxIndex, trigger_type = "cron" });
+                var row = new ScheduleJob_Details_Triggers { id = triggersmaxIndex, trigger_type = "cron" };
+                if (bll.ScheduleDetailsTriggersAdd(row))
+                {
+                    triggers.Add(row);
+                }
+                else
+                {
+                    XtraMessageBox.Show("数据添加失败？", "系统提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
             }
             else if (e.KeyCode == Keys.Delete)
             {
                 if (XtraMessageBox.Show("数据删除无法恢复，是否删除？", "系统提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
-                    triggers.RemoveAt(gridView3.FocusedRowHandle);
+                    var row = triggers.ElementAt(gridView3.FocusedRowHandle);
+                    if (bll.ScheduleDetailsTriggersDelete(row.id))
+                    {
+                        triggers.RemoveAt(gridView3.FocusedRowHandle);
+                    }
+                    else
+                    {
+                        XtraMessageBox.Show("数据删除失败？", "系统提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
         }

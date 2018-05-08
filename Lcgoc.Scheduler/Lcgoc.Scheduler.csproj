@@ -71,9 +71,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Job\MessageSendJob.cs" />
     <Compile Include="Job\MyTestJob.cs" />
-    <Compile Include="Job\WXMessage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Job\JobBase.cs" />
     <Compile Include="SysParams.cs" />

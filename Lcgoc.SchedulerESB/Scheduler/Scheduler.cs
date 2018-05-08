@@ -89,7 +89,7 @@ namespace Lcgoc.SchedulerESB
         //使用采集计划来创建作业
         private void ScheduleJobByPlan(IScheduler sched, ScheduleJob_Details JobDetail)
         {
-            //if (JobDetail.is_durable)
+            if (JobDetail.is_durable)
             {
                 JobHelper.ScheduleJobByPlan(_QtzScheduler, JobDetail);
             }

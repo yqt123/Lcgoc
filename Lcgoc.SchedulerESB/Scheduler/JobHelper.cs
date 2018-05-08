@@ -13,6 +13,12 @@ namespace Lcgoc.SchedulerESB
         public static readonly string TRINameFormat = "TRIGGER-{0}-{1}-{2}-{3}";
         public static readonly string jobDetailMad = "jobDetail";
         public static readonly string triggerMad = "jobTrigger";
+        /// <summary>
+        /// 作业数据存储
+        /// </summary>
+        public static IDictionary<string, ScheduleJob_Details> schedulePlanDetails = new Dictionary<string, ScheduleJob_Details>();
+        public static IDictionary<string, IEnumerable<ScheduleJob_Details_Triggers>> schedulePlanTrigger = new Dictionary<string, IEnumerable<ScheduleJob_Details_Triggers>>();
+
         public static ScheduleBLL schedulebll = new ScheduleBLL();
         #endregion
         /// <summary>
@@ -63,8 +69,7 @@ namespace Lcgoc.SchedulerESB
             }
             return tuple;
         }
-
-
+        
         /// <summary>
         /// 根据数据采集计划来创建JOB明细
         /// </summary>
@@ -79,12 +84,10 @@ namespace Lcgoc.SchedulerESB
             if (!string.IsNullOrEmpty(jobDetail.outAssembly))
             {
                 System.Reflection.Assembly outerAsm = System.Reflection.Assembly.LoadFrom(System.AppDomain.CurrentDomain.BaseDirectory + jobDetail.outAssembly);
-                //取此采集计划的具体作业实现
                 jobType = outerAsm.GetType(jobDetail.job_class_name);
             }
             else
             {
-                //取此采集计划的具体作业实现
                 jobType = Type.GetType(jobDetail.job_class_name);
             }
             if (jobType == null)
@@ -95,6 +98,9 @@ namespace Lcgoc.SchedulerESB
             var jobTrigger = schedulebll.QueryScheduleDetailsTriggers(jobDetail.sched_name, jobDetail.job_name);
             //作业执行上下文携带数据
             IDictionary<string, object> dataMap = new Dictionary<string, object>() { { jobDetailMad, jobDetail }, { triggerMad, jobTrigger } };
+            //把作业写入内存
+            schedulePlanDetails.Add(GetJobKey(jobDetail)+ jobDetailMad, jobDetail);
+            schedulePlanTrigger.Add(GetJobKey(jobDetail) + triggerMad, jobTrigger);
             if (attachMap != null)
             {
                 foreach (KeyValuePair<string, object> kv in attachMap)
@@ -111,8 +117,7 @@ namespace Lcgoc.SchedulerESB
                 .Build();
             return job;
         }
-
-
+        
         /// <summary>
         /// 根据数据采集计划来创建作业触发器
         /// </summary>
@@ -131,8 +136,8 @@ namespace Lcgoc.SchedulerESB
             builder =
                 trigger.trigger_type.ToUpper() == "cron".ToUpper() ? (
                     string.IsNullOrEmpty(trigger.cronexpression) ?
-                    builder.WithSimpleSchedule(x => x.WithIntervalInMinutes(string.IsNullOrEmpty(trigger.repeat_interval) ? 30 : int.Parse(trigger.repeat_interval)).WithRepeatCount(string.IsNullOrEmpty(trigger.repeat_count) ? 10 : int.Parse(trigger.repeat_count))) :
-                    builder.WithCronSchedule(trigger.cronexpression)
+                    builder.WithSimpleSchedule(x => x.WithIntervalInMinutes(string.IsNullOrEmpty(trigger.repeat_interval) ? 30 : int.Parse(trigger.repeat_interval)).WithRepeatCount(string.IsNullOrEmpty(trigger.repeat_count) ? 10 : int.Parse(trigger.repeat_count))) 
+                    :builder.WithCronSchedule(trigger.cronexpression)
                 ) : builder.WithSimpleSchedule(x => x.WithIntervalInMinutes(string.IsNullOrEmpty(trigger.repeat_interval) ? 30 : int.Parse(trigger.repeat_interval)).WithRepeatCount(string.IsNullOrEmpty(trigger.repeat_count) ? 10 : int.Parse(trigger.repeat_count)));
             if (forJob != null) builder.ForJob(forJob);
             return builder.Build();

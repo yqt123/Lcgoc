@@ -31,3 +31,12 @@ D:\Lcgoc\PublicDll\Lcgoc.Scheduler.pdb
 D:\Lcgoc\Lcgoc.Scheduler\obj\Debug\Lcgoc.Scheduler.csprojResolveAssemblyReference.cache
 D:\Lcgoc\Lcgoc.Scheduler\obj\Debug\Lcgoc.Scheduler.dll
 D:\Lcgoc\Lcgoc.Scheduler\obj\Debug\Lcgoc.Scheduler.pdb
+E:\Lcgoc\PublicDll\Lcgoc.Scheduler.dll.config
+E:\Lcgoc\PublicDll\Lcgoc.Scheduler.dll
+E:\Lcgoc\PublicDll\Lcgoc.Scheduler.pdb
+E:\Lcgoc\Lcgoc.Scheduler\obj\Debug\Lcgoc.Scheduler.csprojResolveAssemblyReference.cache
+E:\Lcgoc\Lcgoc.Scheduler\obj\Debug\Lcgoc.Scheduler.Properties.Resources.resources
+E:\Lcgoc\Lcgoc.Scheduler\obj\Debug\Lcgoc.Scheduler.csproj.GenerateResource.Cache
+E:\Lcgoc\Lcgoc.Scheduler\obj\Debug\Lcgoc.Scheduler.dll.licenses
+E:\Lcgoc\Lcgoc.Scheduler\obj\Debug\Lcgoc.Scheduler.dll
+E:\Lcgoc\Lcgoc.Scheduler\obj\Debug\Lcgoc.Scheduler.pdb
