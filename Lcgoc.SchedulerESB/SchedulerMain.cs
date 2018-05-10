@@ -122,7 +122,7 @@ namespace Lcgoc.SchedulerESB
         {
             if (XtraMessageBox.Show("是否确认退出程序？", "退出", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
-                if (pcScheduler != null) pcScheduler.Shutdown();
+                if (pcScheduler != null) pcScheduler.Shutdown(false);
                 notifyIcon1.Visible = false;
                 // 关闭所有的线程
                 this.Dispose();

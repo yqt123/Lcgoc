@@ -116,22 +116,24 @@ namespace Lcgoc.SchedulerESB
                     break;
                 case "ScheduleSet":
                     {
-                        List<ScheduleJob_Status> ScheduleJobStatus = new List<ScheduleJob_Status>();
+                        List<ScheduleJob_Status> listScheduleJobStatus = new List<ScheduleJob_Status>();
                         foreach (IEnumerable<ScheduleJob_Details_Triggers> item in JobHelper.schedulePlanTrigger.Values.ToList())
                         {
-                            foreach (ScheduleJob_Details_Triggers _trigger in item)
+                            foreach (ScheduleJob_Details_Triggers n in item)
                             {
-
+                                listScheduleJobStatus.Add(new ScheduleJob_Status {
+                                    description = n.description,
+                                    id = n.id,
+                                    job_group = n.job_group,
+                                    job_name = n.job_name,
+                                    sched_name = n.sched_name,
+                                    trigger_group = n.trigger_group,
+                                    trigger_name = n.trigger_name,
+                                    status= pcScheduler.GetTriggerState(n).ToString()
+                                });
                             }
                         }
-
-                        var listScheduleJobStatus = (from n in JobHelper.schedulePlanTrigger.Values.ToList()
-                                                     select new ScheduleJob_Status() { description = n.description, id = n.id, job_group = n.job_group, job_name = n.job_name, sched_name = n.sched_name }).ToList();
                         grid_SchedulerSet.DataSource = new BindingList<ScheduleJob_Status>(listScheduleJobStatus);
-                        foreach (ScheduleJob_Status item in listScheduleJobStatus)
-                        {
-                            item.status = pcScheduler.GetTriggerState();
-                        }
                         RefreshGridColumns(gridView_SchedulerSet, columnArgs: new List<GridViewColumn> {
                             new GridViewColumn { ColumnName = "id", Caption="编号", AllowEdit = false, Width = 50 },
                             new GridViewColumn { ColumnName = "sched_name", Caption="计划名称", AllowEdit = false },

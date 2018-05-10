@@ -118,5 +118,16 @@ namespace Lcgoc.SchedulerESB
             }
             return TriggerState.None;
         }
+
+        /// <summary>
+        /// 暂停作业
+        /// </summary>
+        public void PauseTrigger(TriggerKey key)
+        {
+            if (_QtzScheduler != null)
+            {
+                _QtzScheduler.PauseTrigger(key);
+            }
+        }
     }
 }
