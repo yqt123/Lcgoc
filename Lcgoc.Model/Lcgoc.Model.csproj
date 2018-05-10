@@ -73,8 +73,10 @@
     <Compile Include="Sched\MessageSended.cs" />
     <Compile Include="Sched\QuerySchedule.cs" />
     <Compile Include="Sched\ScheduleJob_ApiLog.cs" />
+    <Compile Include="Sched\ScheduleJob_Status.cs" />
     <Compile Include="Sched\ScheduleJob_Details.cs" />
     <Compile Include="Sched\ScheduleJob_Details_Triggers.cs" />
+    <Compile Include="Sched\GridViewColumn.cs" />
     <Compile Include="Sched\ScheduleJob_Log.cs" />
     <Compile Include="Sched\WriteScheduleJob_Log.cs" />
   </ItemGroup>

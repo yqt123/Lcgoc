@@ -61,11 +61,11 @@ namespace Lcgoc.SchedulerESB
         /// </summary>
         private void CheckAllSchedulerPlan(IJobExecutionContext context)
         {
-            var jobDetails = bll.QueryScheduleDetails();
+            var jobDetails = bll.QueryScheduleDetails().Where(n => n.is_durable);
             //检查有没有删除的作业
             foreach (ScheduleJob_Details item in JobHelper.schedulePlanDetails.Values)
             {
-                var old = jobDetails.Where(n => n.job_name == item.job_name && n.sched_name == item.sched_name && n.is_durable);
+                var old = jobDetails.Where(n => n.job_name == item.job_name && n.sched_name == item.sched_name);
                 if (old.Count() == 0)
                 {
                     context.Scheduler.DeleteJob(JobHelper.GetJobKey(item));
@@ -75,20 +75,37 @@ namespace Lcgoc.SchedulerESB
             //检查有没有修改过的作业
             foreach (ScheduleJob_Details item in jobDetails)
             {
-
-                var old = JobHelper.schedulePlanDetails[JobHelper.GetJobKey(item) + JobHelper.jobDetailMad] as ScheduleJob_Details;
-                if (old == null)
+                if (!JobHelper.schedulePlanDetails.Keys.Contains(JobHelper.GetJobKey(item) + JobHelper.jobDetailMad))
                 {
                     JobHelper.ScheduleJobByPlan(context.Scheduler, item);
-                    JobHelper.schedulePlanDetails.Add(JobHelper.GetJobKey(item) + JobHelper.jobDetailMad, item);
                     continue;
                 }
-                if (!item.scheEquals(old))
+                var oldDetails = JobHelper.schedulePlanDetails[JobHelper.GetJobKey(item) + JobHelper.jobDetailMad];
+                var isChange = false;
+                if (!item.scheEquals(oldDetails)) isChange = true;
+                else
+                {//检查触发器是否改变
+                    var triggerNew = bll.QueryScheduleDetailsTriggers(schedName: item.sched_name, jobName: item.job_name);
+                    var oldTrigger = JobHelper.schedulePlanTrigger[JobHelper.GetJobKey(item) + JobHelper.triggerMad];
+                    if (triggerNew.Count() != oldTrigger.Count())
+                        isChange = true;
+                    else
+                    {
+                        foreach (ScheduleJob_Details_Triggers trigg in oldTrigger)
+                        {
+                            var _trigger = triggerNew.Where(n => n.sched_name == trigg.sched_name && n.job_name == trigg.job_name && n.trigger_name == trigg.trigger_name);
+                            if (_trigger == null || _trigger.Count() == 0 || !trigg.scheEquals(_trigger.FirstOrDefault()))
+                                isChange = true;
+                        }
+                    }
+                }
+
+                if (isChange)
                 {
                     //移除并写入新的作业
-                    JobHelper.schedulePlanDetails.Remove(JobHelper.GetJobKey(item) + JobHelper.jobDetailMad);
-                    JobHelper.schedulePlanDetails.Add(JobHelper.GetJobKey(item) + JobHelper.jobDetailMad, item);
-                    JobHelper.RestartJob(context.Scheduler, old, item);
+                    context.Scheduler.DeleteJob(JobHelper.GetJobKey(item));
+                    JobHelper.ScheduleJobByPlan(context.Scheduler, item);
+                    //JobHelper.RestartJob(context.Scheduler, oldDetails, item);
                 }
             }
         }

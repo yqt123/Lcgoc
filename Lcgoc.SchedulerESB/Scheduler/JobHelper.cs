@@ -69,7 +69,7 @@ namespace Lcgoc.SchedulerESB
             }
             return tuple;
         }
-        
+
         /// <summary>
         /// 根据数据采集计划来创建JOB明细
         /// </summary>
@@ -99,8 +99,16 @@ namespace Lcgoc.SchedulerESB
             //作业执行上下文携带数据
             IDictionary<string, object> dataMap = new Dictionary<string, object>() { { jobDetailMad, jobDetail }, { triggerMad, jobTrigger } };
             //把作业写入内存
-            schedulePlanDetails.Add(GetJobKey(jobDetail)+ jobDetailMad, jobDetail);
-            schedulePlanTrigger.Add(GetJobKey(jobDetail) + triggerMad, jobTrigger);
+            if (schedulePlanDetails.Keys.Contains(GetJobKey(jobDetail) + jobDetailMad))
+                schedulePlanDetails.Remove(GetJobKey(jobDetail) + jobDetailMad);
+            else
+                schedulePlanDetails.Add(GetJobKey(jobDetail) + jobDetailMad, jobDetail);
+
+            if (schedulePlanTrigger.Keys.Contains(GetJobKey(jobDetail) + triggerMad))
+                schedulePlanTrigger.Remove(GetJobKey(jobDetail) + triggerMad);
+            else
+                schedulePlanTrigger.Add(GetJobKey(jobDetail) + triggerMad, jobTrigger);
+
             if (attachMap != null)
             {
                 foreach (KeyValuePair<string, object> kv in attachMap)
@@ -117,7 +125,7 @@ namespace Lcgoc.SchedulerESB
                 .Build();
             return job;
         }
-        
+
         /// <summary>
         /// 根据数据采集计划来创建作业触发器
         /// </summary>
@@ -136,8 +144,8 @@ namespace Lcgoc.SchedulerESB
             builder =
                 trigger.trigger_type.ToUpper() == "cron".ToUpper() ? (
                     string.IsNullOrEmpty(trigger.cronexpression) ?
-                    builder.WithSimpleSchedule(x => x.WithIntervalInMinutes(string.IsNullOrEmpty(trigger.repeat_interval) ? 30 : int.Parse(trigger.repeat_interval)).WithRepeatCount(string.IsNullOrEmpty(trigger.repeat_count) ? 10 : int.Parse(trigger.repeat_count))) 
-                    :builder.WithCronSchedule(trigger.cronexpression)
+                    builder.WithSimpleSchedule(x => x.WithIntervalInMinutes(string.IsNullOrEmpty(trigger.repeat_interval) ? 30 : int.Parse(trigger.repeat_interval)).WithRepeatCount(string.IsNullOrEmpty(trigger.repeat_count) ? 10 : int.Parse(trigger.repeat_count)))
+                    : builder.WithCronSchedule(trigger.cronexpression)
                 ) : builder.WithSimpleSchedule(x => x.WithIntervalInMinutes(string.IsNullOrEmpty(trigger.repeat_interval) ? 30 : int.Parse(trigger.repeat_interval)).WithRepeatCount(string.IsNullOrEmpty(trigger.repeat_count) ? 10 : int.Parse(trigger.repeat_count)));
             if (forJob != null) builder.ForJob(forJob);
             return builder.Build();

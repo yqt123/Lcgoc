@@ -109,5 +109,14 @@ namespace Lcgoc.SchedulerESB
                 }
             }
         }
+
+        public TriggerState GetTriggerState(ScheduleJob_Details_Triggers trigger)
+        {
+            if (_QtzScheduler != null)
+            {
+                return _QtzScheduler.GetTriggerState(JobHelper.GetTriggerKey(trigger));
+            }
+            return TriggerState.None;
+        }
     }
 }

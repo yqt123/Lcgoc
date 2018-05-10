@@ -162,12 +162,6 @@ namespace Lcgoc.SchedulerESB
                 isRuning = true;
             }
         }
-
-        private void panel2_Click(object sender, EventArgs e)
-        {
-            SchdulerManage frm = new SchdulerManage();
-            frm.ShowDialog();
-        }
         private void btn_min_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
@@ -180,8 +174,8 @@ namespace Lcgoc.SchedulerESB
 
         private void btn_manage_Click(object sender, EventArgs e)
         {
-            SchdulerManage frm = new SchdulerManage();
-            frm.WindowState = FormWindowState.Maximized;
+            SchdulerManage frm = new SchdulerManage(pcScheduler);
+            //frm.WindowState = FormWindowState.Maximized;
             frm.ShowDialog();
         }
     }
