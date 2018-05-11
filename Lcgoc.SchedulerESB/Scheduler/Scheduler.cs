@@ -129,5 +129,16 @@ namespace Lcgoc.SchedulerESB
                 _QtzScheduler.PauseTrigger(key);
             }
         }
+
+        /// <summary>
+        /// 重新开始作业
+        /// </summary>
+        public void ResumeTrigger(TriggerKey key)
+        {
+            if (_QtzScheduler != null)
+            {
+                _QtzScheduler.ResumeTrigger(key);
+            }
+        }
     }
 }

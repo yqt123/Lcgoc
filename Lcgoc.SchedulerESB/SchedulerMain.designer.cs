@@ -74,7 +74,7 @@
             // 
             this.btn_run.AllowFocus = false;
             this.btn_run.BackgroundImage = global::Lcgoc.SchedulerESB.Properties.Resources.start;
-            this.btn_run.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btn_run.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn_run.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.btn_run.Location = new System.Drawing.Point(100, 113);
             this.btn_run.Name = "btn_run";
@@ -106,7 +106,7 @@
             // 
             // lb_status
             // 
-            this.lb_status.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.lb_status.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lb_status.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_status.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.lb_status.Appearance.Options.UseBackColor = true;
