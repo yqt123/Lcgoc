@@ -50,10 +50,11 @@ namespace Lcgoc.DAL
             using (IDbConnection connection = new SQLiteConnectionHelper().connectionGetAndOpen())
             {
                 var sql = string.Format(
-@"INSERT INTO ScheduleJob_Details(id,sched_name,job_name,job_group,outAssembly,job_class_name,is_durable,description,startTime,endTime)
-VALUES({0}, '{1}', '{2}', '{3}', '{4}', '{5}','{6}','{7}',{8},{9}); ", data.id, data.sched_name, data.job_name, data.job_group, data.outAssembly, data.job_class_name, data.is_durable ? 1 : 0, data.description,
+@"INSERT INTO ScheduleJob_Details(id,sched_name,job_name,job_group,outAssembly,job_class_name,is_durable,description,startTime,endTime,platformMonitoring)
+VALUES({0}, '{1}', '{2}', '{3}', '{4}', '{5}','{6}','{7}',{8},{9},{10}); ", data.id, data.sched_name, data.job_name, data.job_group, data.outAssembly, data.job_class_name, data.is_durable ? 1 : 0, data.description,
 data.startTime == null ? "NULL" : data.startTime.ToString(),
-data.endTime == null ? "NULL" : data.endTime.ToString());
+data.endTime == null ? "NULL" : data.endTime.ToString(),
+data.platformMonitoring ? 1 : 0);
                 return connection.Execute(sql) > 0;
             }
         }
@@ -63,10 +64,11 @@ data.endTime == null ? "NULL" : data.endTime.ToString());
             using (IDbConnection connection = new SQLiteConnectionHelper().connectionGetAndOpen())
             {
                 var sql = string.Format(
-@"UPDATE ScheduleJob_Details set sched_name='{1}',job_name='{2}',job_group='{3}',outAssembly='{4}',job_class_name= '{5}',is_durable='{6}',description='{7}',startTime={8},endTime={9}
+@"UPDATE ScheduleJob_Details set sched_name='{1}',job_name='{2}',job_group='{3}',outAssembly='{4}',job_class_name= '{5}',is_durable='{6}',description='{7}',startTime={8},endTime={9},platformMonitoring={10}
 where id={0};", data.id, data.sched_name, data.job_name, data.job_group, data.outAssembly, data.job_class_name, data.is_durable ? 1 : 0, data.description,
 data.startTime == null ? "NULL" : data.startTime.ToString(),
-data.endTime == null ? "NULL" : data.endTime.ToString());
+data.endTime == null ? "NULL" : data.endTime.ToString(),
+data.platformMonitoring ? 1 : 0);
                 return connection.Execute(sql) > 0;
             }
         }
@@ -132,5 +134,34 @@ data.endTime == null ? "NULL" : data.endTime.ToString());
                 return connection.Execute(sql) > 0;
             }
         }
+
+        /// <summary>
+        /// 写入数据
+        /// </summary>
+        /// <returns></returns>
+        public bool SaveScheduleLog(ScheduleJob_Log data)
+        {
+            using (IDbConnection connection = new SQLiteConnectionHelper().connectionGetAndOpen())
+            {
+                var sql = string.Format(
+@"INSERT INTO ScheduleJob_Log(sched_name,job_name,description,success,update_time)
+VALUES({0}, '{1}', '{2}', '{3}', '{4}'); ", data.sched_name, data.job_name, data.description, data.success ? 1 : 0, data.update_time);
+                return connection.Execute(sql) > 0;
+            }
+        }
+
+        /// <summary>
+        /// 读取数据
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<ScheduleJob_Log> ListScheduleLog()
+        {
+            using (IDbConnection connection = new SQLiteConnectionHelper().connectionGetAndOpen())
+            {
+                var sql = "SELECT * FROM ScheduleJob_Log;";
+                return connection.Query<ScheduleJob_Log>(sql);
+            }
+        }
+
     }
 }

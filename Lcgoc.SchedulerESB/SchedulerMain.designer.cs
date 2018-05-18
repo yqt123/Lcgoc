@@ -76,7 +76,7 @@
             this.btn_run.BackgroundImage = global::Lcgoc.SchedulerESB.Properties.Resources.start;
             this.btn_run.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn_run.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.btn_run.Location = new System.Drawing.Point(100, 113);
+            this.btn_run.Location = new System.Drawing.Point(251, 113);
             this.btn_run.Name = "btn_run";
             this.btn_run.Size = new System.Drawing.Size(128, 128);
             this.btn_run.TabIndex = 1;

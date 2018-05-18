@@ -43,6 +43,10 @@ namespace Lcgoc.Model
         /// </summary>
         public DateTime? endTime { get; set; }
         /// <summary>
+        /// 在平台监控日志
+        /// </summary>
+        public bool platformMonitoring { get; set; }
+        /// <summary>
         /// 比较值是否相等
         /// </summary>
         /// <param name="plNew"></param>
@@ -58,7 +62,8 @@ namespace Lcgoc.Model
                 jobDetail.job_class_name == job_class_name &&
                 jobDetail.is_durable == is_durable &&
                 jobDetail.startTime == startTime &&
-                jobDetail.endTime == endTime;
+                jobDetail.endTime == endTime &&
+                jobDetail.platformMonitoring == platformMonitoring;
         }
     }
 }

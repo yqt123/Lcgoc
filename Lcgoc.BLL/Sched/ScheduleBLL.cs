@@ -26,7 +26,6 @@ namespace Lcgoc.BLL
         {
             return dal.ScheduleDetailsEdit(data);
         }
-
         public IEnumerable<ScheduleJob_Details_Triggers> QueryScheduleDetailsTriggers(string schedName = "", string jobName = "")
         {
             return dal.QueryScheduleDetailsTriggers(schedName, jobName);
@@ -43,6 +42,13 @@ namespace Lcgoc.BLL
         {
             return dal.ScheduleDetailsTriggersEdit(data);
         }
-
+        public bool SaveScheduleLog(ScheduleJob_Log data)
+        {
+            return dal.SaveScheduleLog(data);
+        }
+        public IEnumerable<ScheduleJob_Log> ListScheduleLog()
+        {
+            return dal.ListScheduleLog();
+        }
     }
 }

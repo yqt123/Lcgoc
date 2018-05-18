@@ -115,6 +115,7 @@
     <Compile Include="SchedulerMain.designer.cs">
       <DependentUpon>SchedulerMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Scheduler\BaseControl.cs" />
     <Compile Include="Scheduler\JobControl.cs" />
     <Compile Include="Scheduler\JobHelper.cs" />
     <Compile Include="Scheduler\Scheduler.cs" />

@@ -81,14 +81,22 @@ namespace Lcgoc.SchedulerESB
         {
             if (jobDetail == null) throw new ArgumentNullException("『CreateJobDetail』的jobDetail参数为空！");
             Type jobType = null;
-            if (!string.IsNullOrEmpty(jobDetail.outAssembly))
+            //在平台监控作业
+            if (jobDetail.platformMonitoring)
             {
-                System.Reflection.Assembly outerAsm = System.Reflection.Assembly.LoadFrom(System.AppDomain.CurrentDomain.BaseDirectory + jobDetail.outAssembly);
-                jobType = outerAsm.GetType(jobDetail.job_class_name);
+                jobType = Type.GetType("Lcgoc.SchedulerESB.BaseControl");
             }
             else
             {
-                jobType = Type.GetType(jobDetail.job_class_name);
+                if (!string.IsNullOrEmpty(jobDetail.outAssembly))
+                {
+                    System.Reflection.Assembly outerAsm = System.Reflection.Assembly.LoadFrom(System.AppDomain.CurrentDomain.BaseDirectory + jobDetail.outAssembly);
+                    jobType = outerAsm.GetType(jobDetail.job_class_name);
+                }
+                else
+                {
+                    jobType = Type.GetType(jobDetail.job_class_name);
+                }
             }
             if (jobType == null)
             {

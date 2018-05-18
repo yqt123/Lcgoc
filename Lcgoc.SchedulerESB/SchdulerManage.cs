@@ -17,9 +17,9 @@ namespace Lcgoc.SchedulerESB
         #region 声明
         BindingList<ScheduleJob_Details> details = new BindingList<ScheduleJob_Details>();
         BindingList<ScheduleJob_Details_Triggers> triggers = new BindingList<ScheduleJob_Details_Triggers>();
+        BindingList<ScheduleJob_Status> jobStatus = new BindingList<ScheduleJob_Status>();
         ScheduleBLL bll = new ScheduleBLL();
 
-        int schedulemaxIndex = 0;
         int detailsmaxIndex = 0;
         int triggersmaxIndex = 0;
 
@@ -89,6 +89,7 @@ namespace Lcgoc.SchedulerESB
                             new GridViewColumn { ColumnName = "description", Caption="描述" },
                             new GridViewColumn { ColumnName = "startTime", Caption="开始时间" },
                             new GridViewColumn { ColumnName = "endTime", Caption="结束时间" },
+                            new GridViewColumn { ColumnName = "platformMonitoring", Caption="平台监控作业" },
                         });
                     }
                     break;
@@ -146,17 +147,20 @@ namespace Lcgoc.SchedulerESB
                             }
                         }
                         if (listScheduleJobStatus.Count == 0) return;
-                        grid_SchedulerSet.DataSource = new BindingList<ScheduleJob_Status>(listScheduleJobStatus);
+                        jobStatus = new BindingList<ScheduleJob_Status>(listScheduleJobStatus);
+                        grid_SchedulerSet.DataSource = jobStatus;
 
                         //停止按钮
-                        DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit btnStop = new DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit();
-                        btnStop.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;//隐藏文字
-                        //btnStop.Buttons[0].Kind = DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph;//按钮样式
-                        btnStop.Buttons[0].Caption = "暂停作业";
-                        btnStop.ButtonClick += (object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e) =>
-                        {
-                            XtraMessageBox.Show("数据添加失败？", "系统提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        };
+                        DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit itemButton = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
+                        itemButton.ButtonsStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
+                        itemButton.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;//隐藏文字
+                        itemButton.Buttons.RemoveAt(0);
+                        var btnStop = new DevExpress.XtraEditors.Controls.EditorButton { Kind = DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, Caption = "暂停作业" };
+                        btnStop.Click += btnStop_Click;
+                        itemButton.Buttons.Add(btnStop);
+                        var btnRestart = new DevExpress.XtraEditors.Controls.EditorButton { Kind = DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, Caption = "重新开始" };
+                        btnRestart.Click += btnRestart_Click;
+                        itemButton.Buttons.Add(btnRestart);
 
                         RefreshGridColumns(gridView_SchedulerSet, columnArgs: new List<GridViewColumn> {
                             new GridViewColumn { ColumnName = "id", Caption="编号", AllowEdit = false, Width = 50 },
@@ -167,14 +171,12 @@ namespace Lcgoc.SchedulerESB
                             new GridViewColumn { ColumnName = "trigger_group", Caption="触发器组", AllowEdit = false },
                             new GridViewColumn { ColumnName = "description",  Caption="描述", AllowEdit = false},
                             new GridViewColumn { ColumnName = "status", Caption="运行状态", AllowEdit = false, Width = 100},
-                            new GridViewColumn { ColumnName = "btn1", Caption="暂停", IsNew = true, Width = 100,RepositoryItemButtonEdit=btnStop},
-                            new GridViewColumn { ColumnName = "btn2", Caption="重新开始", IsNew = true, Width = 100},
-                        });
+                            new GridViewColumn { ColumnName = "btn1", Caption="操作", IsNew = true, Width = 250,RepositoryItemButtonEdit=itemButton}
+                        }, RowHeight: 25);
                     }
                     break;
             }
         }
-
         #endregion
 
         #region 按钮事件
@@ -199,7 +201,7 @@ namespace Lcgoc.SchedulerESB
             if (e.KeyCode == Keys.Insert)
             {
                 detailsmaxIndex += 1;
-                var row = new ScheduleJob_Details { id = detailsmaxIndex, is_durable = false };
+                var row = new ScheduleJob_Details { id = detailsmaxIndex, is_durable = false, platformMonitoring = false };
                 if (bll.ScheduleDetailsAdd(row))
                 {
                     details.Add(row);
@@ -258,7 +260,18 @@ namespace Lcgoc.SchedulerESB
                 }
             }
         }
-
+        private void btnStop_Click(object sender, EventArgs e)
+        {
+            var row = jobStatus.ElementAt(gridView_SchedulerSet.FocusedRowHandle);
+            pcScheduler.PauseTrigger(JobHelper.GetTriggerKey(new ScheduleJob_Details_Triggers { sched_name = row.sched_name, job_name = row.job_name, trigger_name = row.trigger_name, trigger_group = row.trigger_group }));
+            BandingData("ScheduleSet");
+        }
+        private void btnRestart_Click(object sender, EventArgs e)
+        {
+            var row = jobStatus.ElementAt(gridView_SchedulerSet.FocusedRowHandle);
+            pcScheduler.ResumeTrigger(JobHelper.GetTriggerKey(new ScheduleJob_Details_Triggers { sched_name = row.sched_name, job_name = row.job_name, trigger_name = row.trigger_name, trigger_group = row.trigger_group }));
+            BandingData("ScheduleSet");
+        }
         #endregion
 
         private void RefreshGridColumns(DevExpress.XtraGrid.Views.Grid.GridView gv, List<GridViewColumn> columnArgs = null, int? RowHeight = null)
@@ -292,7 +305,7 @@ namespace Lcgoc.SchedulerESB
                             };
                             if (item.RepositoryItemButtonEdit != null)
                             {
-                                var btnEdit = item.RepositoryItemButtonEdit as DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit;
+                                var btnEdit = item.RepositoryItemButtonEdit as DevExpress.XtraEditors.Repository.RepositoryItem;
                                 gv.GridControl.RepositoryItems.Add(btnEdit);
                                 colNew.ColumnEdit = btnEdit;
                             }
@@ -302,12 +315,6 @@ namespace Lcgoc.SchedulerESB
                 }
             }
             if (RowHeight != null) gv.RowHeight = (int)RowHeight;
-        }
-
-        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit SetGridButton()
-        {
-            DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit btnEdit = new DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit();
-            return null;
         }
     }
 }
