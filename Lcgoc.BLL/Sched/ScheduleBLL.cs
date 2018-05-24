@@ -10,37 +10,37 @@ namespace Lcgoc.BLL
     public class ScheduleBLL
     {
         ScheduleDAL dal = new ScheduleDAL();
-        public IEnumerable<ScheduleJob_Details> QueryScheduleDetails(string schedName = "", string jobName = "")
+        public IEnumerable<ScheduleJob_Details> ListScheduleDetails(string schedName = "", string jobName = "")
         {
-            return dal.QueryScheduleDetails(schedName, jobName);
+            return dal.ListScheduleDetails(schedName, jobName);
         }
-        public bool ScheduleDetailsDelete(int id)
+        public bool DeleteScheduleDetails(int id)
         {
-            return dal.ScheduleDetailsDelete(id);
+            return dal.DeleteScheduleDetails(id);
         }
-        public bool ScheduleDetailsAdd(ScheduleJob_Details data)
+        public bool SaveScheduleDetails(ScheduleJob_Details data)
         {
-            return dal.ScheduleDetailsAdd(data);
+            return dal.SaveScheduleDetails(data);
         }
-        public bool ScheduleDetailsEdit(ScheduleJob_Details data)
+        public bool EditScheduleDetails(ScheduleJob_Details data)
         {
-            return dal.ScheduleDetailsEdit(data);
+            return dal.EditScheduleDetails(data);
         }
-        public IEnumerable<ScheduleJob_Details_Triggers> QueryScheduleDetailsTriggers(string schedName = "", string jobName = "")
+        public IEnumerable<ScheduleJob_Details_Triggers> ListScheduleDetailsTriggers(string schedName = "", string jobName = "")
         {
-            return dal.QueryScheduleDetailsTriggers(schedName, jobName);
+            return dal.ListScheduleDetailsTriggers(schedName, jobName);
         }
-        public bool ScheduleDetailsTriggersDelete(int id)
+        public bool DeleteScheduleDetailsTriggers(int id)
         {
-            return dal.ScheduleDetailsTriggersDelete(id);
+            return dal.DeleteScheduleDetailsTriggers(id);
         }
-        public bool ScheduleDetailsTriggersAdd(ScheduleJob_Details_Triggers data)
+        public bool SaveScheduleDetailsTriggers(ScheduleJob_Details_Triggers data)
         {
-            return dal.ScheduleDetailsTriggersAdd(data);
+            return dal.SaveScheduleDetailsTriggers(data);
         }
-        public bool ScheduleDetailsTriggersEdit(ScheduleJob_Details_Triggers data)
+        public bool EditScheduleDetailsTriggers(ScheduleJob_Details_Triggers data)
         {
-            return dal.ScheduleDetailsTriggersEdit(data);
+            return dal.EditScheduleDetailsTriggers(data);
         }
         public bool SaveScheduleLog(ScheduleJob_Log data)
         {
@@ -49,6 +49,14 @@ namespace Lcgoc.BLL
         public IEnumerable<ScheduleJob_Log> ListScheduleLog()
         {
             return dal.ListScheduleLog();
+        }
+        public IEnumerable<ScheduleJob_Log> ListScheduleJobLog(DateTime startTime, DateTime endTime)
+        {
+            return dal.ListScheduleJobLog(startTime, endTime);
+        }
+        public bool DeleteScheduleJobLog(DateTime startTime, DateTime endTime)
+        {
+            return dal.DeleteScheduleJobLog(startTime, endTime);
         }
     }
 }

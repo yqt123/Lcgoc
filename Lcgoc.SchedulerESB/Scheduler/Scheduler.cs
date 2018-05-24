@@ -78,7 +78,7 @@ namespace Lcgoc.SchedulerESB
         private void ScheduleJob()
         {
             //取出所有的作业
-            IEnumerable<ScheduleJob_Details> jobDetails = schedulebll.QueryScheduleDetails();
+            IEnumerable<ScheduleJob_Details> jobDetails = schedulebll.ListScheduleDetails();
             if (jobDetails != null)
             {
                 foreach (ScheduleJob_Details detail in jobDetails)

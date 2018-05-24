@@ -58,7 +58,7 @@ namespace Lcgoc.SchedulerESB
             if (jobDetail.is_durable)
             {
                 IJobDetail ij = CreateJobDetail(jobDetail);
-                var jobTriggers = schedulebll.QueryScheduleDetailsTriggers(jobDetail.sched_name, jobDetail.job_name);
+                var jobTriggers = schedulebll.ListScheduleDetailsTriggers(jobDetail.sched_name, jobDetail.job_name);
                 foreach (var trigger in jobTriggers)
                 {
                     ITrigger ig = CreateTrigger(trigger);
@@ -103,7 +103,7 @@ namespace Lcgoc.SchedulerESB
                 throw new NotImplementedException(
                     string.Format("{0}调用的类型『{1}』未实现！", jobDetail.job_name, jobDetail.job_class_name));
             }
-            var jobTrigger = schedulebll.QueryScheduleDetailsTriggers(jobDetail.sched_name, jobDetail.job_name);
+            var jobTrigger = schedulebll.ListScheduleDetailsTriggers(jobDetail.sched_name, jobDetail.job_name);
             //作业执行上下文携带数据
             IDictionary<string, object> dataMap = new Dictionary<string, object>() { { jobDetailMad, jobDetail }, { triggerMad, jobTrigger } };
             //把作业写入内存
@@ -174,7 +174,7 @@ namespace Lcgoc.SchedulerESB
             IJobDetail ij = CreateJobDetail(jobDetailNew);
             List<ITrigger> triggerList = new List<ITrigger>();
             qtzScheduler.DeleteJob(jobKey); //删除旧的作业
-            var jobTriggers = schedulebll.QueryScheduleDetailsTriggers(jobDetailNew.sched_name, jobDetailNew.job_name);
+            var jobTriggers = schedulebll.ListScheduleDetailsTriggers(jobDetailNew.sched_name, jobDetailNew.job_name);
             foreach (var trigger in jobTriggers)
             {
                 ITrigger ig = CreateTrigger(trigger, ij);

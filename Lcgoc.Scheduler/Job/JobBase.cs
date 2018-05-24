@@ -47,8 +47,8 @@ namespace Lcgoc.Scheduler
                 }
                 SysParams.logger.Info(string.Format("【{0}】开始执行IJOB的[Execute]...", this.JobName));
                 //刷新作业计划信息，防止作业计划配置发生改变
-                ScheduleJob_Details jobDetailNew = schedulebll.QueryScheduleDetails(jobDetail.sched_name, jobDetail.job_name).FirstOrDefault(); //刷新作业计划信息
-                IEnumerable<ScheduleJob_Details_Triggers> jobDetailTriggerNew = schedulebll.QueryScheduleDetailsTriggers(jobDetail.sched_name, jobDetail.job_name);
+                ScheduleJob_Details jobDetailNew = schedulebll.ListScheduleDetails(jobDetail.sched_name, jobDetail.job_name).FirstOrDefault(); //刷新作业计划信息
+                IEnumerable<ScheduleJob_Details_Triggers> jobDetailTriggerNew = schedulebll.ListScheduleDetailsTriggers(jobDetail.sched_name, jobDetail.job_name);
                 //检查新查询出来的计划是否能执行
                 if (jobDetailNew == null || jobDetailTriggerNew == null || jobDetailTriggerNew.Count() == 0)
                 {

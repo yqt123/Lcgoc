@@ -45,8 +45,8 @@ namespace Lcgoc.SchedulerESB
                         description = string.Format("【{0}】执行完毕，执行结果：{1}", jobName, context.Get("ExecResult") != null ? context.Get("ExecResult").ToString() : "失败"),
                         job_name = jobDetail.job_name,
                         sched_name = jobDetail.sched_name,
-                        update_time = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss.fff"),
-                        success = (context.Get("ExecResult") != null && context.Get("ExecResult").ToString() == "成功" ? true : false)
+                        update_time = DateTime.Now,
+                        success = (context.Get("ExecResult") != null && context.Get("ExecResult").ToString() == "完成" ? true : false)
                     });
             }
         }

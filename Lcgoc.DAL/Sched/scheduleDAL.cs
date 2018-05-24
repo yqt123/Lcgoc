@@ -15,7 +15,7 @@ namespace Lcgoc.DAL
         /// </summary>
         /// <param name="code"></param>
         /// <returns></returns>
-        public IEnumerable<ScheduleJob_Details> QueryScheduleDetails(string schedName = "", string jobName = "")
+        public IEnumerable<ScheduleJob_Details> ListScheduleDetails(string schedName = "", string jobName = "")
         {
             using (IDbConnection connection = new SQLiteConnectionHelper().connectionGetAndOpen())
             {
@@ -33,7 +33,7 @@ namespace Lcgoc.DAL
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public bool ScheduleDetailsDelete(int id)
+        public bool DeleteScheduleDetails(int id)
         {
             using (IDbConnection connection = new SQLiteConnectionHelper().connectionGetAndOpen())
             {
@@ -45,7 +45,7 @@ namespace Lcgoc.DAL
         /// 写入数据
         /// </summary>
         /// <returns></returns>
-        public bool ScheduleDetailsAdd(ScheduleJob_Details data)
+        public bool SaveScheduleDetails(ScheduleJob_Details data)
         {
             using (IDbConnection connection = new SQLiteConnectionHelper().connectionGetAndOpen())
             {
@@ -59,7 +59,7 @@ data.platformMonitoring ? 1 : 0);
             }
         }
 
-        public bool ScheduleDetailsEdit(ScheduleJob_Details data)
+        public bool EditScheduleDetails(ScheduleJob_Details data)
         {
             using (IDbConnection connection = new SQLiteConnectionHelper().connectionGetAndOpen())
             {
@@ -78,7 +78,7 @@ data.platformMonitoring ? 1 : 0);
         /// </summary>
         /// <param name="code"></param>
         /// <returns></returns>
-        public IEnumerable<ScheduleJob_Details_Triggers> QueryScheduleDetailsTriggers(string schedName = "", string jobName = "")
+        public IEnumerable<ScheduleJob_Details_Triggers> ListScheduleDetailsTriggers(string schedName = "", string jobName = "")
         {
             using (IDbConnection connection = new SQLiteConnectionHelper().connectionGetAndOpen())
             {
@@ -96,7 +96,7 @@ data.platformMonitoring ? 1 : 0);
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public bool ScheduleDetailsTriggersDelete(int id)
+        public bool DeleteScheduleDetailsTriggers(int id)
         {
             using (IDbConnection connection = new SQLiteConnectionHelper().connectionGetAndOpen())
             {
@@ -109,7 +109,7 @@ data.platformMonitoring ? 1 : 0);
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public bool ScheduleDetailsTriggersAdd(ScheduleJob_Details_Triggers data)
+        public bool SaveScheduleDetailsTriggers(ScheduleJob_Details_Triggers data)
         {
             using (IDbConnection connection = new SQLiteConnectionHelper().connectionGetAndOpen())
             {
@@ -122,15 +122,16 @@ data.endTime == null ? "NULL" : data.endTime.ToString()
                 return connection.Execute(sql) > 0;
             }
         }
-        public bool ScheduleDetailsTriggersEdit(ScheduleJob_Details_Triggers data)
+        public bool EditScheduleDetailsTriggers(ScheduleJob_Details_Triggers data)
         {
             using (IDbConnection connection = new SQLiteConnectionHelper().connectionGetAndOpen())
             {
                 var sql = string.Format(
-@"UPDATE ScheduleJob_Details_Triggers set sched_name='{1}',job_name='{2}',trigger_name='{3}',trigger_group='{4}',job_group='{5}',cronexpression='{6}',trigger_type='{7}',repeat_count='{8}',repeat_interval='{9}',startTime={10},endTime={11}
+@"UPDATE ScheduleJob_Details_Triggers set sched_name='{1}',job_name='{2}',trigger_name='{3}',trigger_group='{4}',job_group='{5}',cronexpression='{6}',trigger_type='{7}',repeat_count='{8}',repeat_interval='{9}',startTime={10},endTime={11},description='{12}'
 where id={0}; ", data.id, data.sched_name, data.job_name, data.trigger_name, data.trigger_group, data.job_group, data.cronexpression, data.trigger_type, data.repeat_count, data.repeat_interval,
 data.startTime == null ? "NULL" : data.startTime.ToString(),
-data.endTime == null ? "NULL" : data.endTime.ToString());
+data.endTime == null ? "NULL" : data.endTime.ToString(),
+data.description);
                 return connection.Execute(sql) > 0;
             }
         }
@@ -145,7 +146,7 @@ data.endTime == null ? "NULL" : data.endTime.ToString());
             {
                 var sql = string.Format(
 @"INSERT INTO ScheduleJob_Log(sched_name,job_name,description,success,update_time)
-VALUES({0}, '{1}', '{2}', '{3}', '{4}'); ", data.sched_name, data.job_name, data.description, data.success ? 1 : 0, data.update_time);
+VALUES('{0}', '{1}', '{2}', '{3}', '{4}'); ", data.sched_name, data.job_name, data.description, data.success ? 1 : 0, data.update_time.ToString("yyyy-MM-dd HH:mm:ss"));
                 return connection.Execute(sql) > 0;
             }
         }
@@ -163,5 +164,36 @@ VALUES({0}, '{1}', '{2}', '{3}', '{4}'); ", data.sched_name, data.job_name, data
             }
         }
 
+        /// <summary>
+        /// 调度作业日志
+        /// </summary>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        public IEnumerable<ScheduleJob_Log> ListScheduleJobLog(DateTime startTime, DateTime endTime)
+        {
+            using (IDbConnection connection = new SQLiteConnectionHelper().connectionGetAndOpen())
+            {
+                StringBuilder sqlsb = new StringBuilder();
+                sqlsb.Append("SELECT * FROM ScheduleJob_Log ");
+                sqlsb.Append(string.Format(" where update_time>'{0}' and update_time<'{1}' order by update_time desc", startTime.ToString("yyyy-MM-dd"), endTime.ToString("yyyy-MM-dd 23:59:59")));
+                return connection.Query<ScheduleJob_Log>(sqlsb.ToString());
+            }
+        }
+
+        /// <summary>
+        /// 调度作业日志
+        /// </summary>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        public bool DeleteScheduleJobLog(DateTime startTime, DateTime endTime)
+        {
+            using (IDbConnection connection = new SQLiteConnectionHelper().connectionGetAndOpen())
+            {
+                StringBuilder sqlsb = new StringBuilder();
+                sqlsb.Append("Delete FROM ScheduleJob_Log ");
+                sqlsb.Append(string.Format(" where update_time>'{0}' and update_time<'{1}'", startTime.ToString("yyyy-MM-dd"), endTime.ToString("yyyy-MM-dd 23:59:59")));
+                return connection.Execute(sqlsb.ToString()) > 0;
+            }
+        }
     }
 }

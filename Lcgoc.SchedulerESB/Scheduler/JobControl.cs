@@ -61,7 +61,7 @@ namespace Lcgoc.SchedulerESB
         /// </summary>
         private void CheckAllSchedulerPlan(IJobExecutionContext context)
         {
-            var jobDetails = bll.QueryScheduleDetails().Where(n => n.is_durable);
+            var jobDetails = bll.ListScheduleDetails().Where(n => n.is_durable);
             //检查有没有删除的作业
             foreach (ScheduleJob_Details item in JobHelper.schedulePlanDetails.Values)
             {
@@ -85,7 +85,7 @@ namespace Lcgoc.SchedulerESB
                 if (!item.scheEquals(oldDetails)) isChange = true;
                 else
                 {//检查触发器是否改变
-                    var triggerNew = bll.QueryScheduleDetailsTriggers(schedName: item.sched_name, jobName: item.job_name);
+                    var triggerNew = bll.ListScheduleDetailsTriggers(schedName: item.sched_name, jobName: item.job_name);
                     var oldTrigger = JobHelper.schedulePlanTrigger[JobHelper.GetJobKey(item) + JobHelper.triggerMad];
                     if (triggerNew.Count() != oldTrigger.Count())
                         isChange = true;

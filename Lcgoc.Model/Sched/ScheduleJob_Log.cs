@@ -1,4 +1,5 @@
-﻿
+﻿using System;
+
 namespace Lcgoc.Model
 {
     /// <summary>
@@ -25,7 +26,7 @@ namespace Lcgoc.Model
         /// <summary>
         /// 更新时间
         /// </summary>
-        public string update_time { get; set; }
+        public DateTime update_time { get; set; }
 
         /// <summary>
         /// 是否成功

@@ -18,6 +18,7 @@ namespace Lcgoc.SchedulerESB
         BindingList<ScheduleJob_Details> details = new BindingList<ScheduleJob_Details>();
         BindingList<ScheduleJob_Details_Triggers> triggers = new BindingList<ScheduleJob_Details_Triggers>();
         BindingList<ScheduleJob_Status> jobStatus = new BindingList<ScheduleJob_Status>();
+        BindingList<ScheduleJob_Log> jobLog = new BindingList<ScheduleJob_Log>();
         ScheduleBLL bll = new ScheduleBLL();
 
         int detailsmaxIndex = 0;
@@ -39,10 +40,15 @@ namespace Lcgoc.SchedulerESB
             navBar_scheduleJob_details.LinkClicked += NavBar_scheduleJob_details_LinkClicked;
             navBar_scheduleJob_details_triggers.LinkClicked += NavBar_scheduleJob_details_triggers_LinkClicked;
             navBar_schedulerSet.LinkClicked += NavBar_schedulerSet_LinkClicked;
+            navBar_schedulerLog.LinkClicked += NavBar_schedulerLog_LinkClicked;
             tabPane1.SelectedPageIndexChanged += TabPane1_SelectedPageIndexChanged;
             tabPane1.SelectedPageIndex = 0;
             gridView2.CellValueChanged += GridView2_CellValueChanged;
             gridView3.CellValueChanged += GridView3_CellValueChanged;
+            dte_start.EditValue = DateTime.Now;
+            dte_end.EditValue = DateTime.Now;
+            sbtn_refresh.Click += Sbtn_refresh_Click;
+            sbtn_delete.Click += Sbtn_delete_Click;
         }
 
         #endregion
@@ -51,13 +57,13 @@ namespace Lcgoc.SchedulerESB
         private void GridView2_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
             var row = details.ElementAt(gridView2.FocusedRowHandle);
-            bll.ScheduleDetailsEdit(row);
+            bll.EditScheduleDetails(row);
         }
 
         private void GridView3_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
             var row = triggers.ElementAt(gridView3.FocusedRowHandle);
-            bll.ScheduleDetailsTriggersEdit(row);
+            bll.EditScheduleDetailsTriggers(row);
         }
 
         private void TabPane1_SelectedPageIndexChanged(object sender, EventArgs e)
@@ -66,7 +72,8 @@ namespace Lcgoc.SchedulerESB
             BandingData(
                 index == 0 ? "ScheduleDetails" :
                 index == 1 ? "ScheduleDetailsTriggers" :
-                index == 2 ? "ScheduleSet" : ""
+                index == 2 ? "ScheduleSet" :
+                index == 3 ? "ScheduleLog" : ""
                 );
         }
         void BandingData(string name)
@@ -75,13 +82,13 @@ namespace Lcgoc.SchedulerESB
             {
                 case "ScheduleDetails":
                     {
-                        details = new BindingList<ScheduleJob_Details>(bll.QueryScheduleDetails().ToList());
+                        details = new BindingList<ScheduleJob_Details>(bll.ListScheduleDetails().ToList());
                         if (details.Count > 0) detailsmaxIndex = details.Max(n => n.id);
                         gridDetail.DataSource = details;
-                        RefreshGridColumns(gridView2, columnArgs: new List<GridViewColumn> {
+                        SetGridColumns(gridView2, columnArgs: new List<GridViewColumn> {
                             new GridViewColumn { ColumnName = "id", Caption="编号", AllowEdit = false, Width = 50 },
-                            new GridViewColumn { ColumnName = "sched_name", Caption="计划名称" },
-                            new GridViewColumn { ColumnName = "job_name", Caption="作业名称"},
+                            new GridViewColumn { ColumnName = "sched_name", Caption="计划名称", Width = 100 },
+                            new GridViewColumn { ColumnName = "job_name", Caption="作业名称", Width = 150},
                             new GridViewColumn { ColumnName = "job_group",Caption="作业组"},
                             new GridViewColumn { ColumnName = "outAssembly", Caption="调用外部程序集" },
                             new GridViewColumn { ColumnName = "job_class_name", Caption="调用类" },
@@ -89,21 +96,21 @@ namespace Lcgoc.SchedulerESB
                             new GridViewColumn { ColumnName = "description", Caption="描述" },
                             new GridViewColumn { ColumnName = "startTime", Caption="开始时间" },
                             new GridViewColumn { ColumnName = "endTime", Caption="结束时间" },
-                            new GridViewColumn { ColumnName = "platformMonitoring", Caption="平台监控作业" },
+                            new GridViewColumn { ColumnName = "platformMonitoring", Caption="平台监控作业运行状况" },
                         });
                     }
                     break;
                 case "ScheduleDetailsTriggers":
                     {
-                        triggers = new BindingList<ScheduleJob_Details_Triggers>(bll.QueryScheduleDetailsTriggers().ToList());
+                        triggers = new BindingList<ScheduleJob_Details_Triggers>(bll.ListScheduleDetailsTriggers().ToList());
                         if (triggers.Count > 0) triggersmaxIndex = triggers.Max(n => n.id);
                         gridTrigger.DataSource = triggers;
-                        RefreshGridColumns(gridView3, columnArgs: new List<GridViewColumn> {
+                        SetGridColumns(gridView3, columnArgs: new List<GridViewColumn> {
                             new GridViewColumn { ColumnName = "id", Caption="编号", AllowEdit = false, Width = 50 },
-                            new GridViewColumn { ColumnName = "sched_name", Caption="计划名称" },
-                            new GridViewColumn { ColumnName = "job_name", Caption="作业名称" },
-                            new GridViewColumn { ColumnName = "trigger_name", Caption="触发器" },
-                            new GridViewColumn { ColumnName = "trigger_group", Caption="触发器组" },
+                            new GridViewColumn { ColumnName = "sched_name", Caption="计划名称", Width = 100 },
+                            new GridViewColumn { ColumnName = "job_name", Caption="作业名称" , Width = 150},
+                            new GridViewColumn { ColumnName = "trigger_name", Caption="触发器", Width = 150 },
+                            new GridViewColumn { ColumnName = "trigger_group", Caption="触发器组", Width = 150 },
                             new GridViewColumn { ColumnName = "job_group", Caption="作业组" },
                             new GridViewColumn { ColumnName = "cronexpression", Caption="触发规则", Width = 150 },
                             new GridViewColumn { ColumnName = "trigger_type", Caption="触发类型" },
@@ -162,17 +169,34 @@ namespace Lcgoc.SchedulerESB
                         btnRestart.Click += btnRestart_Click;
                         itemButton.Buttons.Add(btnRestart);
 
-                        RefreshGridColumns(gridView_SchedulerSet, columnArgs: new List<GridViewColumn> {
+                        SetGridColumns(gridView_SchedulerSet, columnArgs: new List<GridViewColumn> {
                             new GridViewColumn { ColumnName = "id", Caption="编号", AllowEdit = false, Width = 50 },
-                            new GridViewColumn { ColumnName = "sched_name", Caption="计划名称", AllowEdit = false },
-                            new GridViewColumn { ColumnName = "job_name", Caption="作业名称", AllowEdit = false },
-                            new GridViewColumn { ColumnName = "job_group", Caption="作业组", AllowEdit = false },
-                            new GridViewColumn { ColumnName = "trigger_name", Caption="触发器", AllowEdit = false },
-                            new GridViewColumn { ColumnName = "trigger_group", Caption="触发器组", AllowEdit = false },
+                            new GridViewColumn { ColumnName = "sched_name", Caption="计划名称", AllowEdit = false, Width = 100 },
+                            new GridViewColumn { ColumnName = "job_name", Caption="作业名称", AllowEdit = false, Width = 150 },
+                            new GridViewColumn { ColumnName = "job_group", Caption="作业组", AllowEdit = false, Width = 150 },
+                            new GridViewColumn { ColumnName = "trigger_name", Caption="触发器", AllowEdit = false, Width = 150 },
+                            new GridViewColumn { ColumnName = "trigger_group", Caption="触发器组", AllowEdit = false, Width = 150 },
                             new GridViewColumn { ColumnName = "description",  Caption="描述", AllowEdit = false},
                             new GridViewColumn { ColumnName = "status", Caption="运行状态", AllowEdit = false, Width = 100},
                             new GridViewColumn { ColumnName = "btn1", Caption="操作", IsNew = true, Width = 250,RepositoryItemButtonEdit=itemButton}
                         }, RowHeight: 25);
+                    }
+                    break;
+                case "ScheduleLog":
+                    {
+                        jobLog = new BindingList<ScheduleJob_Log>(bll.ListScheduleJobLog(dte_start.EditValue == null ? DateTime.Now : (DateTime)dte_start.EditValue,
+                            dte_end.EditValue == null ? DateTime.Now : (DateTime)dte_end.EditValue).ToList());
+                        if (triggers.Count > 0) triggersmaxIndex = triggers.Max(n => n.id);
+                        grid_SchedulerLog.DataSource = jobLog;
+                        SetGridColumns(gridView_SchedulerLog, columnArgs: new List<GridViewColumn> {
+                            new GridViewColumn { ColumnName = "sched_logId", Caption="编号", AllowEdit = false, Width = 50 },
+                            new GridViewColumn { ColumnName = "sched_name", Caption="计划名称", Width = 100  },
+                            new GridViewColumn { ColumnName = "job_name", Caption="作业名称", Width = 150  },
+                            new GridViewColumn { ColumnName = "success", Caption="是否成功" },
+                            new GridViewColumn { ColumnName = "update_time", Caption="执行时间", Width = 130  },
+                            new GridViewColumn { ColumnName = "description", Caption="描述", Width = 350  }
+                        });
+                        gridView_SchedulerLog.OptionsBehavior.Editable = false;
                     }
                     break;
             }
@@ -180,6 +204,11 @@ namespace Lcgoc.SchedulerESB
         #endregion
 
         #region 按钮事件
+
+        private void NavBar_schedulerLog_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+            tabPane1.SelectedPageIndex = 3;
+        }
 
         private void NavBar_schedulerSet_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
@@ -202,7 +231,7 @@ namespace Lcgoc.SchedulerESB
             {
                 detailsmaxIndex += 1;
                 var row = new ScheduleJob_Details { id = detailsmaxIndex, is_durable = false, platformMonitoring = false };
-                if (bll.ScheduleDetailsAdd(row))
+                if (bll.SaveScheduleDetails(row))
                 {
                     details.Add(row);
                 }
@@ -213,10 +242,10 @@ namespace Lcgoc.SchedulerESB
             }
             else if (e.KeyCode == Keys.Delete)
             {
-                if (XtraMessageBox.Show("数据删除无法恢复，是否删除？", "系统提示", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                if (XtraMessageBox.Show("数据删除无法恢复，是否删除？", "系统提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     var row = details.ElementAt(gridView2.FocusedRowHandle);
-                    if (bll.ScheduleDetailsDelete(row.id))
+                    if (bll.DeleteScheduleDetails(row.id))
                     {
                         details.RemoveAt(gridView2.FocusedRowHandle);
                     }
@@ -234,7 +263,7 @@ namespace Lcgoc.SchedulerESB
             {
                 triggersmaxIndex += 1;
                 var row = new ScheduleJob_Details_Triggers { id = triggersmaxIndex, trigger_type = "cron" };
-                if (bll.ScheduleDetailsTriggersAdd(row))
+                if (bll.SaveScheduleDetailsTriggers(row))
                 {
                     triggers.Add(row);
                 }
@@ -246,16 +275,16 @@ namespace Lcgoc.SchedulerESB
             }
             else if (e.KeyCode == Keys.Delete)
             {
-                if (XtraMessageBox.Show("数据删除无法恢复，是否删除？", "系统提示", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                if (XtraMessageBox.Show("数据删除无法恢复，是否删除？", "系统提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     var row = triggers.ElementAt(gridView3.FocusedRowHandle);
-                    if (bll.ScheduleDetailsTriggersDelete(row.id))
+                    if (bll.DeleteScheduleDetailsTriggers(row.id))
                     {
                         triggers.RemoveAt(gridView3.FocusedRowHandle);
                     }
                     else
                     {
-                        XtraMessageBox.Show("数据删除失败？", "系统提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        XtraMessageBox.Show("数据删除失败", "系统提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
@@ -272,9 +301,35 @@ namespace Lcgoc.SchedulerESB
             pcScheduler.ResumeTrigger(JobHelper.GetTriggerKey(new ScheduleJob_Details_Triggers { sched_name = row.sched_name, job_name = row.job_name, trigger_name = row.trigger_name, trigger_group = row.trigger_group }));
             BandingData("ScheduleSet");
         }
+
+        private void Sbtn_refresh_Click(object sender, EventArgs e)
+        {
+            BandingData("ScheduleLog");
+        }
+
+        private void Sbtn_delete_Click(object sender, EventArgs e)
+        {
+            if (dte_start.EditValue == null || dte_end.EditValue == null)
+            {
+                XtraMessageBox.Show("请选择开始时间和结束时间", "系统提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (XtraMessageBox.Show("数据删除无法恢复，是否删除指定日期的数据？", "系统提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                if (bll.DeleteScheduleJobLog((DateTime)dte_start.EditValue, (DateTime)dte_end.EditValue))
+                {
+                    BandingData("ScheduleLog");
+                    XtraMessageBox.Show("数据删除成功！", "系统提示", MessageBoxButtons.OK, MessageBoxIcon.None);
+                }
+                else
+                {
+                    XtraMessageBox.Show("数据删除失败！", "系统提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
         #endregion
 
-        private void RefreshGridColumns(DevExpress.XtraGrid.Views.Grid.GridView gv, List<GridViewColumn> columnArgs = null, int? RowHeight = null)
+        private void SetGridColumns(DevExpress.XtraGrid.Views.Grid.GridView gv, List<GridViewColumn> columnArgs = null, int? RowHeight = null)
         {
             gv.BestFitColumns();
             if (columnArgs != null)
@@ -288,6 +343,11 @@ namespace Lcgoc.SchedulerESB
                         item.Caption = col.Caption == null ? item.Caption : col.Caption;
                         item.OptionsColumn.AllowEdit = col.AllowEdit == null ? item.OptionsColumn.AllowEdit : (bool)col.AllowEdit;
                         item.Visible = col.Visible == null ? item.OptionsColumn.ShowCaption : (bool)col.Visible;
+                        if (item.ColumnType == typeof(DateTime))
+                        {
+                            item.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+                            item.DisplayFormat.FormatString = "yyyy-MM-dd HH:mm:ss";
+                        }
                     }
                 }
                 foreach (GridViewColumn item in columnArgs)
