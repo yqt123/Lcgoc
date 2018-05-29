@@ -9,6 +9,7 @@ using DevExpress.XtraEditors;
 using Lcgoc.Model;
 using Lcgoc.BLL;
 using System.Linq;
+using Lcgoc.Common;
 
 namespace Lcgoc.SchedulerESB
 {
@@ -85,7 +86,7 @@ namespace Lcgoc.SchedulerESB
                         details = new BindingList<ScheduleJob_Details>(bll.ListScheduleDetails().ToList());
                         if (details.Count > 0) detailsmaxIndex = details.Max(n => n.id);
                         gridDetail.DataSource = details;
-                        SetGridColumns(gridView2, columnArgs: new List<GridViewColumn> {
+                        XtraGridHelper.SetGridColumns(gridView2, columnArgs: new List<GridViewColumn> {
                             new GridViewColumn { ColumnName = "id", Caption="编号", AllowEdit = false, Width = 50 },
                             new GridViewColumn { ColumnName = "sched_name", Caption="计划名称", Width = 100 },
                             new GridViewColumn { ColumnName = "job_name", Caption="作业名称", Width = 150},
@@ -105,7 +106,7 @@ namespace Lcgoc.SchedulerESB
                         triggers = new BindingList<ScheduleJob_Details_Triggers>(bll.ListScheduleDetailsTriggers().ToList());
                         if (triggers.Count > 0) triggersmaxIndex = triggers.Max(n => n.id);
                         gridTrigger.DataSource = triggers;
-                        SetGridColumns(gridView3, columnArgs: new List<GridViewColumn> {
+                        XtraGridHelper.SetGridColumns(gridView3, columnArgs: new List<GridViewColumn> {
                             new GridViewColumn { ColumnName = "id", Caption="编号", AllowEdit = false, Width = 50 },
                             new GridViewColumn { ColumnName = "sched_name", Caption="计划名称", Width = 100 },
                             new GridViewColumn { ColumnName = "job_name", Caption="作业名称" , Width = 150},
@@ -169,7 +170,7 @@ namespace Lcgoc.SchedulerESB
                         btnRestart.Click += btnRestart_Click;
                         itemButton.Buttons.Add(btnRestart);
 
-                        SetGridColumns(gridView_SchedulerSet, columnArgs: new List<GridViewColumn> {
+                        XtraGridHelper.SetGridColumns(gridView_SchedulerSet, columnArgs: new List<GridViewColumn> {
                             new GridViewColumn { ColumnName = "id", Caption="编号", AllowEdit = false, Width = 50 },
                             new GridViewColumn { ColumnName = "sched_name", Caption="计划名称", AllowEdit = false, Width = 100 },
                             new GridViewColumn { ColumnName = "job_name", Caption="作业名称", AllowEdit = false, Width = 150 },
@@ -188,7 +189,7 @@ namespace Lcgoc.SchedulerESB
                             dte_end.EditValue == null ? DateTime.Now : (DateTime)dte_end.EditValue).ToList());
                         if (triggers.Count > 0) triggersmaxIndex = triggers.Max(n => n.id);
                         grid_SchedulerLog.DataSource = jobLog;
-                        SetGridColumns(gridView_SchedulerLog, columnArgs: new List<GridViewColumn> {
+                        XtraGridHelper.SetGridColumns(gridView_SchedulerLog, columnArgs: new List<GridViewColumn> {
                             new GridViewColumn { ColumnName = "sched_logId", Caption="编号", AllowEdit = false, Width = 50 },
                             new GridViewColumn { ColumnName = "sched_name", Caption="计划名称", Width = 100  },
                             new GridViewColumn { ColumnName = "job_name", Caption="作业名称", Width = 150  },
@@ -328,53 +329,5 @@ namespace Lcgoc.SchedulerESB
             }
         }
         #endregion
-
-        private void SetGridColumns(DevExpress.XtraGrid.Views.Grid.GridView gv, List<GridViewColumn> columnArgs = null, int? RowHeight = null)
-        {
-            gv.BestFitColumns();
-            if (columnArgs != null)
-            {
-                foreach (DevExpress.XtraGrid.Columns.GridColumn item in gv.Columns)
-                {
-                    var col = columnArgs.Where(n => n.ColumnName == item.FieldName).FirstOrDefault();
-                    if (col != null)
-                    {
-                        item.Width = col.Width == null ? item.Width : (int)col.Width;
-                        item.Caption = col.Caption == null ? item.Caption : col.Caption;
-                        item.OptionsColumn.AllowEdit = col.AllowEdit == null ? item.OptionsColumn.AllowEdit : (bool)col.AllowEdit;
-                        item.Visible = col.Visible == null ? item.OptionsColumn.ShowCaption : (bool)col.Visible;
-                        if (item.ColumnType == typeof(DateTime))
-                        {
-                            item.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-                            item.DisplayFormat.FormatString = "yyyy-MM-dd HH:mm:ss";
-                        }
-                    }
-                }
-                foreach (GridViewColumn item in columnArgs)
-                {
-                    if (item.IsNew == true)
-                    {
-                        var col = gv.Columns.ColumnByFieldName(item.ColumnName);
-                        if (col == null)
-                        {
-                            var colNew = new DevExpress.XtraGrid.Columns.GridColumn()
-                            {
-                                FieldName = item.ColumnName,
-                                Caption = item.Caption,
-                                Width = item.Width == null ? 50 : (int)item.Width,
-                            };
-                            if (item.RepositoryItemButtonEdit != null)
-                            {
-                                var btnEdit = item.RepositoryItemButtonEdit as DevExpress.XtraEditors.Repository.RepositoryItem;
-                                gv.GridControl.RepositoryItems.Add(btnEdit);
-                                colNew.ColumnEdit = btnEdit;
-                            }
-                            gv.Columns.Add(colNew);
-                        }
-                    }
-                }
-            }
-            if (RowHeight != null) gv.RowHeight = (int)RowHeight;
-        }
     }
 }

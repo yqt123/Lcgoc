@@ -64,7 +64,8 @@ namespace Lcgoc.SchedulerESB
 
         void sbtn_close_Click(object sender, EventArgs e)
         {
-            this.Close();
+            //this.Close();
+            this.WindowState = FormWindowState.Minimized;
         }
 
         private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -95,9 +96,10 @@ namespace Lcgoc.SchedulerESB
 
         private void ExitMenuItem_Click(object sender, EventArgs e)
         {
-            if (XtraMessageBox.Show("是否确认退出程序？", "退出", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            if (XtraMessageBox.Show("退出程序作业将会强行关闭，是否确认退出？", "系统提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
             {
                 notifyIcon1.Visible = false;
+                if (pcScheduler != null) pcScheduler.Shutdown(false);
                 // 关闭所有的线程
                 this.Dispose();
                 this.Close();
@@ -120,7 +122,7 @@ namespace Lcgoc.SchedulerESB
 
         private void XtraForm1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (XtraMessageBox.Show("是否确认退出程序？", "退出", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            if (XtraMessageBox.Show("退出程序作业将会强行关闭，是否确认退出？", "系统提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
             {
                 if (pcScheduler != null) pcScheduler.Shutdown(false);
                 notifyIcon1.Visible = false;

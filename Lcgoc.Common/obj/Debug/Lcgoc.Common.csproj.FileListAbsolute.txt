@@ -7,10 +7,10 @@ D:\Lcgoc\Lcgoc.Common\obj\Debug\Lcgoc.Common.pdb
 E:\Lcgoc\Lcgoc.Common\bin\Debug\Lcgoc.Common.dll
 E:\Lcgoc\Lcgoc.Common\bin\Debug\Lcgoc.Common.pdb
 E:\Lcgoc\Lcgoc.Common\bin\Debug\MySql.Data.dll
-E:\Lcgoc\Lcgoc.Common\obj\Debug\Lcgoc.Common.dll
-E:\Lcgoc\Lcgoc.Common\obj\Debug\Lcgoc.Common.pdb
+D:\Lcgoc\PublicDll\Lcgoc.Common.dll
+D:\Lcgoc\PublicDll\Lcgoc.Common.pdb
 E:\Lcgoc\Lcgoc.Common\obj\Debug\Lcgoc.Common.csprojResolveAssemblyReference.cache
 E:\Lcgoc\PublicDll\Lcgoc.Common.dll
 E:\Lcgoc\PublicDll\Lcgoc.Common.pdb
-D:\Lcgoc\PublicDll\Lcgoc.Common.dll
-D:\Lcgoc\PublicDll\Lcgoc.Common.pdb
+E:\Lcgoc\Lcgoc.Common\obj\Debug\Lcgoc.Common.dll
+E:\Lcgoc\Lcgoc.Common\obj\Debug\Lcgoc.Common.pdb
