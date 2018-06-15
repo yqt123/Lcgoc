@@ -181,3 +181,4 @@ E:\Lcgoc\Lcgoc.Web\bin\de\DevExpress.Office.v17.2.Core.resources.dll
 E:\Lcgoc\Lcgoc.Web\bin\es\DevExpress.Office.v17.2.Core.resources.dll
 E:\Lcgoc\Lcgoc.Web\bin\ja\DevExpress.Office.v17.2.Core.resources.dll
 E:\Lcgoc\Lcgoc.Web\bin\ru\DevExpress.Office.v17.2.Core.resources.dll
+E:\Lcgoc\Lcgoc.Web\bin\zh-Hans\System.Web.Optimization.resources.dll
