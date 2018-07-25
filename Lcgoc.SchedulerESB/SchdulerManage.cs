@@ -50,6 +50,8 @@ namespace Lcgoc.SchedulerESB
             dte_end.EditValue = DateTime.Now;
             sbtn_refresh.Click += Sbtn_refresh_Click;
             sbtn_delete.Click += Sbtn_delete_Click;
+            gridDetail.KeyUp += gridDetail_KeyUp;
+            gridTrigger.KeyUp += gridTrigger_KeyUp;
         }
 
         #endregion
