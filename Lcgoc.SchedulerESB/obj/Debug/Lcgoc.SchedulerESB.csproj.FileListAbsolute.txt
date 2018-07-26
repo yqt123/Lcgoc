@@ -152,7 +152,6 @@ E:\Lcgoc\Lcgoc.SchedulerESB\bin\Debug\Lcgoc.BLL.dll
 E:\Lcgoc\Lcgoc.SchedulerESB\bin\Debug\Lcgoc.Common.dll
 E:\Lcgoc\Lcgoc.SchedulerESB\bin\Debug\Lcgoc.Model.dll
 E:\Lcgoc\Lcgoc.SchedulerESB\bin\Debug\NLog.dll
-E:\Lcgoc\Lcgoc.SchedulerESB\bin\Debug\Quartz.dll
 E:\Lcgoc\Lcgoc.SchedulerESB\bin\Debug\System.Data.SQLite.dll
 E:\Lcgoc\Lcgoc.SchedulerESB\bin\Debug\System.Data.SQLite.EF6.dll
 E:\Lcgoc\Lcgoc.SchedulerESB\bin\Debug\System.Data.SQLite.Linq.dll
@@ -161,8 +160,6 @@ E:\Lcgoc\Lcgoc.SchedulerESB\bin\Debug\DevExpress.Printing.v17.2.Core.dll
 E:\Lcgoc\Lcgoc.SchedulerESB\bin\Debug\DevExpress.Sparkline.v17.2.Core.dll
 E:\Lcgoc\Lcgoc.SchedulerESB\bin\Debug\DevExpress.XtraPrinting.v17.2.dll
 E:\Lcgoc\Lcgoc.SchedulerESB\bin\Debug\Lcgoc.DAL.dll
-E:\Lcgoc\Lcgoc.SchedulerESB\bin\Debug\Common.Logging.Core.dll
-E:\Lcgoc\Lcgoc.SchedulerESB\bin\Debug\Common.Logging.dll
 E:\Lcgoc\Lcgoc.SchedulerESB\bin\Debug\DevExpress.Pdf.v17.2.Core.dll
 E:\Lcgoc\Lcgoc.SchedulerESB\bin\Debug\DevExpress.RichEdit.v17.2.Core.dll
 E:\Lcgoc\Lcgoc.SchedulerESB\bin\Debug\DevExpress.XtraTreeList.v17.2.dll
@@ -255,3 +252,5 @@ E:\Lcgoc\Lcgoc.SchedulerESB\obj\Debug\Lcgoc.SchedulerESB.csproj.GenerateResource
 E:\Lcgoc\Lcgoc.SchedulerESB\obj\Debug\Lcgoc.SchedulerESB.exe.licenses
 E:\Lcgoc\Lcgoc.SchedulerESB\obj\Debug\Lcgoc.SchedulerESB.exe
 E:\Lcgoc\Lcgoc.SchedulerESB\obj\Debug\Lcgoc.SchedulerESB.pdb
+E:\Lcgoc\Lcgoc.SchedulerESB\bin\Debug\Common.Logging.Core.dll
+E:\Lcgoc\Lcgoc.SchedulerESB\bin\Debug\Common.Logging.dll
