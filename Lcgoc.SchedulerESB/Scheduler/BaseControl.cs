@@ -66,6 +66,10 @@ namespace Lcgoc.SchedulerESB
             {
                 jobType = Type.GetType(jobDetail.job_class_name);
             }
+            if (jobType == null)
+            {
+                throw new Exception(string.Format("作业配置有误，找不到类名路径！"));
+            }
             var job = (IJob)Activator.CreateInstance(jobType);
             job.Execute(context);
         }
