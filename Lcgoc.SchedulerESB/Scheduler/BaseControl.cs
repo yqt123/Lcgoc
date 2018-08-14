@@ -35,7 +35,7 @@ namespace Lcgoc.SchedulerESB
             }
             catch (Exception ex)
             {
-                SysParams.logger.Info(string.Format("【{0}】执行作业失败，消息：{1}", jobName, ex.Message));
+                SysParams.logger.Info(string.Format("【{0}】执行作业失败，消息：{1},跟踪：{2}", jobName, ex.Message, ex.StackTrace));
             }
             finally
             {
