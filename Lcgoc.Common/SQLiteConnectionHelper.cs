@@ -7,8 +7,8 @@ namespace Lcgoc.Common
 {
     public class SQLiteConnectionHelper
     {
-        public static string connectionStr { get { return string.Format(ConfigHelper.ConnectionString("SQLiteConnectionString"), Path.Combine(AppDomain.CurrentDomain.BaseDirectory, ConfigHelper.ConnectionString("SQLiteConnectionFileName"))); } }
-
+        public static string connectionStr { get { return string.Format(ConfigHelper.ConnectionString("SQLiteConnectionString")); } }
+        //public static string connectionStr { get { return "Data Source=Scheduler.db;Pooling=True;Max Pool Size=10;FailIfMissing=True;Journal Mode=Off;Synchronous = OFF;"; } }
         public IDbConnection connectionGetAndOpen(string connStr = "")
         {
             string _connStr = string.Empty;
