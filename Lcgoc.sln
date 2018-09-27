@@ -23,8 +23,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lcgoc.Scheduler", "Lcgoc.Sc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lcgoc.SchedulerJob", "Lcgoc.SchedulerJob\Lcgoc.SchedulerJob.csproj", "{982E9F66-3458-4F14-A6EA-EA133856FF1A}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WPF", "WPF", "{349E0090-8FCD-4DC3-A720-7C125B716ED2}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{058736B9-A9C9-4D62-921C-868008C9F162}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApplication1", "Test\ConsoleApplication1\ConsoleApplication1.csproj", "{9FD6E43C-DD15-4700-A607-636B6A1E4111}"
