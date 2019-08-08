@@ -19,8 +19,6 @@ namespace ConsoleApplication1
             //Get();
             //Console.ReadKey();
             //EditFillName();
-
-
         }
 
         //redis写入
@@ -141,7 +139,7 @@ namespace ConsoleApplication1
                 }
             }
             string log = string.Empty;
-            DirectoryInfo di = new DirectoryInfo(@"D:\Documents\Tencent Files\569090986\FileRecv\studentCard");//实例化DirectoryInfo对象之后，该对象就具有当前操作的目录的相关信息 
+            DirectoryInfo di = new DirectoryInfo(@"D:\Documents\Tencent Files\569090986\FileRecv\studentCard");
             foreach (FileInfo file in di.GetFiles())//遍历文件夹中的文件
             {
                 if (keyvalue.ContainsKey(file.Name))
