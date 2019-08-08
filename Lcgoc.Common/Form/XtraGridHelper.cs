@@ -28,6 +28,10 @@ namespace Lcgoc.Common
                             item.DisplayFormat.FormatString = "yyyy-MM-dd HH:mm:ss";
                         }
                     }
+                    else
+                    {
+                        item.Visible = false;
+                    }
                 }
                 foreach (GridViewColumn item in columnArgs)
                 {
